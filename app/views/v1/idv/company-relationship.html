@@ -1,0 +1,89 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+What is your relationship to the company?
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- Check for error -->
+    {% if errorRelationship %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+    <form action="{{currentUrl}}" method="post">
+
+      <!-- Check for error -->
+      {% if errorRelationship %}
+      <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+      <div class="govuk-form-group">
+      {% endif %} 
+        <fieldset class="govuk-fieldset" aria-describedby="companyRelationship-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+            What is your relationship to the company?
+            </h1>
+  
+          </legend>
+          <!-- Check for error -->
+          {% if errorRelationship %}
+          <p id="companyRelationship-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Select your relationship to the company
+          </p>
+          {% endif %} 
+
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="companyRelationship" name="companyRelationship" type="radio" value="director">
+              <label class="govuk-label govuk-radios__label" for="companyRelationship">
+                Director
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="companyRelationship-2" name="companyRelationship" type="radio" value="secretary">
+              <label class="govuk-label govuk-radios__label" for="companyRelationship-2">
+                Secretary
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="companyRelationship-3" name="companyRelationship" type="radio" value="acsp">
+              <label class="govuk-label govuk-radios__label" for="companyRelationship-3">
+                Companies House authorised agent
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="companyRelationship-4" name="companyRelationship" type="radio" value="accountant">
+              <label class="govuk-label govuk-radios__label" for="companyRelationship-4">
+                Agent - for example, an accountant
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="companyRelationship-5" name="companyRelationship" type="radio" value="other">
+              <label class="govuk-label govuk-radios__label" for="companyRelationship-5">
+                Other - for example, a friend of the director
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

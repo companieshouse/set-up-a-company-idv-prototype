@@ -1,0 +1,36 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start page – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Register your company
+      </h1>
+
+      <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tempus elit dignissim pretium mollis. Morbi et porta ex. Integer sit amet venenatis ex.</p>
+
+      <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tempus elit dignissim pretium mollis. Morbi et porta ex. Integer sit amet venenatis ex.</p>
+
+      {{ govukButton({
+        text: "Register now",
+        href: "idv/starting-a-new-application",
+        isStartButton: true
+      }) }}
+    </div>
+  </div>
+{% endblock %}

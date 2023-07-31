@@ -1,0 +1,140 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Director details
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- Check for error -->
+    {% if errorDirectorDetails %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+    <h1 class="govuk-heading-xl">Director details</h1>
+    <div class="govuk-inset-text">
+      Directors details will appear on the public record except for the full date of birth
+    </div>
+    <form action="{{currentUrl}}" method="post">
+
+      <!-- Check for error -->
+      {% if errorTitle%}
+        <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+        <div class="govuk-form-group">
+      {% endif %} 
+          <label class="govuk-label" for="title">
+            Title (optional)
+          </label>
+          <div id="title-hint" class="govuk-hint">
+            For example, Mr, Mrs, Miss, Ms, Dr.
+        </div>
+          <!-- Check for error -->
+        {% if errorTitle %}
+          <p id="title-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Enter your title
+          </p>
+        {% endif %} 
+          <input class="govuk-input govuk-!-width-two-thirds" id="title" name="title" type="text">
+      </div>
+
+      <!-- Check for error -->
+      {% if errorFirstName%}
+        <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+        <div class="govuk-form-group">
+      {% endif %} 
+          <label class="govuk-label" for="firstName">
+            First name
+          </label>
+          <div id="firstName-hint" class="govuk-hint">
+            Enter first name in full not just initials.
+        </div>
+          <!-- Check for error -->
+        {% if errorFirstName %}
+          <p id="firstName-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Enter first name in full
+          </p>
+        {% endif %} 
+          <input class="govuk-input govuk-!-width-two-thirds" id="firstName" name="firstName" type="text">
+      </div>
+
+      <!-- Check for error -->
+      {% if errorMiddleName%}
+        <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+        <div class="govuk-form-group">
+      {% endif %} 
+          <label class="govuk-label" for="middleName">
+            Middle name(s)
+          </label>
+          <div id="middleName-hint" class="govuk-hint">
+            Enter middle name(s) in full not just initials.
+        </div>
+          <!-- Check for error -->
+        {% if errorMiddleName %}
+          <p id="middleName-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Enter middle name(s) in full
+          </p>
+        {% endif %} 
+          <input class="govuk-input govuk-!-width-two-thirds" id="middleName" name="middleName" type="text">
+      </div>
+
+      <!-- Check for error -->
+      {% if errorLastName%}
+        <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+        <div class="govuk-form-group">
+      {% endif %} 
+          <label class="govuk-label" for="lastName">
+            Last name
+          </label>
+          <div id="lastName-hint" class="govuk-hint">
+            Enter last name in full not just initials.
+        </div>
+          <!-- Check for error -->
+        {% if errorLastName %}
+          <p id="lastName-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Enter last name in full
+          </p>
+        {% endif %} 
+          <input class="govuk-input govuk-!-width-two-thirds" id="lastName" name="lastName" type="text">
+      </div>
+
+      <!-- Check for error -->
+      {% if errorDirectorEmail %}
+        <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+        <div class="govuk-form-group">
+      {% endif %} 
+          <label class="govuk-label" for="directorEmail">
+            Email address
+          </label>
+          <!-- Check for error -->
+        {% if errorDirectorEmail %}
+          <p id="directorEmail-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Enter your email address
+          </p>
+        {% endif %} 
+          <input class="govuk-input" id="directorEmail" name="directorEmail" type="text">
+      </div>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}
