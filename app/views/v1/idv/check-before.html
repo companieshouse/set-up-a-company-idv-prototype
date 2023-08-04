@@ -1,0 +1,36 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Are you starting a new application?
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="{{currentUrl}}" method="post">
+
+      <h1 class="govuk-heading-xl">Check before you start</h1>
+
+      <p class="govuk-body">We're going to ask some questions. Your answers will:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>show whether you can use this service to register a limited company and set up Corporation tax</li>
+        <li>take you to another service if you're not eligible to use this one</li>
+      </ul>
+
+      {{ govukButton({
+        text: "Continue to questions"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

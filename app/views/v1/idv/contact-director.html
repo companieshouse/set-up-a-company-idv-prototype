@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-Are you starting a new application?
+Director details
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,44 +15,55 @@ Are you starting a new application?
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <!-- Check for error -->
-    {% if errorNew %}
+    {% if errorContact %}
       {{ govukErrorSummary({
         titleText: "There is a problem",
         errorList: errorList
       }) }}
     {% endif %}
+
     <form action="{{currentUrl}}" method="post">
 
       <!-- Check for error -->
-      {% if errorNew %}
+      {% if errorContact %}
       <div class="govuk-form-group govuk-form-group--error">
       {% else %}
       <div class="govuk-form-group">
       {% endif %} 
-        <fieldset class="govuk-fieldset" aria-describedby="newApplication-hint">
+        <fieldset class="govuk-fieldset" aria-describedby="contactDirector-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
             <h1 class="govuk-fieldset__heading">
-            Are you starting a new application?
+              Do you want us to contact this director?
             </h1>
-  
           </legend>
+          <div id="paypal-hint" class="govuk-hint">
+            ...
+          </div>
           <!-- Check for error -->
-          {% if errorNew %}
-          <p id="newApplication-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Select yes if you are starting a new application
+          {% if errorContact %}
+          <p id="contactDirector-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Select yes if you are able to use a card or PayPal
           </p>
           {% endif %} 
 
           <div class="govuk-radios" data-module="govuk-radios">
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="newApplication" name="newApplication" type="radio" value="yes">
-              <label class="govuk-label govuk-radios__label" for="newApplication">
+              <input class="govuk-radios__input" id="contactDirector" name="contactDirector" type="radio" value="yes" data-aria-controls="conditional-contactDirector">
+              <label class="govuk-label govuk-radios__label" for="contactDirector">
                 Yes
               </label>
             </div>
+            <div class="govuk-radios__conditional" id="conditional-contactDirector">
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="email-input">
+                  Directors email
+                </label>
+                <input class="govuk-input govuk-!-width-one-half" id="email-input" name="email-input">
+              </div>
+            </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="newApplication-2" name="newApplication" type="radio" value="no">
-              <label class="govuk-label govuk-radios__label" for="newApplication-2">
+              <input class="govuk-radios__input" id="contactDirector-2" name="contactDirector" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="contactDirector-2">
                 No
               </label>
             </div>

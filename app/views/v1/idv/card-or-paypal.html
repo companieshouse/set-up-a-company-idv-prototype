@@ -15,7 +15,7 @@ Are you starting a new application?
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <!-- Check for error -->
-    {% if errorNew %}
+    {% if errorPaypal %}
       {{ govukErrorSummary({
         titleText: "There is a problem",
         errorList: errorList
@@ -24,7 +24,7 @@ Are you starting a new application?
     <form action="{{currentUrl}}" method="post">
 
       <!-- Check for error -->
-      {% if errorNew %}
+      {% if errorPaypal %}
       <div class="govuk-form-group govuk-form-group--error">
       {% else %}
       <div class="govuk-form-group">
@@ -32,27 +32,29 @@ Are you starting a new application?
         <fieldset class="govuk-fieldset" aria-describedby="newApplication-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
             <h1 class="govuk-fieldset__heading">
-            Are you starting a new application?
+            Are you able to pay for this application using a card or PayPal?
             </h1>
-  
           </legend>
+          <div id="paypal-hint" class="govuk-hint">
+            We only accept card or PayPal payments on this service.
+          </div>
           <!-- Check for error -->
-          {% if errorNew %}
-          <p id="newApplication-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Select yes if you are starting a new application
+          {% if errorPaypal %}
+          <p id="paypal-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Select yes if you are able to use a card or PayPal
           </p>
           {% endif %} 
 
-          <div class="govuk-radios" data-module="govuk-radios">
+          <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="newApplication" name="newApplication" type="radio" value="yes">
-              <label class="govuk-label govuk-radios__label" for="newApplication">
+              <input class="govuk-radios__input" id="paypal" name="paypal" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="paypal">
                 Yes
               </label>
             </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="newApplication-2" name="newApplication" type="radio" value="no">
-              <label class="govuk-label govuk-radios__label" for="newApplication-2">
+              <input class="govuk-radios__input" id="paypal-2" name="paypal" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="paypal-2">
                 No
               </label>
             </div>
