@@ -21,7 +21,7 @@ Are you starting a new application?
         errorList: errorList
       }) }}
     {% endif %}
-    <form action="{{currentUrl}}" method="post">
+    <form action="" method="post">
 
       <!-- Check for error -->
       {% if errorNew %}
@@ -43,8 +43,8 @@ Are you starting a new application?
           </p>
           {% endif %} 
 
-          <div class="govuk-radios" data-module="govuk-radios">
-            <div class="govuk-radios__item">
+          <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+            <div class="govuk-radios__item" id="showHide">
               <input class="govuk-radios__input" id="newApplication" name="newApplication" type="radio" value="yes">
               <label class="govuk-label govuk-radios__label" for="newApplication">
                 Yes

@@ -15,7 +15,7 @@ Director details
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <!-- Check for error -->
-    {% if errorStatement %}
+    {% if errorStatementTwo %}
       {{ govukErrorSummary({
         titleText: "There is a problem",
         errorList: errorList
@@ -24,27 +24,28 @@ Director details
       <form action="{{currentUrl}}" method="post">
 
         <!-- Check for error -->
-        {% if errorStatement %}
+        {% if errorStatementTwo %}
         <div class="govuk-form-group govuk-form-group--error">
         {% else %}
         <div class="govuk-form-group">
         {% endif %} 
-          <fieldset class="govuk-fieldset" aria-describedby="verification-Statement-hint">
+          <fieldset class="govuk-fieldset" aria-describedby="verification-Statement-two-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
               <h1 class="govuk-fieldset__heading">
                 Verification statement
               </h1>
             </legend>
-            {% if errorStatement %}
-            <p id="verification-Statement-error" class="govuk-error-message">
-              <span class="govuk-visually-hidden">Error:</span>Enter the Companies house personal code for this director
+            {% if errorStatementTwo %}
+            <p id="verification-Statement-two-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span>Confirm the verification statement
             </p>
             {% endif %}
             <div class="govuk-checkboxes" data-module="govuk-checkboxes">
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="verification-Statement" name="verification-Statement" type="checkbox">
-                <label class="govuk-label govuk-checkboxes__label" for="verification-Statement">
-                  I, <strong>Sally Louise Harris</strong>, declare that {{ data['title']}} {{ data['firstName']}} {{ data['middleName']}} {{ data['lastName']}} has verified their identity.
+                <input class="govuk-checkboxes__input" id="verification-Statement-two" name="verification-Statement-two" type="checkbox">
+                <label class="govuk-label govuk-checkboxes__label" for="verification-Statement-two">
+                  I, <strong>{{ data['titleOne']}} {{ data['firstNameOne']}} {{ data['middleNameOne']}} {{ data['lastNameOne']}}</strong>, 
+                  declare that <strong>{{ data['titleTwo']}} {{ data['firstNameTwo']}} {{ data['middleNameTwo']}} {{ data['lastNameTwo']}}</strong> has verified their identity.
                 </label>
               </div>
             </div>

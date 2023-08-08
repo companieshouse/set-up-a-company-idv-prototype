@@ -1,0 +1,58 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Director details
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- Check for error -->
+    {% if errorProvideUvidOne %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+
+    <form action="{{currentUrl}}" method="post">
+
+        <!-- Check for error -->
+        {% if errorProvideUvidOne %}
+          <div class="govuk-form-group govuk-form-group--error">
+        {% else %}
+          <div class="govuk-form-group">
+        {% endif %} 
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--xl" for="provide-uvid-one">
+              What is your Companies House personal code?
+            </label>
+          </h1>
+          <div id="provide-uvid-one-hint" class="govuk-hint">
+             ...
+          </div>
+          <!-- Check for error -->
+          {% if errorProvideUvidOne %}
+          <p id="provide-uvid-one-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Enter your Companies House personal code
+          </p>
+          {% endif %} 
+          <input class="govuk-input govuk-input--width-10" id="provide-uvid-one" name="provide-uvid-one" type="text" aria-describedby="provide-uvid-hint">
+        </div>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

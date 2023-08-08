@@ -15,7 +15,7 @@ Are you starting a new application?
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <!-- Check for error -->
-    {% if errorAnotherDirector %}
+    {% if errorAddDirector %}
       {{ govukErrorSummary({
         titleText: "There is a problem",
         errorList: errorList
@@ -23,49 +23,18 @@ Are you starting a new application?
     {% endif %}
     <form action="{{currentUrl}}" method="post">
 
-      <h1 class="govuk-heading-xl">You have added 3 directors</h1>
-
+      <!-- If contact details for second director added we know to display it. -->
+      {% if data['contactDirector'] %}
+      <h1 class="govuk-heading-xl">You have added two directors</h1>
+      {% else %}
+      <h1 class="govuk-heading-xl">You have added one director</h1>
+      {% endif %}
 
       <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
         Donec auctor ornare ligula non dapibus. Quisque hendrerit aliquam risus, sed 
         malesuada eros.</p>
 
-        <p class="govuk-body"> Quisque hendrerit aliquam risus, sed 
-          malesuada eros.</p>
-
-
-      <!-- <table class="govuk-table">
-        <thead class="govuk-table__head">
-          <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header">Name</th>
-            <th scope="col" class="govuk-table__header">Status</th>
-            <th scope="col" class="govuk-table__header"></th>
-          </tr>
-        </thead>
-        <tbody class="govuk-table__body">
-          <tr class="govuk-table__row">
-            <th scope="row" class="govuk-table__header">{{ data['title']}} {{ data['firstName']}} {{ data['middleName']}} {{ data['lastName']}}</th>
-            <td class="govuk-table__cell">
-              <strong class="govuk-tag govuk-tag--green">
-              CODE PROVIDED
-            </strong></td>
-            <td class="govuk-table__cell"></td>
-          </tr>
-          <tr class="govuk-table__row">
-            <th scope="row" class="govuk-table__header">Joe Bloggs</th>
-            <td class="govuk-table__cell">
-              <strong class="govuk-tag govuk-tag--red">
-              CODE NOT PROVIDED
-            </strong></td>
-            <td class="govuk-table__cell">
-              <a class="govuk-link" href="#">
-                Provide code<span class="govuk-visually-hidden"> name</span>
-              </a></td>
-          </tr>
-        </tbody>
-      </table> -->
-
-       <div class="govuk-summary-card"> 
+      <div class="govuk-summary-card"> 
         <div class="govuk-summary-card__title-wrapper">
           <h2 class="govuk-summary-card__title">Director 1</h2>
           <ul class="govuk-summary-card__actions">
@@ -82,7 +51,7 @@ Are you starting a new application?
                 Name
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data['title']}} {{ data['firstName']}} {{ data['middleName']}} {{ data['lastName']}}
+                {{ data['titleOne']}} {{ data['firstNameOne']}} {{ data['middleNameOne']}} {{ data['lastNameOne']}}
               </dd>
             </div>
             <div class="govuk-summary-list__row">
@@ -90,147 +59,136 @@ Are you starting a new application?
                 Date of birth
               </dt>
               <dd class="govuk-summary-list__value">
-                28 August 1965
+                {{ data['Dob-day-one'] }} 
+                {{ data['Dob-month-one'] | displayMonth }} 
+                {{ data['Dob-year-one'] }} 
               </dd>
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                Companies house personal code
+                Verification status
               </dt>
+
+              <!-- If verification statement one has been ticked status is complete -->
+              {% if data['verification-Statement-one'] %}
               <dd class="govuk-summary-list__value">
                 <strong class="govuk-tag govuk-tag--green">
-                  PROVIDED
+                  COMPLETE
                 </strong>
               </dd>
-            </div>
-          </dl>
-        </div>
-      </div> 
-
-      <div class="govuk-summary-card"> 
-        <div class="govuk-summary-card__title-wrapper">
-          <h2 class="govuk-summary-card__title">Director 2</h2>
-          <ul class="govuk-summary-card__actions">
-            <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
-                Remove director<span class="govuk-visually-hidden"> from list of directors</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="govuk-summary-card__content">
-          <dl class="govuk-summary-list">
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Name
-              </dt>
-              <dd class="govuk-summary-list__value">
-                Beth Smith
-              </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Date of birth
-              </dt>
-              <dd class="govuk-summary-list__value">
-                10 July 2000
-              </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Companies house personal code
-              </dt>
-              <dd class="govuk-summary-list__value">
-                <strong class="govuk-tag govuk-tag--green">
-                  PROVIDED
-                </strong>
-              </dd>
-            </div>
-          </dl>
-        </div>
-      </div> 
-
-      <div class="govuk-summary-card"> 
-        <div class="govuk-summary-card__title-wrapper">
-          <h2 class="govuk-summary-card__title">Director 3</h2>
-          <ul class="govuk-summary-card__actions">
-            <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
-                Remove director<span class="govuk-visually-hidden"> from list of directors</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="govuk-summary-card__content">
-          <dl class="govuk-summary-list">
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Name
-              </dt>
-              <dd class="govuk-summary-list__value">
-                  Joe Bloggs
-              </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Date of birth
-              </dt>
-              <dd class="govuk-summary-list__value">
-                01 September 1985
-              </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Companies house personal code
-              </dt>
+              {% else %}
               <dd class="govuk-summary-list__value">
                 <strong class="govuk-tag govuk-tag--red">
-                  NOT PROVIDED
-                </strong></td>
+                  NOT COMPLETE
+                </strong>
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="uvid.html">
-                  Provide code<span class="govuk-visually-hidden"> code</span>
+                <a class="govuk-link" href="director-one/director-one-provide-uvid">
+                  Complete verification<span class="govuk-visually-hidden"> code</span>
                 </a>
               </dd>
+              {% endif %}
             </div>
           </dl>
         </div>
       </div> 
-      
+
+      <!-- If contact details for second director added we know to display it. -->
+      {% if data['contactDirector'] %}
+        <div class="govuk-summary-card"> 
+          <div class="govuk-summary-card__title-wrapper">
+            <h2 class="govuk-summary-card__title">Director 2</h2>
+            <ul class="govuk-summary-card__actions">
+              <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+                  Remove director<span class="govuk-visually-hidden"> from list of directors</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="govuk-summary-card__content">
+            <dl class="govuk-summary-list">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Name
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data['titleTwo']}} {{ data['firstNameTwo']}} {{ data['middleNameTwo']}} {{ data['lastNameTwo']}}
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Date of birth
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data['Dob-day-two'] }} 
+                  {{ data['Dob-month-two'] | displayMonth }} 
+                  {{ data['Dob-year-two'] }} 
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Verification status
+                </dt>
+
+                <!-- If verification statement two has been ticked status is complete -->
+                {% if data['verification-Statement-two'] %}
+                <dd class="govuk-summary-list__value">
+                  <strong class="govuk-tag govuk-tag--green">
+                    COMPLETE
+                  </strong>
+                </dd>
+                {% else %}
+                <dd class="govuk-summary-list__value">
+                  <strong class="govuk-tag govuk-tag--red">
+                    NOT COMPLETE
+                  </strong>
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="director-two/director-two-uvid">
+                    Complete verification<span class="govuk-visually-hidden"> code</span>
+                  </a>
+                </dd>
+                {% endif %}
+              </div>
+            </dl>
+          </div>
+        </div> 
+      {% endif %}
 
       <!-- Check for error -->
-      {% if errorAnother %}
+      {% if errorAddDirector %}
       <div class="govuk-form-group govuk-form-group--error">
       {% else %}
       <div class="govuk-form-group">
       {% endif %} 
-        <fieldset class="govuk-fieldset" aria-describedby="addAnother-hint">
+        <fieldset class="govuk-fieldset" aria-describedby="addDirector-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
-            Do you want to add another director?
+              Do you want to add another director?
             </h1>
           </legend>
-          <div id="addAnother-hint" class="govuk-hint">
+          <div id="addDirector-hint" class="govuk-hint">
             <p class="govuk-body"> Quisque hendrerit aliquam risus, sed 
               malesuada eros.</p>
           </div>
           <!-- Check for error -->
-          {% if errorAnother %}
-          <p id="addAnother-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Select yes if you are able to use a card or PayPal
+          {% if errorAddDirector %}
+          <p id="addDirector-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Select if you want to add another director
           </p>
           {% endif %} 
 
-          <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+          <div class="govuk-radios" data-module="govuk-radios">
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="addAnother" name="addAnother" type="radio" value="yes">
-              <label class="govuk-label govuk-radios__label" for="addAnother">
+              <input class="govuk-radios__input" id="addDirector" name="addDirector" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="addDirector">
                 Yes
               </label>
             </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="addAnother-2" name="addAnother" type="radio" value="no">
-              <label class="govuk-label govuk-radios__label" for="addAnother-2">
-                No
+              <input class="govuk-radios__input" id="addDirector-2" name="addDirector" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="addDirector-2">
+                No, I have added all directors and they have all completed verification
               </label>
             </div>
           </div>
@@ -238,7 +196,7 @@ Are you starting a new application?
       </div>
 
       {{ govukButton({
-        text: "Continue"
+        text: "Save and continue"
       }) }}
 
     </form>

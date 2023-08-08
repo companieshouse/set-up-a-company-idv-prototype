@@ -207,20 +207,6 @@ router.post('/v1/idv/sign-in', function (req, res) {
   }
 })
 
-
-// ******* director-name javascript ********************************
-router.get('/v1/idv/director-details', function (req, res) {
-  // Set URl
-  res.render('v1/idv/director-details', {
-    currentUrl: req.originalUrl
-  })
-})
-
-router.post('/v1/idv/director-details', function (req, res) {
-  res.redirect('/v1/idv/uvid')
-})
-
-
 // ******* directors-idv-guide javascript ********************************
 router.get('/v1/idv/directors-idv-guide', function (req, res) {
   // Set URl
@@ -230,147 +216,63 @@ router.get('/v1/idv/directors-idv-guide', function (req, res) {
 })
 
 router.post('/v1/idv/directors-idv-guide', function (req, res) {
-  res.redirect('/v1/idv/director-details')
+  res.redirect('/v1/idv/director-one/director-one-details')
 })
 
-
-// ******* uvid javascript ********************************
-router.get('/v1/idv/uvid', function (req, res) {
+// ******* director-dashboard javascript ********************************
+router.get('/v1/idv/director-dashboard', function (req, res) {
   // Set URl
-  res.render('v1/idv/uvid', {
+  res.render('v1/idv/director-dashboard', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v1/idv/uvid', function (req, res) {
-  // Create empty array and set error variables to false
-  var errors = [];
-
-  // Check if user has filled out a email
-  if (req.session.data['uvid-code'] === '') {
-    // No value so add error to array
-    errors.push({
-      text: 'Enter the Companies house personal code for this director',
-      href: '#uvid-code'
-    })
-
-    // Re-show page with error value as true so errors will show
-    res.render('v1/idv/uvid', {
-      errorUvid: true,
-      errorList: errors
-    })
-  } else {
-    if (req.session.data['uvid-code'] === 'yes') {
-      res.redirect('/v1/idv/statement')
-    } else {
-      // User inputted value so move to next page
-      res.redirect('/v1/idv/contact-director')
-    } 
-  }
-})
-
-
-// ******* contact-director javascript ********************************
-router.get('/v1/idv/contact-director', function (req, res) {
-  // Set URl
-  res.render('v1/idv/contact-director', {
-    currentUrl: req.originalUrl
-  })
-})
-
-router.post('/v1/idv/contact-director', function (req, res) {
-  // Create empty array and set error variables to false
-  var errors = [];
-
-  // Check if user has filled out a email
-  if (req.session.data['contactDirector'] === '') {
-    // No value so add error to array
-    errors.push({
-      text: 'Select if you want us to contact this director',
-      href: '#contactDirector'
-    })
-
-    // Re-show page with error value as true so errors will show
-    res.render('v1/idv/contact-director', {
-      errorUvid: true,
-      errorList: errors
-    })
-  } else {
-    if (req.session.data['contactDirector'] === 'yes') {
-      res.redirect('/v1/idv/emailed-director')
-    } else {
-      // User inputted value so move to next page
-      res.redirect('/v1/idv/director-dashboard')
-    } 
-  }
-})
-
-
-// ******* uvid javascript ********************************
-router.get('/v1/idv/statement', function (req, res) {
-  // Set URl
-  res.render('v1/idv/statement', {
-    currentUrl: req.originalUrl
-  })
-})
-
-router.post('/v1/idv/statement', function (req, res) {
+router.post('/v1/idv/director-dashboard', function (req, res) {
   // Create empty array
   var errors = []
 
   // Check if user has filled out a value
-  if (typeof req.session.data['verification-Statement'] === 'undefined') {
+  if (typeof req.session.data['addDirector'] === 'undefined') {
     // No value so add error to array
     errors.push({
-      text: 'Enter the Companies house personal code for this director',
-      href: '#verification-Statement'
+      text: 'Select if you need to add another director',
+      href: '#addDirector'
     })
 
     // Re-show page with error value as true so errors will show
-    res.render('v1/idv/statement', {
-      errorStatement: true,
+    res.render('v1/idv/director-dashboard', {
+      errorAddDirector: true,
       errorList: errors
     })
   } else {
-    res.redirect('/v1/idv/director-dashboard')
-  }
-})
-
-
-// ******* add-another-director javascript ********************************
-router.get('/v1/idv/add-another-director', function (req, res) {
-  // Set URl
-  res.render('v1/idv/add-another-director', {
-    currentUrl: req.originalUrl
-  })
-})
-
-router.post('/v1/idv/add-another-director', function (req, res) {
-  // Create empty array
-  var errors = []
-
-  // Check if user has filled out a value
-  if (typeof req.session.data['anotherDirector'] === 'undefined') {
-    // No value so add error to array
-    errors.push({
-      text: 'Select yes if you need to add another director',
-      href: '#anotherDirector'
-    })
-
-    // Re-show page with error value as true so errors will show
-    res.render('v1/idv/add-another-director', {
-      errorAnotherDirector: true,
-      errorList: errors
-    })
-  } else {
-    if (req.session.data['anotherDirector'] === 'yes') {
-      res.redirect('/v1/idv/director-details')
+    if (req.session.data['addDirector'] === 'yes') {
+      res.redirect('/v1/idv/director-two/director-two-details')
     } else {
-      // User inputted value so move to next page
-      res.redirect('/v1/idv/director-control')
+      if (req.session.data['verification-Statement-one'] && req.session.data['verification-Statement-two']) {
+        res.redirect('/v1/idv/continue-scrs')
+      } else {
+        // User inputted value so move to next page
+        res.redirect('/v1/idv/stop-screen')
+      }
+      
     }
   }
 })
+
+
+// ******* directors-idv-guide javascript ********************************
+router.get('/v1/idv/stop-screen', function (req, res) {
+  // Set URl
+  res.render('v1/idv/stop-screen', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v1/idv/stop-screen', function (req, res) {
+  res.redirect('/v1/idv/director-dashboard')
+})
+
+
 
 
 module.exports=router;

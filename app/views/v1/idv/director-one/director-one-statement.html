@@ -1,0 +1,61 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Director details
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- Check for error -->
+    {% if errorStatementOne %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+      <form action="{{currentUrl}}" method="post">
+
+        <!-- Check for error -->
+        {% if errorStatementOne %}
+        <div class="govuk-form-group govuk-form-group--error">
+        {% else %}
+        <div class="govuk-form-group">
+        {% endif %} 
+          <fieldset class="govuk-fieldset" aria-describedby="verification-Statement-one-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                Verification statement
+              </h1>
+            </legend>
+            {% if errorStatementOne %}
+            <p id="verification-Statement-one-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span>Enter your Companies house personal code
+            </p>
+            {% endif %}
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="verification-Statement-one" name="verification-Statement-one" type="checkbox">
+                <label class="govuk-label govuk-checkboxes__label" for="verification-Statement-one">
+                  I, <strong>                {{ data['titleOne']}} {{ data['firstNameOne']}} {{ data['middleNameOne']}} {{ data['lastNameOne']}}</strong>, declare that I have verified my identity.
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+            text: "Continue"
+          }) }}  
+      </form>
+  </div>
+</div>
+
+{% endblock %}
