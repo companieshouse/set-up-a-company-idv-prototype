@@ -17,19 +17,34 @@ Are you starting a new application?
 
     <form action="{{currentUrl}}" method="post">
 
-      <h1 class="govuk-heading-xl">All directors need to verify there identity</h1>
+      <h1 class="govuk-heading-xl">All directors now need to verify their identity </h1>
 
-      <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-        Donec auctor ornare ligula non dapibus. Quisque hendrerit aliquam risus, sed 
-        malesuada eros. Nulla rhoncus erat nec iaculis aliquam. Vestibulum id nulla 
-        quis sem fermentum placerat. Aenean dictum ac mi a mollis. Suspendisse aliquet 
-        pulvinar dictum.</p>
+      <p class="govuk-body">Directors and persons of significant control (PSCs) are 
+        now required to verify their identity as part of registering a new company. 
+        If there are multiple directors, they must all do this in advance of 
+        registering the company. PSCs can verify up to 14 days after the company 
+        is incorporated.  </p>
 
-      <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-        Donec auctor ornare ligula non dapibus. Quisque hendrerit aliquam risus, sed 
-        malesuada eros. Nulla rhoncus erat nec iaculis aliquam. Vestibulum id nulla 
-        quis sem fermentum placerat. Aenean dictum ac mi a mollis. Suspendisse aliquet 
-        pulvinar dictum.</p>
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            What is a PSC
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p class="govuk-body">A person with significant control (PSC) is someone who owns 
+            or controls your company. They’re sometimes called ‘beneficial owners’. </p>
+    
+          <p class="govuk-body">Most PSCs are those who hold: </p>
+    
+          <ul class="govuk-list govuk-list--bullet">
+            <li>more than 25% of shares in the company </li>
+            <li>more than 25% of voting rights in the company </li>
+            <li>the right to appoint or remove the majority of the board of directors </li>
+          </ul>
+        </div>
+      </details>
+
 
       {{ govukButton({
         text: "Save and continue"

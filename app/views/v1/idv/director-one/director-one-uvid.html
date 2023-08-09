@@ -33,11 +33,12 @@ Director details
         <fieldset class="govuk-fieldset" aria-describedby="uvid-code-one-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
             <h1 class="govuk-fieldset__heading">
-              Do you have a Companies House personal code?
+              Do you have a verification share code?
             </h1>
           </legend>
           <div id="uvid-code-one-hint" class="govuk-hint">
-            ...
+            This is a code that is issued once a person completes their identity 
+            verification with Companies House.
           </div>
           <!-- Check for error -->
           {% if errorUvidOne %}
@@ -56,7 +57,7 @@ Director details
             <div class="govuk-radios__conditional" id="conditional-uvid-code-one">
               <div class="govuk-form-group">
                 <label class="govuk-label" for="uvid-code-one-input">
-                  Companies House personal code
+                  verification share code
                 </label>
                 <input class="govuk-input govuk-!-width-one-half" id="uvid-code-one-input" name="uvid-code-one-input">
               </div>

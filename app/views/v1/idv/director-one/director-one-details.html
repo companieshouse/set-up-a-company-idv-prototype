@@ -21,9 +21,12 @@ Director details
         errorList: errorList
       }) }}
     {% endif %}
-    <h1 class="govuk-heading-xl">Your details {{data['lastNameOne']}}</h1>
+    <h1 class="govuk-heading-xl">Your details</h1>
+
+    <p class="govuk-body">As a director for the company you will have to verify your identity as part of registering a new company</p>
+
     <div class="govuk-inset-text">
-      As a director your details will appear on the public record except the full date of birth.
+      Director details will appear on the public record except the full date of birth.
     </div>
     <form action="{{currentUrl}}" method="post">
 

@@ -210,6 +210,37 @@ router.post('/v1/idv/director-two/director-two-statement', function (req, res) {
 })
 
 
+// ******* provide-uvid javascript ********************************
+router.get('/v1/idv/director-two/director-two-provide-uvid', function (req, res) {
+  // Set URl
+  res.render('v1/idv/director-two/director-two-provide-uvid', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v1/idv/director-two/director-two-provide-uvid', function (req, res) {
+  // Create empty array and set error variables to false
+  var errors = [];
+
+  // Check if user has filled out a email
+  if (req.session.data['provide-uvid-two'] === '') {
+    // No value so add error to array
+    errors.push({
+      text: 'Enter your Companies House personal code',
+      href: '#provide-uvid-two'
+    })
+
+    // Re-show page with error value as true so errors will show
+    res.render('v1/idv/director-two/director-two-provide-uvid', {
+      errorProvideUvidOne: true,
+      errorList: errors
+    })
+  } else {
+      res.redirect('/v1/idv/director-two/director-two-statement')
+  }
+})
+
+
 
 module.exports=router;
 

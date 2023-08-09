@@ -33,12 +33,9 @@ Director details
         <fieldset class="govuk-fieldset" aria-describedby="contactDirector-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
             <h1 class="govuk-fieldset__heading">
-              Do you want us to contact this director?
+              Do you want us to email {{ data['titleTwo']}} {{ data['firstNameTwo']}} {{ data['middleNameTwo']}} {{ data['lastNameTwo']}} asking them to verify their identity? 
             </h1>
           </legend>
-          <div id="paypal-hint" class="govuk-hint">
-            ...
-          </div>
           <!-- Check for error -->
           {% if errorContact %}
           <p id="contactDirector-error" class="govuk-error-message">
