@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-Director details
+Verification statement
 {% endblock %}
 
 {% block beforeContent %}
@@ -35,19 +35,17 @@ Director details
                 Provide verification statement
               </h1>
             </legend>
-            <div id="verification-Statement-one-hint" class="govuk-hint">
-              You need to confirm that you have been verified your identity with Companies House
-            </div>
+
             {% if errorStatementOne %}
             <p id="verification-Statement-one-error" class="govuk-error-message">
-              <span class="govuk-visually-hidden">Error:</span>Enter your Companies house personal code
+              <span class="govuk-visually-hidden">Error:</span>You need to accept the verification statement
             </p>
             {% endif %}
             <div class="govuk-checkboxes" data-module="govuk-checkboxes">
               <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" id="verification-Statement-one" name="verification-Statement-one" type="checkbox">
                 <label class="govuk-label govuk-checkboxes__label" for="verification-Statement-one">
-                  I, <strong>Paul Robinson</strong>, declare that I have verified my identity.
+                  I, <strong>Paul Robinson</strong>, declare that I have verified my identity for Companies House.
                 </label>
               </div>
             </div>

@@ -21,18 +21,18 @@ Director details
         errorList: errorList
       }) }}
     {% endif %}
-    <h1 class="govuk-heading-xl">Your details</h1>
+    <h1 class="govuk-heading-xl">Enter your details</h1>
 
-    <p class="govuk-body">As a director for the company you will have to verify your identity as part of registering a new company</p>
+<!--
+    <p class="govuk-body">As a company director, you will have to verify your identity with Companies House as part of registering a new company</p> 
 
-    <div class="govuk-inset-text">
-      Director details will appear on the public record except the full date of birth.
-    </div>
+-->
+
     <form action="{{currentUrl}}" method="post">
 
       <div class="govuk-form-group">
           <label class="govuk-label" for="titleOne">
-            Title (optional)
+            Professional or honorary title (if relevant)
           </label>
           <div id="titleOne-hint" class="govuk-hint">
             For example, Mr, Mrs, Miss, Ms, Dr.
@@ -50,12 +50,12 @@ Director details
             First name
           </label>
           <div id="firstNameOne-hint" class="govuk-hint">
-            Enter first name in full not just initials.
+            Enter your full first name.
         </div>
           <!-- Check for error -->
         {% if errorDirectorOneFirstName %}
           <p id="firstNameOne-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Enter first name in full
+            <span class="govuk-visually-hidden">Error:</span> Enter your full first name
           </p>
         {% endif %} 
           <input class="govuk-input govuk-!-width-two-thirds" id="firstNameOne" name="firstNameOne" type="text">
@@ -63,10 +63,10 @@ Director details
 
       <div class="govuk-form-group">
         <label class="govuk-label" for="middleNameOne">
-          Middle name(s)
+          Middle names
         </label>
         <div id="middleNameOne-hint" class="govuk-hint">
-          Enter middle name(s) in full not just initials.
+          Enter your full middle name or names.
       </div>
           <input class="govuk-input govuk-!-width-two-thirds" id="middleNameOne" name="middleNameOne" type="text">
       </div>
@@ -81,12 +81,12 @@ Director details
             Last name
           </label>
           <div id="lastNameOne-hint" class="govuk-hint">
-            Enter last name in full not just initials.
+            Enter your full last name.
         </div>
           <!-- Check for error -->
         {% if errorDirectorOneLastName %}
           <p id="lastNameOne-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Enter last name in full
+            <span class="govuk-visually-hidden">Error:</span> Enter your full last name
           </p>
         {% endif %} 
           <input class="govuk-input govuk-!-width-two-thirds" id="lastNameOne" name="lastNameOne" type="text">
@@ -155,6 +155,12 @@ Director details
           </div>
         </fieldset>
       </div>
+
+        {{ govukInsetText({
+          html: '
+            <h2 class="govuk-heading-m">What information we&#39;ll show on the public register</h2>
+            <p>We will show the your full name on the public Companies House register. We will only show the month and year of your date of birth.</p>'
+        }) }}
 
       {{ govukButton({
         text: "Save and continue"

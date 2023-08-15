@@ -33,13 +33,13 @@ Director details
         <fieldset class="govuk-fieldset" aria-describedby="contactDirector-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
             <h1 class="govuk-fieldset__heading">
-              Do you want us to email {{ data['titleTwo']}} {{ data['firstNameTwo']}} {{ data['middleNameTwo']}} {{ data['lastNameTwo']}} asking them to verify their identity? 
+              Do you want us to email {{ data['titleTwo']}} {{ data['firstNameTwo']}} {{ data['middleNameTwo']}} {{ data['lastNameTwo']}} and invite them to verify their identity? 
             </h1>
           </legend>
           <!-- Check for error -->
           {% if errorContact %}
           <p id="contactDirector-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Select if you want us to contact the director
+            <span class="govuk-visually-hidden">Error:</span> Select 'yes' if you want us to contact the director
           </p>
           {% endif %} 
 
@@ -53,7 +53,7 @@ Director details
             <div class="govuk-radios__conditional" id="conditional-contactDirector">
               <div class="govuk-form-group">
                 <label class="govuk-label" for="contactDirector-input">
-                  Directors email
+                  Enter the director's email address
                 </label>
                 <input class="govuk-input govuk-!-width-one-half" id="contactDirector-input" name="contactDirector-input">
               </div>

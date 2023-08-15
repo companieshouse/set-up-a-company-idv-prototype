@@ -37,14 +37,13 @@ Director details
             </h1>
           </legend>
           <div id="uvid-code-two-hint" class="govuk-hint">
-            This is a code that is issued once a person completes their identity 
-            verification with Companies House. If you don’t already have this, don’t worry. 
-            Your directors will be able to verify as part of this process.
+            This is a code that is issued once a person has verified their identity for Companies House. <!--If you don’t already have this, don’t worry. 
+            Your directors will be able to verify as part of this process.-->
           </div>
           <!-- Check for error -->
           {% if errorUvidTwo %}
           <p id="uvid-code-two-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Select if you have a Companies House personal code for this director
+            <span class="govuk-visually-hidden">Error:</span> Select 'yes' if you have a Companies House user ID for this director
           </p>
           {% endif %} 
 
@@ -58,7 +57,7 @@ Director details
             <div class="govuk-radios__conditional" id="conditional-uvid-code-two">
               <div class="govuk-form-group">
                 <label class="govuk-label" for="uvid-code-two-input">
-                  Companies House personal code
+                  Companies House user ID
                 </label>
                 <input class="govuk-input govuk-!-width-one-half" id="uvid-code-two-input" name="uvid-code-two-input">
               </div>
