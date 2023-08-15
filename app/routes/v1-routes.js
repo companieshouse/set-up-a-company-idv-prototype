@@ -31,7 +31,7 @@ router.post('/v1/idv/starting-a-new-application', function (req, res) {
       res.redirect('/v1/idv/check-before')
     } else {
       // User inputted value so move to next page
-      res.redirect('/v1/idv/gov-gateway')
+      res.redirect('/v1/idv/sign-in')
     }
   }
 })
@@ -133,7 +133,6 @@ router.get('/v1/idv/company-relationship', function (req, res) {
 router.post('/v1/idv/company-relationship', function (req, res) {
   // Create empty array
   var errors = []
-  var relationship = req.session.data['companyRelationship']
 
   // Check if user has filled out a value
   if (typeof req.session.data['companyRelationship'] === 'undefined') {
@@ -149,12 +148,7 @@ router.post('/v1/idv/company-relationship', function (req, res) {
       errorList: errors
     })
   } else {
-    if (relationship === 'secretary' || relationship === 'director' || relationship === 'other') {
-      res.redirect('/v1/idv/sign-in')
-    } else {
-      // User inputted value so move to next page
-      res.redirect('/v1/idv/gov-gateway')
-    }
+    res.redirect('/v1/idv/sign-in')
   }
 })
 
@@ -202,10 +196,17 @@ router.post('/v1/idv/sign-in', function (req, res) {
       errorPassword: passwordHasError,
       errorList: errors
     })
-  } else {
-    res.redirect('/v1/idv/directors-idv-guide')
+  } else 
+  {
+    if (req.session.data['contactDirector'] === 'yes') {
+      res.redirect('/v1/idv/director-dashboard')
+    } else {
+      // User inputted value so move to next page
+      res.redirect('/v1/idv/directors-idv-guide')
+    }
   }
 })
+
 
 // ******* directors-idv-guide javascript ********************************
 router.get('/v1/idv/directors-idv-guide', function (req, res) {
@@ -216,7 +217,38 @@ router.get('/v1/idv/directors-idv-guide', function (req, res) {
 })
 
 router.post('/v1/idv/directors-idv-guide', function (req, res) {
-  res.redirect('/v1/idv/director-one/director-one-details')
+  res.redirect('/v1/idv/only-director')
+})
+
+
+// ******* only-director javascript ********************************
+router.get('/v1/idv/only-director', function (req, res) {
+  // Set URl
+  res.render('v1/idv/only-director', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v1/idv/only-director', function (req, res) {
+  // Create empty array
+  var errors = []
+
+  // Check if user has filled out a value
+  if (typeof req.session.data['onlyDirector'] === 'undefined') {
+    // No value so add error to array
+    errors.push({
+      text: 'Select yes if you are starting a new application',
+      href: '#onlyDirector'
+    })
+
+    // Re-show page with error value as true so errors will show
+    res.render('v1/idv/only-director', {
+      errorOnlyDirector: true,
+      errorList: errors
+    })
+  } else {
+      res.redirect('/v1/idv/director-one/director-one-uvid')
+  }
 })
 
 // ******* director-dashboard javascript ********************************

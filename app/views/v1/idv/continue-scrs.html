@@ -1,0 +1,55 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Are you starting a new application?
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="newApplication-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+            <h1 class="govuk-fieldset__heading">
+            Will the company be a 'Community Interest Company'?
+            </h1>
+          </legend>
+          <div id="paypal-hint" class="govuk-hint">
+            This is a special type of company that exists to benefit the community.
+             Its social objectives must be written down and approved by a regulator.
+              There are limits on how much profits it can pay to its members.
+          </div>
+
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="paypal" name="paypal" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="paypal">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="paypal-2" name="paypal" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="paypal-2">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+  </div>
+</div>
+
+{% endblock %}

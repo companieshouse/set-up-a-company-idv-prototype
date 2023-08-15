@@ -32,13 +32,13 @@ Director details
         {% endif %} 
           <h1 class="govuk-label-wrapper">
             <label class="govuk-label govuk-label--xl" for="provide-uvid-two">
-              What is the verification share code for {{ data['titleTwo']}} {{ data['firstNameTwo']}} {{ data['middleNameTwo']}} {{ data['lastNameTwo']}}?
+              What is the Companies House user ID for {{ data['titleTwo']}} {{ data['firstNameTwo']}} {{ data['middleNameTwo']}} {{ data['lastNameTwo']}}?
             </label>
           </h1>
           <!-- Check for error -->
           {% if errorProvideUvidOne %}
           <p id="provide-uvid-two-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Enter your Companies House personal code
+            <span class="govuk-visually-hidden">Error:</span> Enter your Companies House user ID
           </p>
           {% endif %} 
           <input class="govuk-input govuk-input--width-10" id="provide-uvid-two" name="provide-uvid-two" type="text" aria-describedby="provide-uvid-two-hint">

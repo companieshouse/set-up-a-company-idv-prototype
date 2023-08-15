@@ -34,7 +34,7 @@ Are you starting a new application?
         <div class="govuk-summary-card__title-wrapper">
           <h2 class="govuk-summary-card__title">Director 1</h2>
           <ul class="govuk-summary-card__actions">
-            <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+            <li class="govuk-summary-card__action"> <a class="govuk-link govuk-body" href="#">
                 Remove director<span class="govuk-visually-hidden"> from list of directors</span>
               </a>
             </li>
@@ -47,7 +47,7 @@ Are you starting a new application?
                 Name
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data['titleOne']}} {{ data['firstNameOne']}} {{ data['middleNameOne']}} {{ data['lastNameOne']}}
+                Paul Robinson
               </dd>
             </div>
             <div class="govuk-summary-list__row">
@@ -55,9 +55,7 @@ Are you starting a new application?
                 Date of birth
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data['Dob-day-one'] }} 
-                {{ data['Dob-month-one'] | displayMonth }} 
-                {{ data['Dob-year-one'] }} 
+                20 January 1988
               </dd>
             </div>
             <div class="govuk-summary-list__row">
@@ -69,17 +67,17 @@ Are you starting a new application?
               {% if data['verification-Statement-one'] %}
               <dd class="govuk-summary-list__value">
                 <strong class="govuk-tag govuk-tag--green">
-                  COMPLETE
+                  VERIFIED
                 </strong>
               </dd>
               {% else %}
               <dd class="govuk-summary-list__value">
                 <strong class="govuk-tag govuk-tag--red">
-                  NOT COMPLETE
+                  NOT VERIFIED
                 </strong>
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="director-one/director-one-provide-uvid">
+                <a class="govuk-link govuk-!-font-weight-bold" href="director-one/director-one-provide-uvid">
                   Complete verification<span class="govuk-visually-hidden"> code</span>
                 </a>
               </dd>
@@ -95,7 +93,7 @@ Are you starting a new application?
           <div class="govuk-summary-card__title-wrapper">
             <h2 class="govuk-summary-card__title">Director 2</h2>
             <ul class="govuk-summary-card__actions">
-              <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+              <li class="govuk-summary-card__action"> <a class="govuk-link govuk-body" href="#">
                   Remove director<span class="govuk-visually-hidden"> from list of directors</span>
                 </a>
               </li>
@@ -130,17 +128,17 @@ Are you starting a new application?
                 {% if data['verification-Statement-two'] %}
                 <dd class="govuk-summary-list__value">
                   <strong class="govuk-tag govuk-tag--green">
-                    COMPLETE
+                    VERIFIED
                   </strong>
                 </dd>
                 {% else %}
                 <dd class="govuk-summary-list__value">
                   <strong class="govuk-tag govuk-tag--red">
-                    NOT COMPLETE
+                    NOT VERIFIED
                   </strong>
                 </dd>
                 <dd class="govuk-summary-list__actions">
-                  <a class="govuk-link" href="director-two/director-two-provide-uvid">
+                  <a class="govuk-link govuk-!-font-weight-bold" href="director-two/director-two-statement">
                     Complete verification<span class="govuk-visually-hidden"> code</span>
                   </a>
                 </dd>

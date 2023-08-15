@@ -32,9 +32,12 @@ Director details
           <fieldset class="govuk-fieldset" aria-describedby="verification-Statement-two-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
               <h1 class="govuk-fieldset__heading">
-                Verification statement
+                Provide verification statement for {{ data['titleTwo']}} {{ data['firstNameTwo']}} {{ data['middleNameTwo']}} {{ data['lastNameTwo']}} 
               </h1>
             </legend>
+            <div id="verification-Statement-one-hint" class="govuk-hint">
+              You need to confirm that {{ data['titleTwo']}} {{ data['firstNameTwo']}} {{ data['middleNameTwo']}} {{ data['lastNameTwo']}} has verified there identity with Companies House
+            </div>
             {% if errorStatementTwo %}
             <p id="verification-Statement-two-error" class="govuk-error-message">
               <span class="govuk-visually-hidden">Error:</span>Confirm the verification statement
@@ -44,8 +47,8 @@ Director details
               <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" id="verification-Statement-two" name="verification-Statement-two" type="checkbox">
                 <label class="govuk-label govuk-checkboxes__label" for="verification-Statement-two">
-                  I, <strong>{{ data['titleOne']}} {{ data['firstNameOne']}} {{ data['middleNameOne']}} {{ data['lastNameOne']}}</strong>, 
-                  declare that <strong>{{ data['titleTwo']}} {{ data['firstNameTwo']}} {{ data['middleNameTwo']}} {{ data['lastNameTwo']}}</strong> has verified their identity.
+                  I, <strong>Paul Robinson</strong>, 
+                  confirm that I have permission to use the Companies House user ID for <strong>{{ data['titleTwo']}} {{ data['firstNameTwo']}} {{ data['middleNameTwo']}} {{ data['lastNameTwo']}}</strong>.
                 </label>
               </div>
             </div>

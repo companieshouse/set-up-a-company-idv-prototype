@@ -1,0 +1,76 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Are you starting a new application?
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- Check for error -->
+    {% if errorOnlyDirector %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+    <form action="{{currentUrl}}" method="post">
+
+      <!-- Check for error -->
+      {% if errorOnlyDirector %}
+      <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+      <div class="govuk-form-group">
+      {% endif %} 
+        <fieldset class="govuk-fieldset" aria-describedby="onlyDirector-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+            <h1 class="govuk-fieldset__heading">
+              Are you the only director in the new company? 
+            </h1>
+          </legend>
+          <div id="onlyDirector-hint" class="govuk-hint">
+            If you're not the only director, the other directors need to verify 
+            their identity before you can continue with the company registration. 
+            If they have already verified their identity with us, you can enter 
+            their Companies House user ID. 
+          </div>
+          <!-- Check for error -->
+          {% if errorOnlyDirector %}
+          <p id="onlyDirector-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Select yes if you are the only director
+          </p>
+          {% endif %} 
+
+          <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="onlyDirector" name="onlyDirector" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="onlyDirector">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="onlyDirector-2" name="onlyDirector" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="onlyDirector-2">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

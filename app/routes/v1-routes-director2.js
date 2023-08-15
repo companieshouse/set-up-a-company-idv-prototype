@@ -226,7 +226,7 @@ router.post('/v1/idv/director-two/director-two-provide-uvid', function (req, res
   if (req.session.data['provide-uvid-two'] === '') {
     // No value so add error to array
     errors.push({
-      text: 'Enter your Companies House personal code',
+      text: 'Enter your Companies House user ID',
       href: '#provide-uvid-two'
     })
 

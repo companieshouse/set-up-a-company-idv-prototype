@@ -107,10 +107,10 @@ router.post('/v1/idv/director-one/director-one-uvid', function (req, res) {
   var errors = [];
 
   // Check if user has filled out a email
-  if (typeof req.session.data['uvid-code-one'] === 'undefined') {
+  if (req.session.data['uvid-code-one'] === '') {
     // No value so add error to array
     errors.push({
-      text: 'Select if you have a Companies House personal code',
+      text: 'Enter your Companies House user ID',
       href: '#uvid-code-one'
     })
 
@@ -120,12 +120,7 @@ router.post('/v1/idv/director-one/director-one-uvid', function (req, res) {
       errorList: errors
     })
   } else {
-    if (req.session.data['uvid-code-one'] === 'yes') {
-      res.redirect('/v1/idv/director-one/director-one-uvid')
-    } else {
-      // User inputted value so move to next page
-      res.redirect('/v1/idv/director-one/verify-identity-link')
-    } 
+      res.redirect('/v1/idv/director-one/director-one-statement')
   }
 })
 
