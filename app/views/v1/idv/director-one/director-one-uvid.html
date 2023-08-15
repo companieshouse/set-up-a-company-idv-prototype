@@ -23,30 +23,53 @@ Director details
     {% endif %}
     <form action="{{currentUrl}}" method="post">
 
-        <!-- Check for error -->
-        {% if errorUvidOne %}
-        <div class="govuk-form-group govuk-form-group--error">
-        {% else %}
-        <div class="govuk-form-group">
-        {% endif %} 
-        <h1 class="govuk-label-wrapper">
-          <label class="govuk-label govuk-label--xl" for="uvid-code-one">
-            Enter your Companies House user ID?
-          </label>
-        </h1>
-        <div id="uvid-code-one-hint" class="govuk-hint">
-          This is a user ID that is issued once a person verifies their 
-          identity with Companies House. <br>
-          If you don't have a Companies House user 
-          ID you will have to <a href="https://prove-your-identity-prototype.herokuapp.com/v5/pre-one-login/start" target="_blank">Verify your identity for Companies House</a> before you can set up a company.
-        </div>
-        <!-- Check for error -->
-        {% if errorUvidOne %}
-        <p id="uvid-code-one-error" class="govuk-error-message">
-          <span class="govuk-visually-hidden">Error:</span> Enter your Companies House user ID
-        </p>
-        {% endif %} 
-        <input class="govuk-input govuk-!-width-one-third" id="uvid-code-one" name="uvid-code-one" type="text" aria-describedby="uvid-code-one-hint">
+      <!-- Check for error -->
+      {% if errorUvidOne %}
+      <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+      <div class="govuk-form-group">
+      {% endif %} 
+        <fieldset class="govuk-fieldset" aria-describedby="uvid-code-one-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+            <h1 class="govuk-fieldset__heading">
+              Do you have a Companies House user ID?
+            </h1>
+          </legend>
+          <div id="uvid-code-one-hint" class="govuk-hint">
+            This is a code that is issued once a person completes their identity 
+            verification with Companies House. If you don’t already have this, don’t worry. 
+            Your directors will be able to verify as part of this process.
+          </div>
+          <!-- Check for error -->
+          {% if errorUvidOne %}
+          <p id="uvid-code-one-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Select if you have a Companies House personal code for this director
+          </p>
+          {% endif %} 
+
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="uvid-code-one" name="uvid-code-one" type="radio" value="yes" data-aria-controls="conditional-uvid-code-one">
+              <label class="govuk-label govuk-radios__label" for="uvid-code-one">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__conditional" id="conditional-uvid-code-one">
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="uvid-code-one-input">
+                  Companies House personal code
+                </label>
+                <input class="govuk-input govuk-!-width-one-half" id="uvid-code-one-input" name="uvid-code-one-input">
+              </div>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="uvid-code-one-2" name="uvid-code-one" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="uvid-code-one-2">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
       </div>
 
       {{ govukButton({

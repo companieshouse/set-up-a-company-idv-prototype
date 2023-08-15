@@ -124,25 +124,11 @@ Are you starting a new application?
                   Verification status
                 </dt>
 
-                <!-- If verification statement two has been ticked status is complete -->
-                {% if data['verification-Statement-two'] %}
                 <dd class="govuk-summary-list__value">
                   <strong class="govuk-tag govuk-tag--green">
                     VERIFIED
                   </strong>
                 </dd>
-                {% else %}
-                <dd class="govuk-summary-list__value">
-                  <strong class="govuk-tag govuk-tag--red">
-                    NOT VERIFIED
-                  </strong>
-                </dd>
-                <dd class="govuk-summary-list__actions">
-                  <a class="govuk-link govuk-!-font-weight-bold" href="director-two/director-two-statement">
-                    Complete verification<span class="govuk-visually-hidden"> code</span>
-                  </a>
-                </dd>
-                {% endif %}
               </div>
             </dl>
           </div>

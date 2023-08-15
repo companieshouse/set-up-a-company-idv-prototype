@@ -202,7 +202,7 @@ router.post('/v1/idv/sign-in', function (req, res) {
       res.redirect('/v1/idv/director-dashboard')
     } else {
       // User inputted value so move to next page
-      res.redirect('/v1/idv/directors-idv-guide')
+      res.redirect('/v1/idv/only-director')
     }
   }
 })
@@ -280,8 +280,8 @@ router.post('/v1/idv/director-dashboard', function (req, res) {
     if (req.session.data['addDirector'] === 'yes') {
       res.redirect('/v1/idv/director-two/director-two-details')
     } else {
-      if (req.session.data['verification-Statement-one'] && req.session.data['verification-Statement-two']) {
-        res.redirect('/v1/idv/continue-scrs')
+      if (req.session.data['contactDirector'] === 'yes') {
+        res.redirect('/v1/idv/director-statements')
       } else {
         // User inputted value so move to next page
         res.redirect('/v1/idv/stop-screen')

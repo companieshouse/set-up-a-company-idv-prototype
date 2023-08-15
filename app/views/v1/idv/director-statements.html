@@ -1,0 +1,50 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Director details
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <form action="{{currentUrl}}" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="verification-Statement-two-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                Provide verification statement for directors
+              </h1>
+            </legend>
+            <div id="verification-Statement-one-hint" class="govuk-hint">
+              You need to confirm that all directors have verified there identity with Companies House.
+            </div>
+            
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="verification-Statement-two" name="verification-Statement-two" type="checkbox">
+                <label class="govuk-label govuk-checkboxes__label" for="verification-Statement-two">
+                  I, <strong>Paul Robinson</strong>, 
+                  confirm that <strong>{{ data['titleTwo']}} {{ data['firstNameTwo']}} {{ data['middleNameTwo']}} {{ data['lastNameTwo']}}</strong> has registered there identity with Companies House.
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+            text: "Continue"
+          }) }}  
+      </form>
+  </div>
+</div>
+
+{% endblock %}
