@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-Director details
+Verification statement
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,7 +21,7 @@ Director details
           <fieldset class="govuk-fieldset" aria-describedby="verification-Statement-two-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
               <h1 class="govuk-fieldset__heading">
-                Provide verification statement for all directors
+                Confirm that all directors have verified their identity
               </h1>
             </legend>
             
@@ -30,14 +30,13 @@ Director details
                 <input class="govuk-checkboxes__input" id="verification-Statement-two" name="verification-Statement-two" type="checkbox">
                 <label class="govuk-label govuk-checkboxes__label" for="verification-Statement-two">
                   <p class="govuk-body">I, <strong>Paul Robinson</strong>, 
-                    confirm that </p>
+                    confirm that the following directors have verified their identity for Companies House:</p>
       
                   <ul class="govuk-list govuk-list--bullet">
                     <li>Paul Robinson</li>
                     <li>{{ data['titleTwo']}} {{ data['firstNameTwo']}} {{ data['middleNameTwo']}} {{ data['lastNameTwo']}}</li>
                   </ul>
-                  
-                  have registered there identity with Companies House.
+
                 </label>
               </div>
             </div>
