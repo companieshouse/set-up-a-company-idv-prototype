@@ -21,19 +21,23 @@ Director details
           <fieldset class="govuk-fieldset" aria-describedby="verification-Statement-two-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
               <h1 class="govuk-fieldset__heading">
-                Provide verification statement for directors
+                Provide verification statement for all directors
               </h1>
             </legend>
-            <div id="verification-Statement-one-hint" class="govuk-hint">
-              You need to confirm that all directors have verified there identity with Companies House.
-            </div>
             
             <div class="govuk-checkboxes" data-module="govuk-checkboxes">
               <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" id="verification-Statement-two" name="verification-Statement-two" type="checkbox">
                 <label class="govuk-label govuk-checkboxes__label" for="verification-Statement-two">
-                  I, <strong>Paul Robinson</strong>, 
-                  confirm that <strong>{{ data['titleTwo']}} {{ data['firstNameTwo']}} {{ data['middleNameTwo']}} {{ data['lastNameTwo']}}</strong> has registered there identity with Companies House.
+                  <p class="govuk-body">I, <strong>Paul Robinson</strong>, 
+                    confirm that </p>
+      
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>Paul Robinson</li>
+                    <li>{{ data['titleTwo']}} {{ data['firstNameTwo']}} {{ data['middleNameTwo']}} {{ data['lastNameTwo']}}</li>
+                  </ul>
+                  
+                  have registered there identity with Companies House.
                 </label>
               </div>
             </div>

@@ -121,7 +121,7 @@ router.post('/v1/idv/director-one/director-one-uvid', function (req, res) {
     })
   } else {
     if (req.session.data['uvid-code-one'] === 'yes') {
-      res.redirect('/v1/idv/director-one/director-one-statement')
+      res.redirect('/v1/idv/director-dashboard')
     } else {
       // User inputted value so move to next page
       res.redirect('/v1/idv/director-one/verify-identity-link')
