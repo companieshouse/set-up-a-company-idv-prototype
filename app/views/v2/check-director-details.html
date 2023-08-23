@@ -27,7 +27,7 @@ Are you starting a new application?
       <h1 class="govuk-heading-xl">Check and confirm director details</h1>
 
       <div class="govuk-inset-text">
-        Details about the directors of a company will appear on the public record except for the full date of birth and home address.
+        All information about these directors will appear on the public record, except for their full date of birth and home address.
       </div>
 
       <div class="govuk-summary-card">
@@ -209,7 +209,7 @@ Are you starting a new application?
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                What is the correspondence address for {{ data['titleOne']}} {{ data['firstNameOne']}} {{ data['middleNameOne']}} {{ data['lastNameOne']}}
+                What is the correspondence address for {{ data['titleTwo']}} {{ data['firstNameTwo']}} {{ data['middleNameTwo']}} {{ data['lastNameTwo']}}
               </dt>
               <dd class="govuk-summary-list__value">
                 25 New Street<br>Lowland<br>Townville<br>England<br>ZZ5 JJ8
@@ -222,7 +222,7 @@ Are you starting a new application?
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                What is the home address for {{ data['titleOne']}} {{ data['firstNameOne']}} {{ data['middleNameOne']}} {{ data['lastNameOne']}}
+                What is the home address for {{ data['titleTwo']}} {{ data['firstNameTwo']}} {{ data['middleNameTwo']}} {{ data['lastNameTwo']}}
               </dt>
               <dd class="govuk-summary-list__value">
                 The home address is the same as the correspondence address
@@ -262,13 +262,13 @@ Are you starting a new application?
         <fieldset class="govuk-fieldset" aria-describedby="directorOneConfrimAddress">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
             <h2 class="govuk-fieldset__heading">
-              Confirm where director lives
+              Confirm where the directors live
             </h2>
           </legend>
               <!-- Check for error -->
             {% if errorConfirmDirectorOneAddress %}
             <p id="directorOneConfrimAddress-error" class="govuk-error-message">
-              <span class="govuk-visually-hidden">Error:</span>Confirm where the director lives
+              <span class="govuk-visually-hidden">Error:</span>Confirm where the directors live
             </p>
             {% endif %} 
           <div class="govuk-checkboxes" data-module="govuk-checkboxes">
@@ -302,7 +302,7 @@ Are you starting a new application?
         <fieldset class="govuk-fieldset" aria-describedby="directorsConfirmAgree">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
             <h2 class="govuk-fieldset__heading">
-              Agree to become a director
+              Confirm they agree to become directors
             </h2>
           </legend>
           <!-- Check for error -->
@@ -338,7 +338,7 @@ Are you starting a new application?
         <fieldset class="govuk-fieldset" aria-describedby="DirectorsStatements">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
             <h2 class="govuk-fieldset__heading">
-              Confirm all directors have been verified
+              Confirm they have verified their identity
             </h2>
           </legend>
           <!-- Check for error -->

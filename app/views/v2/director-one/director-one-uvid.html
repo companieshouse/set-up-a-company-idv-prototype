@@ -53,8 +53,10 @@ Director details
           </span>
         </summary>
         <div class="govuk-details__text">
-          <p>If you don't have the Companies House user ID for {{ data['titleOne']}} {{ data['firstNameOne']}} {{ data['middleNameOne']}} {{ data['lastNameOne']}} you will have tell them that the need to verify their identity with Companies House before they can be a director.</p>
-          <p class="govuk-body"><a class="govuk-link" href="https://prove-your-identity-prototype.herokuapp.com/v5/pre-one-login/start" target="blank">Verify your identity for Companies House (opens in a new tab)</a>.</p>
+          <p>Check if {{ data['titleOne']}} {{ data['firstNameOne']}} {{ data['middleNameOne']}} {{ data['lastNameOne']}} has verified their identity for Companies House. </p> 
+          <p>They can do this through the <a class="govuk-link" href="https://prove-your-identity-prototype.herokuapp.com/v5/pre-one-login/start" target="blank">Verify your identity for Companies House service</a>.</p>
+          <p>Once they have successfully verified, they will be sent a Companies House user ID. They cannot be appointed as a director without it.</p>
+
         </div>
       </details>
 
