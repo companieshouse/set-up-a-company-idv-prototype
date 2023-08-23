@@ -1,0 +1,240 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Director details
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- Check for error -->
+    {% if errorDirectorOneDetails %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+    <h1 class="govuk-heading-xl">Director's details</h1>
+
+    <div class="govuk-inset-text">
+      <h2 class="govuk-heading-m">What information we'll show on the public register</h2>
+      <p>We will show the your full name on the public Companies House register. We will only show the month and year of your date of birth.</p>
+    </div>
+
+    <form action="{{currentUrl}}" method="post">
+
+      <div class="govuk-form-group">
+          <label class="govuk-label" for="titleOne">
+            Professional or honorary title (if relevant)
+          </label>
+          <div id="titleOne-hint" class="govuk-hint">
+            For example, Mr, Mrs, Miss, Ms, Dr.
+        </div>
+          <input class="govuk-input govuk-!-width-two-thirds" id="titleOne" name="titleOne" type="text">
+      </div>
+
+      <!-- Check for error -->
+      {% if errorDirectorOneFirstName%}
+        <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+        <div class="govuk-form-group">
+      {% endif %} 
+          <label class="govuk-label" for="firstNameOne">
+            First name
+          </label>
+          <div id="firstNameOne-hint" class="govuk-hint">
+            Enter the director's full first name.
+          </div>
+          <!-- Check for error -->
+        {% if errorDirectorOneFirstName %}
+          <p id="firstNameOne-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Enter the director's full first name.
+          </p>
+        {% endif %} 
+          <input class="govuk-input govuk-!-width-two-thirds" id="firstNameOne" name="firstNameOne" type="text">
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="middleNameOne">
+          Middle names
+        </label>
+        <div id="middleNameOne-hint" class="govuk-hint">
+          Enter the director's full middle name or names.
+      </div>
+          <input class="govuk-input govuk-!-width-two-thirds" id="middleNameOne" name="middleNameOne" type="text">
+      </div>
+
+      <!-- Check for error -->
+      {% if errorDirectorOneLastName%}
+        <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+        <div class="govuk-form-group">
+      {% endif %} 
+          <label class="govuk-label" for="lastNameOne">
+            Last name
+          </label>
+          <!-- <div id="lastNameOne-hint" class="govuk-hint">
+            Enter your full last name.
+          </div> -->
+          <!-- Check for error -->
+        {% if errorDirectorOneLastName %}
+          <p id="lastNameOne-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Enter the director's full last name
+          </p>
+        {% endif %} 
+          <input class="govuk-input govuk-!-width-two-thirds" id="lastNameOne" name="lastNameOne" type="text">
+      </div>
+
+      <!-- Check for error -->
+      {% if errorDifferentName %}
+      <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+      <div class="govuk-form-group">
+      {% endif %} 
+        <fieldset class="govuk-fieldset" aria-describedby="differentName-hint">
+          <legend class="govuk-fieldset__legend">
+            Has the director used a different name for business purposes in the last 20 years?
+          </legend>
+          <!-- Check for error -->
+          {% if errorDifferentName %}
+          <p id="differentName-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Select if the director has used a different name for business purposes in the last 20 years
+          </p>
+          {% endif %} 
+
+          <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="differentName" name="differentName" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="differentName">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="differentName-2" name="differentName" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="differentName-2">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <!-- Check for error -->
+      {% if errorNationality%}
+        <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+        <div class="govuk-form-group">
+      {% endif %} 
+          <label class="govuk-label" for="nationality">
+            Nationality
+          </label>
+          <!-- Check for error -->
+        {% if errorNationality %}
+          <p id="nationality-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Enter the director's nationality
+          </p>
+        {% endif %} 
+          <input class="govuk-input govuk-!-width-two-thirds" id="nationality" name="nationality" type="text">
+      </div>
+
+      <!-- Check for error -->
+      {% if errorDobDayOne or errorDobMonthOne or errorDobYearOne %}
+      <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+      <div class="govuk-form-group">
+      {% endif %} 
+        <fieldset class="govuk-fieldset" role="group" aria-describedby="Dob-hint">
+          <label class="govuk-label" for="dob">
+            Date of birth
+          </label>
+          <!-- Check for error -->
+          {% if errorDobDayOne or errorDobMonthOne or errorDobYearOne %}
+          <p id="Dob-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> The date must include a day, month and year
+          </p>
+          {% endif %} 
+          <div id="Dob-hint" class="govuk-hint">
+            The director must be at leat 16 years of age.<br>
+            For example, 27 3 2007
+          </div>
+          <div class="govuk-date-input" id="Dob">
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="Dob-day-one">
+                  Day
+                </label>
+                <!-- Check for error -->
+                {% if errorDobDayOne %}
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2 govuk-input--error" id="Dob-day-one" name="Dob-day-one" type="text">
+                {% else %}
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="Dob-day-one" name="Dob-day-one" type="text">
+                {% endif %} 
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="Dob-month-one">
+                  Month
+                </label>
+                <!-- Check for error -->
+                {% if errorDobMonthOne %}
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2 govuk-input--error" id="Dob-month-one" name="Dob-month-one" type="text">
+                {% else %}
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="Dob-month-one" name="Dob-month-one" type="text">
+                {% endif %} 
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="Dob-year-one">
+                  Year
+                </label>
+                <!-- Check for error -->
+                {% if errorDobYearOne %}
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4 govuk-input--error" id="Dob-year-one" name="Dob-year-one" type="text">
+                {% else %}
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="Dob-year-one" name="Dob-year-one" type="text">
+                {% endif %} 
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <!-- Check for error -->
+      {% if errorJobTitle%}
+        <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+        <div class="govuk-form-group">
+      {% endif %} 
+          <label class="govuk-label" for="jobTitle">
+            Job title
+          </label>
+          <div id="jobTitle-hint" class="govuk-hint">
+            Enter what the person works as. For example, carpenter.
+          </div>
+          <!-- Check for error -->
+        {% if errorJobTitle %}
+          <p id="jobTitle-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Enter the director's job title
+          </p>
+        {% endif %} 
+          <input class="govuk-input govuk-!-width-two-thirds" id="jobTitle" name="jobTitle" type="text">
+      </div>
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

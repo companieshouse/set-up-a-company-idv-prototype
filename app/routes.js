@@ -11,3 +11,7 @@ const router = govukPrototypeKit.requests.setupRouter()
 router.use('/', require('./routes/v1-routes.js'))
 router.use('/', require('./routes/v1-routes-director1.js'))
 router.use('/', require('./routes/v1-routes-director2.js'))
+
+router.use('/', require('./routes/v2-routes.js'))
+router.use('/', require('./routes/v2-routes-director1.js'))
+router.use('/', require('./routes/v2-routes-director2.js'))

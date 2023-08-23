@@ -1,0 +1,76 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Director details
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- Check for error -->
+    {% if errorUvidOne %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+    <form action="{{currentUrl}}" method="post">
+
+
+      <!-- Check for error -->
+      {% if errorUvidOne %}
+      <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+      <div class="govuk-form-group">
+      {% endif %} 
+        <h1 class="govuk-label-wrapper">
+          <label class="govuk-label govuk-label--xl" for="uvid-code-one">
+            What is the Companies House user ID for {{ data['titleOne']}} {{ data['firstNameOne']}} {{ data['middleNameOne']}} {{ data['lastNameOne']}}?
+          </label>
+        </h1>
+        <div id="uvid-code-one-hint" class="govuk-hint">
+          This is a code that is issued once a person has verified their identity for Companies House. 
+        </div>
+        {% if errorUvidOne %}
+        <p id="uvid-code-one-error" class="govuk-error-message">
+          <span class="govuk-visually-hidden">Error:</span> Enter your Companies House user ID
+        </p>
+        {% endif %} 
+        <input class="govuk-input govuk-!-width-one-half" id="uvid-code-one" name="uvid-code-one" type="text">
+      </div>
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            I don't have a Companies House user ID for {{ data['titleOne']}} {{ data['firstNameOne']}} {{ data['middleNameOne']}} {{ data['lastNameOne']}}
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>If you don't have the Companies House user ID for {{ data['titleOne']}} {{ data['firstNameOne']}} {{ data['middleNameOne']}} {{ data['lastNameOne']}} you will have tell them that the need to verify their identity with Companies House before they can be a director.</p>
+          <p class="govuk-body"><a class="govuk-link" href="https://prove-your-identity-prototype.herokuapp.com/v5/pre-one-login/start" target="blank">Verify your identity for Companies House (opens in a new tab)</a>.</p>
+        </div>
+      </details>
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+      <!-- <div class="govuk-inset-text">
+        <h2 class="govuk-heading-m">I don't have a Companies House user ID for {{ data['titleOne']}} {{ data['firstNameOne']}} {{ data['middleNameOne']}} {{ data['lastNameOne']}}</h2>
+        <p>If you don't have the Companies House user ID for {{ data['titleOne']}} {{ data['firstNameOne']}} {{ data['middleNameOne']}} {{ data['lastNameOne']}} you will have tell them that the need to verify their identity with Companies HOuse before they can be a director.</p>
+        <p class="govuk-body"><a class="govuk-link" href="https://prove-your-identity-prototype.herokuapp.com/v5/pre-one-login/start" target="blank">Verify your identity for Companies House (opens in a new tab)</a>.</p>
+
+      </div> -->
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

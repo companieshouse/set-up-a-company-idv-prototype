@@ -1,0 +1,28 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Are you starting a new application?
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">You're about to set up online filing authorisation for the company</h1>
+
+      <p class="govuk-body">...</p>
+
+      {{ govukButton({
+        text: "Continue to questions"
+      }) }}
+
+  </div>
+</div>
+
+{% endblock %}

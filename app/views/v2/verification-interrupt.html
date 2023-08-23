@@ -1,0 +1,62 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Are you starting a new application?
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <div class="interruption-card">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-l">All directors will need to verify their identity</h1>
+
+          <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Vivamus dolor dui, posuere at libero at, commodo blandit diam. <br>
+            Pellentesque 
+            habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+             Suspendisse condimentum nisi nec libero congue fermentum..</p>
+          
+          <p class="govuk-body"><b>Lorem ipsum dolor sit amet</b></p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>...</li>
+            <li>...</li>
+            <li>...</li>
+          </ul>
+
+          <p class="govuk-body"><b><a class="govuk-link" href="https://prove-your-identity-prototype.herokuapp.com/v5/pre-one-login/start" target="blank">Verify your identity for Companies House (opens in a new tab)</a>.</b></p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-top-6">
+
+    <form action="{{currentUrl}}" method="post">
+
+      <h2 class="govuk-heading-m">All the directors have verified their identity</h2>
+
+      <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+            
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+     
+    </form>
+  </div>
+</div>
+
+{% endblock %}
