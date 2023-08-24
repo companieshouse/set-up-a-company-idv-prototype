@@ -1,0 +1,42 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Are you starting a new application?
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="{{currentUrl}}" method="post">
+      <h1 class="govuk-heading-l">All company directors need to verify their identity</h1>
+
+      <p class="govuk-body">Before the company can be registered, all its 
+        directors must have verified their identity with Companies House.
+      </p>
+
+      <p class="govuk-body">Once successfully verified, each director is issued 
+        a <strong>Companies House user ID</strong>. You'll need to provide this 
+        when registering the company to connect their verified identity to our 
+        records. 
+      </p>
+
+      <p class="govuk-body">NEW CONTENT ABOUT LEAVING THE SERVICE</p>
+
+
+      <p class="govuk-body"><b><a class="govuk-link" href="https://prove-your-identity-prototype.herokuapp.com/v5/pre-one-login/start" target="blank">
+        Verify your identity for Companies House (opens in a new tab)</a>.</b>
+      </p>
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}
