@@ -32,12 +32,9 @@ Are you starting a new application?
         <fieldset class="govuk-fieldset" aria-describedby="haveVerified-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
             <h1 class="govuk-fieldset__heading">
-            Have all the directors of the company verified their identity?
+              Have all company directors verified their identity and received a Companies House user ID? 
             </h1>
           </legend>
-          <div id="haveVerified-hint" class="govuk-hint">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-          </div>
           <!-- Check for error -->
           {% if errorHaveVerified %}
           <p id="haveVerified-error" class="govuk-error-message">
@@ -61,6 +58,19 @@ Are you starting a new application?
           </div>
         </fieldset>
       </div>
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            What is a Companies House user ID?
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          This is a code sent to each director once they have verified their 
+          identity for Companies House. They need to share it with you, as 
+          you’ll be asked to provide it when registering the company.  
+        </div>
+      </details>
 
       {{ govukButton({
         text: "Continue"

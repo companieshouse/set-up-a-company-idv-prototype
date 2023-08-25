@@ -174,26 +174,7 @@ router.get('/v2/director-two/director-two-address', function (req, res) {
 })
 
 router.post('/v2/director-two/director-two-address', function (req, res) {
-  // Create empty array and set error variables to false
-  var errors = [];
-
-  // Check if user has filled out a email
-  if (req.session.data['postcodeTwo'] === '') {
-    // No value so add error to array
-    errors.push({
-      text: 'Enter your postcode',
-      href: '#postcodeTwo'
-    })
-
-    // Re-show page with error value as true so errors will show
-    res.render('v2/director-two/director-two-address', {
-      errorDirectorTwoAddress: true,
-      errorList: errors
-    })
-  } else {
-      // User inputted value so move to next page
       res.redirect('/v2/director-two/director-two-confirm-address')
-  }
 })
 
 

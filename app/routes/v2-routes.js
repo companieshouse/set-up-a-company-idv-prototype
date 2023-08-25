@@ -436,12 +436,24 @@ router.post('/v2/check-director-details', function (req, res) {
       })
     }
 
+    // Check if user has filled out first name
+    if (typeof req.session.data['directorsStatements'] === 'undefined') {
+      // No value so add error to array
+      directorsStatementsError = true
+      directorDetailsError = true
+      errors.push({
+        text: 'Confirm all persons have verified their identity',
+        href: '#directorsStatements'
+      })
+    }
+
   // Check if eother filed not filled out
   if (directorDetailsError) {
     // Re-show page with error value as true so errors will show
     res.render('v2/check-director-details', {
       errorConfirmDirectorOneAddress: directorConfirmAddressError,
       errorConfirmDirectorsAgree: directorConfirmAgreeError,
+      errorDirectorsStatements: directorsStatementsError,
       errorDirectorDetails: directorDetailsError,
       errorList: errors
     })

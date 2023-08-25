@@ -14,13 +14,7 @@ Director details
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <!-- Check for error -->
-    {% if errorDirectorOneAddress %}
-      {{ govukErrorSummary({
-        titleText: "There is a problem",
-        errorList: errorList
-      }) }}
-    {% endif %}
+
     <h1 class="govuk-heading-xl">What is the correspondence address for {{ data['titleOne']}} {{ data['firstNameOne']}} {{ data['middleNameOne']}} {{ data['lastNameOne']}}</h1>
 
     <p class="govuk-body">We'll use this address to send notifications to 
@@ -41,26 +35,15 @@ Director details
       </div>
     </details>
 
-    <p class="govuk-body"><a href="#" class="govuk-link"></a></p>
+    <p class="govuk-body"><a href="#" class="govuk-link govuk-link--no-visited-state"></a></p>
 
     <form action="{{currentUrl}}" method="post">
 
-      <!-- Check for error -->
-      {% if errorDirectorOneAddress%}
-        <div class="govuk-form-group govuk-form-group--error">
-      {% else %}
-        <div class="govuk-form-group">
-      {% endif %} 
-          <label class="govuk-label" for="postcode">
-            UK postcode
-          </label>
-          <!-- Check for error -->
-        {% if errorDirectorOneAddress %}
-          <p id="postcode-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Enter the postcode.
-          </p>
-        {% endif %} 
-          <input class="govuk-input govuk-input--width-10" id="postcode" name="postcode" type="text">
+       <div class="govuk-form-group">
+        <label class="govuk-label" for="postcode">
+          UK postcode
+        </label>
+        <input class="govuk-input govuk-input--width-10" id="postcode" name="postcode" type="text">
       </div>
 
       <div class="govuk-form-group">
@@ -73,7 +56,7 @@ Director details
         <input class="govuk-input govuk-input--width-5" id="propertyName" name="propertyName" type="text">
       </div>
 
-      <p class="govuk-body"><a href="#" class="govuk-link">Enter address manually</a></p>
+      <p class="govuk-body"><a href="#" class="govuk-link govuk-link--no-visited-state">Enter address manually</a></p>
       
       {{ govukButton({
         text: "Find address"
