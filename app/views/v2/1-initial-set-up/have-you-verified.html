@@ -32,9 +32,22 @@ Are you starting a new application?
         <fieldset class="govuk-fieldset" aria-describedby="haveVerified-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
-              Have all company directors verified their identity and received a Companies House user ID? 
+              Identity verification for company directors 
             </h1>
           </legend>
+
+          <p class="govuk-body">Before you can incorporate a company, all company directors need to have verified their identity for Companies House (opens in a new tab).</p>
+
+          <p class="govuk-body">When they’ve verified their identity, we’ll give them a Companies House personal code, which they will need to share with you.</p>
+
+          <div class="govuk-inset-text">
+           You’ll need to provide each director’s personal code as part of this registration, so that we can connect their verified identity to our records. 
+          </div>
+
+
+
+
+
           <!-- Check for error -->
           {% if errorHaveVerified %}
           <p id="haveVerified-error" class="govuk-error-message">
@@ -42,6 +55,9 @@ Are you starting a new application?
           </p>
           {% endif %} 
 
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                Do you have the Companies House personal codes for all company directors?
+              </legend>
           <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="haveVerified" name="haveVerified" type="radio" value="yes">
@@ -62,13 +78,11 @@ Are you starting a new application?
       <details class="govuk-details" data-module="govuk-details">
         <summary class="govuk-details__summary">
           <span class="govuk-details__summary-text">
-            What is a Companies House user ID?
+            Where to find the Companies House personal code
           </span>
         </summary>
         <div class="govuk-details__text">
-          This is a code sent to each director once they have verified their 
-          identity for Companies House. They need to share it with you, as 
-          you’ll be asked to provide it when registering the company.  
+          This is an 11 character code that is given to a person once they have verified their identity. If any of the company directors have not verified their identity and received a code, they need to do this before you can register this company.
         </div>
       </details>
 
