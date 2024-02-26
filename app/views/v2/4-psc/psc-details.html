@@ -32,7 +32,7 @@ Director details
           <div id="pscTitle-hint" class="govuk-hint">
             For example, Mr, Mrs, Miss, Ms, Dr.
         </div>
-          <input class="govuk-input govuk-!-width-two-thirds" id="pscTitle" name="pscTitle" type="text" value="{{ data['directorTitle'] }}">
+          <input class="govuk-input govuk-!-width-two-thirds" id="pscTitle" name="pscTitle" type="text" value="{{ data['pscTitle'] }}">
       </div>
 
       <!-- Check for error -->
@@ -138,7 +138,7 @@ Director details
                 {% if errorPscDobDay %}
                 <input class="govuk-input govuk-date-input__input govuk-input--width-2 govuk-input--error" id="pscDob-day" name="pscDob-day" type="text" value="{{ data['pscDob-day'] }}">
                 {% else %}
-                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="pscDob-day-one" name="pscDob-day" type="text" value="{{ data['directorTitle'] }}">
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="pscDob-day-one" name="pscDob-day" type="text" value="{{ data['pscDob-day'] }}">
                 {% endif %} 
               </div>
             </div>
@@ -151,7 +151,7 @@ Director details
                 {% if errorPscDobMonth %}
                 <input class="govuk-input govuk-date-input__input govuk-input--width-2 govuk-input--error" id="pscDob-month" name="pscDob-month" type="text" value="{{ data['pscDob-month'] }}">
                 {% else %}
-                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="pscDob-month-one" name="pscDob-month" type="text" value="{{ data['directorTitle'] }}">
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="pscDob-month-one" name="pscDob-month" type="text" value="{{ data['pscDob-month'] }}">
                 {% endif %} 
               </div>
             </div>
@@ -164,7 +164,7 @@ Director details
                 {% if errorPscDobYear %}
                 <input class="govuk-input govuk-date-input__input govuk-input--width-4 govuk-input--error" id="pscDob-year" name="pscDob-year" type="text" value="{{ data['pscDob-year'] }}">
                 {% else %}
-                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="pscDob-year" name="pscDob-year" type="text" value="{{ data['directorTitle'] }}">
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="pscDob-year" name="pscDob-year" type="text" value="{{ data['pscDob-year'] }}">
                 {% endif %} 
               </div>
             </div>
