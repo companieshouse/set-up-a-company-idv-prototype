@@ -173,7 +173,7 @@ Director details
           <!-- Check for error -->
           {% if directorMatchError %}
           <p id="directorDob-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Enter the correct date of birth and Companies House personal code
+            <span class="govuk-visually-hidden">Error:</span> Enter the correct date of birth
           </p>
           {% elif errorDirectorDobDay or errorDirectorDobMonth or errorDirectorDobYear %}
           <p id="directorDob-error" class="govuk-error-message">
@@ -246,7 +246,7 @@ Director details
             <input class="govuk-input govuk-input--width-10 govuk-input--extra-letter-spacing govuk-input--error" id="directorPersonalCode" name="directorPersonalCode" type="text" aria-describedby="directorPersonalCode-hint">
           {% elif directorMatchError %} 
             <p id="directorPersonalCode-error" class="govuk-error-message">
-              <span class="govuk-visually-hidden">Error:</span> Enter the correct date of birth and Companies House personal code
+              <span class="govuk-visually-hidden">Error:</span> Enter the correct Companies House personal code
             </p>
             <input class="govuk-input govuk-input--width-10 govuk-input--extra-letter-spacing govuk-input--error" id="directorPersonalCode" name="directorPersonalCode" type="text" aria-describedby="directorPersonalCode-hint" value="{{ data['directorPersonalCode'] }}">
           {% else %}
@@ -268,7 +268,7 @@ Director details
 
       <div class="govuk-inset-text">
         <h2 class="govuk-heading-m">What information we'll show on the public register</h2>
-        <p>We will show the your full name on the public Companies House register. We will only show the month and year of your date of birth.</p>
+        <p>We will show the full name on the public Companies House register. We will only show the month and year of the date of birth.</p>
       </div>
 
 

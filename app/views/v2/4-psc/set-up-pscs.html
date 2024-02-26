@@ -16,39 +16,50 @@ Are you starting a new application?
   <div class="govuk-grid-column-two-thirds">
 
     <form action="{{currentUrl}}" method="post">
-      <h1 class="govuk-heading-l">You're about to set up the 'Persons with Significant Control' over the company</h1>
+      <h1 class="govuk-heading-l">You're about to set up the people with significant control over the company</h1>
 
-      <p class="govuk-body">Based on the shareholders information you've 
-        already given, we know some information about the company's PSCs. 
+      <p class="govuk-body">Based on the shareholder information you've 
+        already given, we know some information about the company's people with significant control (PSCs). 
         We'll guide you through the process of giving us the rest.</p>
 
       <div class="govuk-inset-text">
-        In none of the shareholders in the company own more than 25% of 
+        If none of the shareholders in the company own more than 25% of 
         its shares, the company may not have a PSC. You'll still need to 
         confirm this.
       </div>
 
-      <h2 class="govuk-heading-m">What is a Person with Significant Control?</h2>
+      <h2 class="govuk-heading-m">What is a person with significant control?</h2>
 
-      <p class="govuk-body">A person with Significant Control (PSC) is an individual 
+      <p class="govuk-body">A PSC is an individual 
         or company that has at least one of the following:</p>
 
       <ul class="govuk-list govuk-list--bullet">
         <li>more than 25% of the company's shares and voting rights</li>
         <li>the right to appoint or remove directors</li>
-        <li>the right to make decisions of influence decisions that affect teh company</li>
+        <li>the right to make decisions of influence decisions that affect the company</li>
       </ul>
-      
+
       <details class="govuk-details">
         <summary class="govuk-details__summary">
           <span class="govuk-details__summary-text">
-            Who is the PSC when shareholders have equal ownership??
+            Who is the PSC when shareholders have equal ownership?
           </span>
         </summary>
         <div class="govuk-details__text">
           ...
         </div>
       </details>
+
+      <h2 class="govuk-heading-m">Identity verification</h2>
+
+
+        <p class="govuk-body">All PSCs need to verify their identity with Companies House. We'll then give them a Companies House personal code.</p>
+
+        <p class="govuk-body">If a PSC has already verified their identity, and you have their personal code, you should provide it in this section so we can link their verified identity to our records.</p>
+
+        <p class="govuk-body">Otherwise, the PSC will need to verify their identity and give us with their personal code within 14 days of the company's incorporation date.</p>
+      
+
 
       {{ govukButton({
         text: "Save and continue"
