@@ -1,0 +1,61 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Verification statement – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    <!-- Check for error -->
+    {% if errorDirectorStatement %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+      <form action="{{currentUrl}}" method="post">
+
+        <!-- Check for error -->
+        {% if errorDirectorStatement %}
+        <div class="govuk-form-group govuk-form-group--error">
+        {% else %}
+        <div class="govuk-form-group">
+        {% endif %} 
+          <fieldset class="govuk-fieldset" aria-describedby="directorStatement-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Confirm the identity verification statement
+              </h1>
+            </legend>
+            {% if errorDirectorStatement %}
+            <p id="directorStatement-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span>Confirm if the identity verification statement is correct
+            </p>
+            {% endif %}
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="directorStatement" name="directorStatement" type="checkbox">
+                <label class="govuk-label govuk-checkboxes__label" for="directorStatement">
+                  I confirm that <b>{{ data['directorTitle']}} {{ data['directorFirstName']}} {{ data['directorMiddleName']}} {{ data['directorLastName']}}</b> has verified their identity
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <button class="govuk-button" data-module="govuk-button">
+          Confirm and continue
+        </button> 
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

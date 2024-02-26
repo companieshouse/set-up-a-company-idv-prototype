@@ -1,0 +1,39 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Director details
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- if there is a value in psc name we know the user has filled out the psc details -->
+    {% if data['pscFirstName'] %}
+      <h1 class="govuk-heading-l">Confirm the correspondence address for {{ data['pscTitle']}} {{ data['pscFirstName']}} {{ data['pscMiddleName']}} {{ data['pscLastName']}}</h1>
+    {% else %}
+      <h1 class="govuk-heading-l">Confirm the correspondence address for {{ data['directorTitle']}} {{ data['directorFirstName']}} {{ data['directorMiddleName']}} {{ data['directorLastName']}}</h1>
+    {% endif %}
+
+    <p class="govuk-body">10 Old Street<br>Parkland<br>Townville<br>England<br>XX1 ZZ2</p>
+
+    <p class="govuk-body govuk-!-margin-bottom-9"><a href="#" class="govuk-link govuk-link--no-visited-state">Change</a></p>
+
+    <form action="{{currentUrl}}" method="post">
+
+      {{ govukButton({
+        text: "Confirm and continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

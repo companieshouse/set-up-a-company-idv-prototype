@@ -1,0 +1,79 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Are you starting a new application?
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- Check for error -->
+    {% if errorAddPsc %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+    <form action="{{currentUrl}}" method="post">
+
+      <!-- Check for error -->
+      {% if errorAddPsc %}
+      <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+      <div class="govuk-form-group">
+      {% endif %} 
+        <fieldset class="govuk-fieldset" aria-describedby="addPsc-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              What would you like to add?
+            </h1>
+          </legend>
+          <div id="changedName-hint" class="govuk-hint">
+            <a href="#" class="govuk-link">Show me examples of the types of Persons with Significant Control</a>
+          </div>
+          <!-- Check for error -->
+          {% if errorAddPsc %}
+          <p id="addPsc-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Select if you want to add another director
+          </p>
+          {% endif %} 
+
+          <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="addPsc" name="addPsc" type="radio" value="psc">
+              <label class="govuk-label govuk-radios__label" for="addPsc">
+                A person in control of the company
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="addPsc-2" name="addPsc" type="radio" value="rle">
+              <label class="govuk-label govuk-radios__label" for="addPsc-2">
+                A corporate body in control of the company
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="addPsc-3" name="addPsc" type="radio" value="orp">
+              <label class="govuk-label govuk-radios__label" for="addPsc-3">
+                An other registrable person (ORP) in control of the company - this is typically an organisation, office or official position
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

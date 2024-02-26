@@ -1,0 +1,33 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Are you starting a new application?
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="{{currentUrl}}" method="post">
+      <h1 class="govuk-heading-l">From your previous answers we know that {{ data['directorTitle']}} {{ data['directorFirstName']}} {{ data['directorMiddleName']}} {{ data['directorLastName']}} 
+        is a Person with Significant Control</h1>
+
+      <p class="govuk-body">We still need to ask you a few more questions about this person.</p>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

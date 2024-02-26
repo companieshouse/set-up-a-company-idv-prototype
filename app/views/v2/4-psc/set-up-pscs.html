@@ -1,0 +1,62 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Are you starting a new application?
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="{{currentUrl}}" method="post">
+      <h1 class="govuk-heading-l">You're about to set up the 'Persons with Significant Control' over the company</h1>
+
+      <p class="govuk-body">Based on the shareholders information you've 
+        already given, we know some information about the company's PSCs. 
+        We'll guide you through the process of giving us the rest.</p>
+
+      <div class="govuk-inset-text">
+        In none of the shareholders in the company own more than 25% of 
+        its shares, the company may not have a PSC. You'll still need to 
+        confirm this.
+      </div>
+
+      <h2 class="govuk-heading-m">What is a Person with Significant Control?</h2>
+
+      <p class="govuk-body">A person with Significant Control (PSC) is an individual 
+        or company that has at least one of the following:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>more than 25% of the company's shares and voting rights</li>
+        <li>the right to appoint or remove directors</li>
+        <li>the right to make decisions of influence decisions that affect teh company</li>
+      </ul>
+      
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Who is the PSC when shareholders have equal ownership??
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          ...
+        </div>
+      </details>
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
