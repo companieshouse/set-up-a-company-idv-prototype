@@ -395,6 +395,7 @@ router.post('/v2/3-director/director-details', function (req, res) {
   var monthHasError = false
   var yearHasError = false
   var jobTitleError = false
+  var codeHasError = false
 
   var detailsError = false
 
