@@ -35,9 +35,27 @@ Are you starting a new application?
               What would you like to add?
             </h1>
           </legend>
-          <div id="changedName-hint" class="govuk-hint">
-            <a href="#" class="govuk-link">Show me examples of the types of Persons with Significant Control</a>
-          </div>
+          <details class="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                Show me examples of the types of Persons with Significant Control
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              <p class="govuk-body">Person - an individual</p>
+
+              <p class="govuk-body">Corporate body - for example, a company or partnership registered in the UK or elsewhere</p>
+
+              <p class="govuk-body">Other registrable person (ORP) - an organisation or office such as:</p>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>a government or government department of a country or territory</li>
+                <li>a local authority or local government body in the UK or elsewhere</li>
+                <li>a corporation sole (typically an official position)</li>
+              </ul>
+
+
+            </div>
+          </details>
           <!-- Check for error -->
           {% if errorAddPsc %}
           <p id="addPsc-error" class="govuk-error-message">

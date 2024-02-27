@@ -129,10 +129,7 @@ router.post('/v2/1-initial-set-up/starting-a-new-application', function (req, re
   } else {
     if (req.session.data['newApplication'] === 'yes') {
       res.redirect('/v2/1-initial-set-up/check-before')
-    } else {
-      // User inputted value so move to next page
-      res.redirect('/v2/1-initial-set-up/gov-gateway')
-    }
+    } 
   }
 })
 
