@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-Are you starting a new application?
+  Check PSC details
 {% endblock %}
 
 {% block beforeContent %}
@@ -189,7 +189,7 @@ Are you starting a new application?
         </div>
       </div>
 
-      <!-- if there is a value in psc name we know the user has filled out the psc details -->
+      <!-- Check if there is a value in 'pscFirstName'. if there is we know the user has filled out the psc details so we can show the second psc -->
       {% if data['pscFirstName'] %}
       <div class="govuk-summary-card">
         <div class="govuk-summary-card__title-wrapper">
@@ -381,7 +381,7 @@ Are you starting a new application?
               </label>
             </div>
 
-            <!-- if there is a value in psc name we know the user has filled out the psc details -->
+                  <!-- Check if there is a value in 'pscFirstName'. if there is we know the user has filled out the psc details so we can show the second psc -->
             {% if data['pscFirstName'] %}
             <div class="govuk-checkboxes__item">
               <input class="govuk-checkboxes__input" id="pscConfirmAddress-2" name="pscConfirmAddress" type="checkbox">
@@ -425,9 +425,20 @@ Are you starting a new application?
         </fieldset>
       </div>
 
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            What legal statement will appear on this company application?
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          “ The subscribers confirm that the person named has consented to act as a director. ”
+        </div>
+      </details>
+
 
       {{ govukButton({
-        text: "Continue to questions"
+        text: "Save and continue"
       }) }}
 
   </div>

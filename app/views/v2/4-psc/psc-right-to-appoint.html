@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-Are you starting a new application?
+  Right to appoint or remove
 {% endblock %}
 
 {% block beforeContent %}
@@ -31,7 +31,7 @@ Are you starting a new application?
       {% endif %} 
         <fieldset class="govuk-fieldset" aria-describedby="rightAppoint-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                <!-- if there is a value in psc name we know the user has filled out the psc details -->
+            <!-- Check if there is a value in 'pscFirstName'. if there is we know the user has filled out the psc details so we can show the second psc -->
             {% if data['pscFirstName'] %}
             <h1 class="govuk-fieldset__heading">
               Does {{ data['pscTitle']}} {{ data['pscFirstName']}} {{ data['pscMiddleName']}} {{ data['pscLastName']}}

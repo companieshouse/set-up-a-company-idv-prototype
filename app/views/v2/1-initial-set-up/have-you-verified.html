@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-Are you starting a new application?
+  Identity verification for company directors
 {% endblock %}
 
 {% block beforeContent %}
@@ -43,11 +43,7 @@ Are you starting a new application?
           <div class="govuk-inset-text">
            You’ll need to provide each director’s personal code as part of this registration, so that we can connect their verified identity to our records. 
           </div>
-
-
-
-
-
+          
           <!-- Check for error -->
           {% if errorHaveVerified %}
           <p id="haveVerified-error" class="govuk-error-message">

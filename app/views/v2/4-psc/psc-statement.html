@@ -44,7 +44,7 @@
               <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" id="pscStatement" name="pscStatement" type="checkbox">
                 <label class="govuk-label govuk-checkboxes__label" for="pscStatement">
-                      <!-- if there is a value in psc name we know the user has filled out the psc details -->
+                  <!-- Check if there is a value in 'pscFirstName'. if there is we know the user has filled out the psc details so we can show the second psc -->
                   {% if data['pscFirstName'] %}
                     I confirm that <b>{{ data['pscTitle']}} {{ data['pscFirstName']}} {{ data['pscMiddleName']}} {{ data['pscLastName']}}</b> has verified their identity.
                   {% else %}

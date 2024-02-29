@@ -13,6 +13,7 @@ router.post('/v2/1-initial-set-up/sign-in-email', function (req, res) {
 // Create empty array and set error variables to false
 var errors = []
 
+// Check if user has filled email
 if (req.session.data['signin-email'] === '') {
   // No value so add error to array
   errors.push({
@@ -46,6 +47,8 @@ router.post('/v2/1-initial-set-up/sign-in-password', function (req, res) {
 // Create empty array and set error variables to false
 var errors = []
 
+
+// Check if user has filled out password
 if (req.session.data['signin-password'] === '') {
   // No value so add error to array
   errors.push({
@@ -265,7 +268,7 @@ router.post('/v2/2-company-details/company-name', function (req, res) {
     var nameEndingError = false
     var companyNameError = false
   
-    // Check if user has filled out first name
+    // Check if user has filled out company name
     if (req.session.data['companyName'] === '') {
       // No value so add error to array
       nameError = true
@@ -276,7 +279,7 @@ router.post('/v2/2-company-details/company-name', function (req, res) {
       })
     }
   
-    // Check if user has filled out last name
+    // Check if user has filled out company ending
     if (typeof req.session.data['companyEnding'] === 'undefined') {
       // No value so add error to array
       nameEndingError = true
@@ -287,7 +290,7 @@ router.post('/v2/2-company-details/company-name', function (req, res) {
       })
     }
 
-  // Check if eother filed not filled out
+  // Check if either values not filled out
   if (companyNameError) {
     // Re-show page with error value as true so errors will show
     res.render('v2/2-company-details/company-name', {
@@ -316,7 +319,7 @@ router.post('/v2/2-company-details/company-contact', function (req, res) {
     var errors = []
     var contactError = false
   
-    // Check if user has filled out first name
+    // Check if user has filled out any contact details
     if (req.session.data['companyNumber'] === '' &&
         req.session.data['companyEmail'] === '' &&
         req.session.data['companyOtherNumber'] === '' ) {
@@ -679,7 +682,7 @@ router.post('/v2/3-director/director-check-details', function (req, res) {
     var errors = []
     var directorDetailsError = false
   
-    // Check if user has filled out first name
+    // Check if user has filled a value
     if (typeof req.session.data['directorConfirmAddress'] === 'undefined') {
       // No value so add error to array
       directorConfirmAddressError = true
@@ -690,7 +693,7 @@ router.post('/v2/3-director/director-check-details', function (req, res) {
       })
     }
 
-    // Check if user has filled out first name
+    // Check if user has filled out a value
     if (typeof req.session.data['directorsConfirmAgree'] === 'undefined') {
       // No value so add error to array
       directorConfirmAgreeError = true

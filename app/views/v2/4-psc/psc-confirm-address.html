@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-Director details
+  Confirm PSc address
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,7 +15,7 @@ Director details
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <!-- if there is a value in psc name we know the user has filled out the psc details -->
+    <!-- Check if there is a value in 'pscFirstName'. if there is we know the user has filled out the psc details so we can show the second psc -->
     {% if data['pscFirstName'] %}
       <h1 class="govuk-heading-l">Confirm the correspondence address for {{ data['pscTitle']}} {{ data['pscFirstName']}} {{ data['pscMiddleName']}} {{ data['pscLastName']}}</h1>
     {% else %}
