@@ -1,0 +1,93 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Identity verification for company directors
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- Check for error -->
+    {% if errorHaveVerified %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+    <form action="{{currentUrl}}" method="post">
+
+      <!-- Check for error -->
+      {% if errorHaveVerified %}
+      <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+      <div class="govuk-form-group">
+      {% endif %} 
+        <fieldset class="govuk-fieldset" aria-describedby="haveVerified-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Identity verification for company directors 
+            </h1>
+          </legend>
+
+          <p class="govuk-body">Before you can incorporate a company, all company directors need to have <a class="govuk-link" href="https://prove-your-identity-prototype.herokuapp.com/release1-v5/pre-one-login/start" target="blank">verified their identity for Companies House (opens in a new tab)</a>.</p>
+
+          <p class="govuk-body">When they’ve verified their identity, we’ll give them a Companies House personal code, which they will need to share with you.</p>
+
+          <div class="govuk-inset-text">
+           You’ll need to provide each director’s personal code as part of this registration, so that we can connect their verified identity to our records. 
+          </div>
+          
+          <!-- Check for error -->
+          {% if errorHaveVerified %}
+          <p id="haveVerified-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Select if all the directors have verified their identity
+          </p>
+          {% endif %} 
+
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                Do you have the Companies House personal codes for all company directors?
+              </legend>
+          <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="haveVerified" name="haveVerified" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="haveVerified">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="haveVerified-2" name="haveVerified" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="haveVerified-2">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Where to find the Companies House personal code
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          This is an 11 character code that is given to a person once they have verified their identity. If any of the company directors have not verified their identity and received a code, they need to do this before you can register this company.
+        </div>
+      </details>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}
