@@ -34,7 +34,7 @@ Are you starting a new application?
         <div class="govuk-summary-card__title-wrapper">
           <h2 class="govuk-summary-card__title">{{ data['directorTitle']}} {{ data['directorFirstName']}} {{ data['directorMiddleName']}} {{ data['directorLastName']}}</h2>
           <ul class="govuk-summary-card__actions">
-            <li class="govuk-summary-card__action"> <a class="govuk-link govuk-link--no-visited-state" href="#">
+            <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
                 Delete director<span class="govuk-visually-hidden"></span>
               </a>
             </li>
@@ -50,7 +50,7 @@ Are you starting a new application?
                 {{ data['directorTitle']}} {{ data['directorFirstName']}} {{ data['directorMiddleName']}} {{ data['directorLastName']}}
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a class="govuk-link govuk-link--no-visited-state" href="director-details">
+                <a class="govuk-link" href="director-details">
                   Change<span class="govuk-visually-hidden"> name</span>
                 </a>
               </dd>
@@ -65,7 +65,7 @@ Are you starting a new application?
                   {{ data['directorDob-year'] }} 
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a class="govuk-link govuk-link--no-visited-state" href="director-details">
+                <a class="govuk-link" href="director-details">
                   Change<span class="govuk-visually-hidden"> dob</span>
                 </a>
               </dd>
@@ -78,7 +78,7 @@ Are you starting a new application?
                 {{ data['directorNationality'] }}
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a class="govuk-link govuk-link--no-visited-state" href="director-details">
+                <a class="govuk-link" href="director-details">
                   Change<span class="govuk-visually-hidden"> nationality</span>
                 </a>
               </dd>
@@ -91,7 +91,7 @@ Are you starting a new application?
                 {{ data['directorJobTitle'] }}
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a class="govuk-link govuk-link--no-visited-state" href="director-details">
+                <a class="govuk-link" href="director-details">
                   Change<span class="govuk-visually-hidden"> job title</span>
                 </a>
               </dd>
@@ -104,7 +104,7 @@ Are you starting a new application?
                 {{ data['directorPersonalCode'] }}
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a class="govuk-link govuk-link--no-visited-state" href="director-details">
+                <a class="govuk-link" href="director-details">
                   Change<span class="govuk-visually-hidden"> code</span>
                 </a>
               </dd>
@@ -117,7 +117,7 @@ Are you starting a new application?
                 10 Old Street<br>Parkland<br>Townville<br>England<br>XX1 ZZ2
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a class="govuk-link govuk-link--no-visited-state" href="director-address">
+                <a class="govuk-link" href="director-address">
                   Change<span class="govuk-visually-hidden"> address</span>
                 </a>
               </dd>
@@ -130,7 +130,7 @@ Are you starting a new application?
                 The home address is the same as the correspondence address
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a class="govuk-link govuk-link--no-visited-state" href="director-details">
+                <a class="govuk-link" href="director-details">
                   Change<span class="govuk-visually-hidden"> home address</span>
                 </a>
               </dd>
@@ -143,7 +143,7 @@ Are you starting a new application?
                 England
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a class="govuk-link govuk-link--no-visited-state" href="director-details">
+                <a class="govuk-link" href="director-details">
                   Change<span class="govuk-visually-hidden"> country lived in</span>
                 </a>
               </dd>
@@ -153,7 +153,7 @@ Are you starting a new application?
       </div>
 
 
-      <p class="govuk-body govuk-!-margin-bottom-9"><b><a class="govuk-link govuk-link--no-visited-state" href="#" class="govuk-link govuk-link--no-visited-state">Add a director</a></b></p>
+      <p class="govuk-body govuk-!-margin-bottom-9"><b><a class="govuk-link" href="#" class="govuk-link">Add a director</a></b></p>
 
       <!-- Check for error -->
       {% if errorConfirmDirectorAddress %}

@@ -779,7 +779,7 @@ router.post('/v2/4-psc/psc-right-to-appoint', function (req, res) {
 })
 
 
-// ******* add-director javascript ********************************
+// ******* add-psc javascript ********************************
 router.get('/v2/4-psc/psc-add', function (req, res) {
   // Set URl
   res.render('v2/4-psc/psc-add', {
