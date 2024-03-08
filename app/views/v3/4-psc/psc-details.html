@@ -173,24 +173,19 @@
       </div>
 
       <!-- Check for error -->
-      {% if errorPscPersonalCode or pscMatchError %}
+      {% if pscMatchError %}
         <div class="govuk-form-group govuk-form-group--error">
       {% else %}
         <div class="govuk-form-group">
       {% endif %} 
           <label class="govuk-label govuk-date-input__label" for="pscPersonalCode">
-            Companies House personal code
+            Companies House personal code (Optional)
           </label>
 
           <!-- Check for error -->
-          {% if errorPscPersonalCode %}
+          {% if pscMatchError%} 
             <p id="pscPersonalCode-error" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span> Enter the personal code for the director
-            </p>
-            <input class="govuk-input govuk-input--width-10 govuk-input--extra-letter-spacing govuk-input--error" id="pscPersonalCode" name="pscPersonalCode" type="text" aria-describedby="pscPersonalCode-hint" value="{{ data['pscPersonalCode'] }}">
-          {% elif pscMatchError%} 
-            <p id="pscPersonalCode-error" class="govuk-error-message">
-              <span class="govuk-visually-hidden">Error:</span> Enter the Companies House personal code
+              <span class="govuk-visually-hidden">Error:</span> Enter the correct Companies House personal code
             </p>
             <input class="govuk-input govuk-input--width-10 govuk-input--extra-letter-spacing govuk-input--error" id="pscPersonalCode" name="pscPersonalCode" type="text" aria-describedby="pscPersonalCode-hint" value="{{ data['pscPersonalCode'] }}">
           {% else %}
