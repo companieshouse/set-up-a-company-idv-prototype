@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Do you have the details of this corporate body's relevant officer – {{ serviceName }} – GOV.UK Prototype Kit
+  Do you have the details of {{ data['rleName']| upper }}'s relevant officer – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent %}
@@ -34,11 +34,9 @@
       {% endif %} 
         <fieldset class="govuk-fieldset" aria-describedby="roHaveDetails-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-
             <h1 class="govuk-fieldset__heading">
-              Do you have the details of this corporate body's relevant officer?
+              Do you have the details of {{ data['rleName']| upper }}'s relevant officer?
             </h1>
-          
           </legend>
           <div id="roHaveDetails-hint" class="govuk-hint">
             This includes their full name, date of birth and Companies House personal code.
@@ -46,7 +44,7 @@
           <!-- Check for error -->
           {% if errorRoHaveDetails %}
           <p id="roHaveDetails-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Select yes if you have the details of this corporate body's relevant officer
+            <span class="govuk-visually-hidden">Error:</span>Select yes if you have the details of the relevant legal entity's relevant officer
           </p>
           {% endif %} 
 

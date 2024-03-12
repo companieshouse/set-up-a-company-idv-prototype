@@ -1282,7 +1282,7 @@ router.post('/v3/5-rle/ro-have-details', function (req, res) {
   if (typeof req.session.data['roHaveDetails'] === 'undefined') {
     // No value so add error to array
     errors.push({
-      html: "Select yes if you have the details of this corporate body's relevant officer",
+      html: "Select yes if you have the details of the relevant legal entity's relevant officer",
       href: '#roHaveDetails'
     })
 
