@@ -1267,9 +1267,40 @@ router.post('/v3/5-rle/rle-right-to-appoint', function (req, res) {
       errorList: errors
     })
   } else {
-      res.redirect('/v3/5-rle/ro-details')
+      res.redirect('/v3/5-rle/ro-have-details')
     }
 })
+
+
+
+// ******* ro-have-details javascript *********************
+router.post('/v3/5-rle/ro-have-details', function (req, res) {
+  // Create empty array
+  var errors = []
+
+  // Check if user has filled out a value
+  if (typeof req.session.data['roHaveDetails'] === 'undefined') {
+    // No value so add error to array
+    errors.push({
+      html: "Select yes if you have the details of this corporate body's relevant officer",
+      href: '#roHaveDetails'
+    })
+
+    // Re-show page with error value as true so errors will show
+    res.render('v3/5-rle/ro-have-details', {
+      errorRoHaveDetails: true,
+      errorList: errors
+    })
+  } else {
+    if (req.session.data['roHaveDetails'] === 'yes') {
+      res.redirect('/v3/5-rle/ro-details')
+    } else {
+      // User inputted value so move to next page
+      res.redirect('/v3/4-psc/psc-check-details')
+    }
+  }
+})
+
 
 
 // ******* ro-details javascript *********************
