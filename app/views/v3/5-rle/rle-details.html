@@ -21,7 +21,7 @@
         errorList: errorList
       }) }}
     {% endif %}
-    <h1 class="govuk-heading-l">{{ data['rleName']| upper }} details</h1>
+    <h1 class="govuk-heading-l">{{ data['rleName']| uppercase }} details</h1>
 
     <form action="{{currentUrl}}" method="post">
 
@@ -74,7 +74,7 @@
         <div class="govuk-form-group">
       {% endif %} 
           <label class="govuk-label" for="rleRegister">
-            Register that {{ data['rleName']| upper }} is entered in
+            Register that {{ data['rleName']| uppercase }} is entered in
           </label>
           <div id="rleRegister-hint" class="govuk-hint">
             For example, Register of Companies UK
@@ -89,22 +89,11 @@
       </div>
 
 
-      <!-- Check for error -->
-      {% if errorRleCountry %}
-        <div class="govuk-form-group govuk-form-group--error">
-      {% else %}
-        <div class="govuk-form-group">
-      {% endif %} 
-          <label class="govuk-label" for="rleCountry">
-            Country of registration (if applicable)
-          </label>
-          <!-- Check for error -->
-        {% if errorRleCountry %}
-          <p id="rleCountry-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Enter the country of registration
-          </p>
-        {% endif %} 
-          <input class="govuk-input govuk-!-width-two-thirds" id="rleCountry" name="rleCountry" type="text" value="{{ data['rleCountry'] }}">
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="rleCountry">
+          Country of registration (if applicable)
+        </label>
+        <input class="govuk-input govuk-!-width-two-thirds" id="rleCountry" name="rleCountry" type="text" value="{{ data['rleCountry'] }}">
       </div>
 
 

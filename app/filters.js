@@ -47,3 +47,7 @@ addFilter('displayMonth', function (month) {
     }
   }) 
 
+addFilter('uppercase', function (content) {
+  if (!content || !content.toUpperCase) return content
+  return content.toUpperCase()
+})

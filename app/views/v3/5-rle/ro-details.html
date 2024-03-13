@@ -25,7 +25,7 @@
     <form action="{{currentUrl}}" method="post">
 
       <!-- Check for error -->
-      {% if errorFirstName %}
+      {% if errorRoFirstName %}
         <div class="govuk-form-group govuk-form-group--error">
       {% else %}
         <div class="govuk-form-group">
@@ -34,7 +34,7 @@
             First name
           </label>
           <!-- Check for error -->
-        {% if errorFirstName %}
+        {% if errorRoFirstName %}
           <p id="roFirstName-error" class="govuk-error-message">
             <span class="govuk-visually-hidden">Error:</span> Enter the first name
           </p>
@@ -90,11 +90,7 @@
             </p>
           {% elif errorRoDobDay or errorRoDobMonth or errorRoDobYear%} 
             <p id="roDob-error" class="govuk-error-message">
-              {% if yearError %}
-              <span class="govuk-visually-hidden">Error:</span> The director must be at least 16 years of age
-              {% else %}
               <span class="govuk-visually-hidden">Error:</span> The date must include a day, month and year
-              {% endif %} 
             </p>
           {% endif %}
           <div class="govuk-date-input" id="roDob">

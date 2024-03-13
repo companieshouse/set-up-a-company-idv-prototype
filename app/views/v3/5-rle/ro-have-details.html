@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Do you have the details of {{ data['rleName']| upper }}'s relevant officer – {{ serviceName }} – GOV.UK Prototype Kit
+  Do you have the details of {{ data['rleName']| uppercase }}'s relevant officer – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,12 +21,9 @@
       }) }}
     {% endif %}
 
-
-
     <form action="{{currentUrl}}" method="post">
 
-   
-  <!-- Check for error -->
+      <!-- Check for error -->
       {% if errorRoHaveDetails %}
       <div class="govuk-form-group govuk-form-group--error">
       {% else %}
@@ -35,7 +32,7 @@
         <fieldset class="govuk-fieldset" aria-describedby="roHaveDetails-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
-              Do you have the details of {{ data['rleName']| upper }}'s relevant officer?
+              Do you have the details of {{ data['rleName']| uppercase }}'s relevant officer?
             </h1>
           </legend>
           <div id="roHaveDetails-hint" class="govuk-hint">
@@ -48,7 +45,7 @@
           </p>
           {% endif %} 
 
-          <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+          <div class="govuk-radios" data-module="govuk-radios">
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="roHaveDetails" name="roHaveDetails" type="radio" value="yes">
               <label class="govuk-label govuk-radios__label" for="roHaveDetails">
@@ -56,20 +53,18 @@
               </label>
             </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="roHaveDetails-2" name="roHaveDetails" type="radio" value="no">
+              <input class="govuk-radios__input" id="roHaveDetails-2" name="roHaveDetails" type="radio" value="no" data-aria-controls="conditional-contact">
               <label class="govuk-label govuk-radios__label" for="roHaveDetails-2">
                 No
               </label>
             </div>
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+              <p class="govuk-body">The relevant legal entity will have 28 days from the date this filing is 
+                accepted to provide its relevant officer's details to Companies House.</p>
+            </div>
           </div>
         </fieldset>
       </div>
-
-
-
-
-
-
 
 
      <details class="govuk-details" data-module="govuk-details">

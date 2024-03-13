@@ -21,7 +21,7 @@
         errorList: errorList
       }) }}
       {% endif %}
-      <h1 class="govuk-heading-l">Check and confirm details of the persons in control of {{ data['companyName'] | upper }} {{ data['companyEnding'] | upper }}</h1>
+      <h1 class="govuk-heading-l">Check and confirm details of the persons in control of {{ data['companyName'] | uppercase }} {{ data['companyEnding'] | uppercase }}</h1>
 
       <div class="govuk-inset-text">
         Details about persons in control of a company will appear on the
@@ -353,7 +353,7 @@
       {% if data['rleName'] %}
       <div class="govuk-summary-card">
         <div class="govuk-summary-card__title-wrapper">
-          <h2 class="govuk-summary-card__title">{{ data['rleName']| upper }}</h2>
+          <h2 class="govuk-summary-card__title">{{ data['rleName']| uppercase }}</h2>
           <ul class="govuk-summary-card__actions">
             <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
                 Remove Person with Significant Control<span class="govuk-visually-hidden"></span>
@@ -368,7 +368,7 @@
                 What is the corporate body name?
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data['rleName']| upper }}
+                {{ data['rleName']| uppercase }}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="#">
@@ -378,7 +378,7 @@
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                What is the address of {{ data['rleName']| upper }}
+                What is the address of {{ data['rleName']| uppercase }}
               </dt>
               <dd class="govuk-summary-list__value">
                 8 New Street<br>Woodland<br>Townville<br>England<br>XX3 YY5
@@ -417,7 +417,7 @@
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                Register that {{ data['rleName']| upper }} is entered in
+                Register that {{ data['rleName']| uppercase }} is entered in
               </dt>
               <dd class="govuk-summary-list__value">
                 {{ data['rleRegister'] }}
@@ -459,7 +459,11 @@
                 Relevant officer's name
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data['roFirstName']}} {{ data['roMiddleName']}} {{ data['roLastName']}}
+                {% if data['roFirstName'] %}
+                  {{ data['roFirstName']}} {{ data['roMiddleName']}} {{ data['roLastName']}}
+                {% else %}
+                  Not provided
+                {% endif %}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="#">
@@ -472,9 +476,13 @@
                 Relevant officer's date of birth
               </dt>
               <dd class="govuk-summary-list__value">
+                {% if data['roFirstName'] %}
                   {{ data['roDob-day'] }} 
                   {{ data['roDob-month'] | displayMonth }} 
                   {{ data['roDob-year'] }} 
+                {% else %}
+                  Not provided
+                {% endif %}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="#">
@@ -487,7 +495,11 @@
                 Relevant officer's Companies House personal code
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data['roPersonalCode'] }}
+                {% if data['roFirstName'] %}
+                  {{ data['roPersonalCode'] }}
+                {% else %}
+                  Not provided
+                {% endif %}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="#">
@@ -497,7 +509,7 @@
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                As an individual, what percentage of voting rights does {{ data['rleName']| upper }} own?
+                As an individual, what percentage of voting rights does {{ data['rleName']| uppercase }} own?
               </dt>
               <dd class="govuk-summary-list__value">
                   <ul class="govuk-list govuk-list--bullet">
@@ -513,7 +525,7 @@
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                As an individual, what percentage of share does {{ data['rleName']| upper }} own?
+                As an individual, what percentage of share does {{ data['rleName']| uppercase }} own?
               </dt>
               <dd class="govuk-summary-list__value">
                   <ul class="govuk-list govuk-list--bullet">
@@ -529,7 +541,7 @@
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                As an individual, does {{ data['rleName']| upper }} 
+                As an individual, does {{ data['rleName']| uppercase }} 
                 have the right to appoint or remove directors?
               </dt>
               <dd class="govuk-summary-list__value">

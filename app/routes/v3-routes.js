@@ -1164,7 +1164,6 @@ router.post('/v3/5-rle/rle-details', function (req, res) {
     var rleTypeError = false
     var governingLawError = false
     var registerError = false
-    var countryError = false
     var registrationNumberError = false
 
     var detailsError = false
@@ -1202,16 +1201,6 @@ router.post('/v3/5-rle/rle-details', function (req, res) {
       })
     }
 
-      // Check if user has filled out input
-    if (req.session.data['rleCountry'] === '') {
-      // No value so add error to array
-      countryError = true
-      detailsError = true
-      errors.push({
-        text: 'Enter the country of registration',
-        href: '#rleCountry'
-      })
-    }
 
     // Check if user has filled out input
     if (req.session.data['rleNumber'] === '') {
@@ -1231,8 +1220,8 @@ router.post('/v3/5-rle/rle-details', function (req, res) {
       errorRleType: rleTypeError,
       errorGoverningLaw: governingLawError,
       errorRleRegister: registerError,
-      errorRleCountry: countryError,
       errorRleNumber: registrationNumberError,
+      errorRleDetails: detailsError,
       errorList: errors
     })
   } else {
@@ -1314,9 +1303,17 @@ router.get('/v3/5-rle/ro-details', function (req, res) {
 router.post('/v3/5-rle/ro-details', function (req, res) {
   // Create empty array and set error variables to false
   var errors = [];
+  var firstNameError = false
+  var lastNameError = false
+  var dobDayError = false
+  var dobMonthError = false
+  var dobYearError = false
+  var roPersonalCodeError = false
   var roDetailsError = false
 
-  if (req.session.data['firstName'] === '') {
+  var roDetailsError = false
+
+  if (req.session.data['roFirstName'] === '') {
     firstNameError = true
     roDetailsError = true
     errors.push({
@@ -1325,7 +1322,7 @@ router.post('/v3/5-rle/ro-details', function (req, res) {
     })
   }
 
-  if (req.session.data['lastName'] === '') {
+  if (req.session.data['roLastName'] === '') {
     lastNameError = true
     roDetailsError = true
     errors.push({
@@ -1334,7 +1331,7 @@ router.post('/v3/5-rle/ro-details', function (req, res) {
     })
   }
 
-  if (req.session.data['Dob-day'] === '') {
+  if (req.session.data['roDob-day'] === '') {
     dobDayError = true
     roDetailsError = true
     errors.push({
@@ -1343,7 +1340,7 @@ router.post('/v3/5-rle/ro-details', function (req, res) {
     })
   }
   
-  if (req.session.data['Dob-month'] === '') {
+  if (req.session.data['roDob-month'] === '') {
     dobMonthError = true
     roDetailsError = true
     errors.push({
@@ -1352,7 +1349,7 @@ router.post('/v3/5-rle/ro-details', function (req, res) {
     })
   }
   
-  if (req.session.data['Dob-year'] === '') {
+  if (req.session.data['roDob-year'] === '') {
     dobYearError = true
     roDetailsError = true
     errors.push({
@@ -1372,8 +1369,8 @@ router.post('/v3/5-rle/ro-details', function (req, res) {
 
   if (roDetailsError) {
   res.render('v3/5-rle/ro-details', {
-    errorFirstName: firstNameError,
-    errorLastName: lastNameError,
+    errorRoFirstName: firstNameError,
+    errorRoLastName: lastNameError,
     errorRoDobDay: dobDayError,
     errorRoDobMonth: dobMonthError,
     errorRoDobYear: dobYearError,
