@@ -1,0 +1,130 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  PSC details
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- Check for error -->
+    {% if errorRleDetails %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+    <h1 class="govuk-heading-l">{{ data['rleName']| uppercase }} details</h1>
+
+    <form action="{{currentUrl}}" method="post">
+
+      <!-- Check for error -->
+      {% if errorRleType %}
+        <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+        <div class="govuk-form-group">
+      {% endif %} 
+          <label class="govuk-label" for="rleType">
+            Legal form or corporate identity
+          </label>
+          <div id="rleType-hint" class="govuk-hint">
+            This is the corporate body type. For example, Private Limited Company
+          </div>
+          <!-- Check for error -->
+        {% if errorRleType %}
+          <p id="rleType-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Enter the legal form or corporate identity
+          </p>
+        {% endif %} 
+          <input class="govuk-input govuk-!-width-two-thirds" id="rleType" name="rleType" type="text" value="{{ data['rleType'] }}">
+      </div>
+
+      <!-- Check for error -->
+      {% if errorGoverningLaw %}
+        <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+        <div class="govuk-form-group">
+      {% endif %} 
+          <label class="govuk-label" for="governingLaw">
+            Governing law
+          </label>
+          <div id="governingLaw-hint" class="govuk-hint">
+            For example, Companies Act 2006
+          </div>
+          <!-- Check for error -->
+        {% if errorGoverningLaw %}
+          <p id="governingLaw-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Enter the governing law
+          </p>
+        {% endif %} 
+          <input class="govuk-input govuk-!-width-two-thirds" id="governingLaw" name="governingLaw" type="text" value="{{ data['governingLaw'] }}">
+      </div>
+
+      <!-- Check for error -->
+      {% if errorRleRegister %}
+        <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+        <div class="govuk-form-group">
+      {% endif %} 
+          <label class="govuk-label" for="rleRegister">
+            Register that {{ data['rleName']| uppercase }} is entered in
+          </label>
+          <div id="rleRegister-hint" class="govuk-hint">
+            For example, Register of Companies UK
+          </div>
+          <!-- Check for error -->
+        {% if errorRleRegister %}
+          <p id="rleRegister-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Enter the register
+          </p>
+        {% endif %} 
+          <input class="govuk-input govuk-!-width-two-thirds" id="rleRegister" name="rleRegister" type="text" value="{{ data['rleRegister'] }}">
+      </div>
+
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="rleCountry">
+          Country of registration (if applicable)
+        </label>
+        <input class="govuk-input govuk-!-width-two-thirds" id="rleCountry" name="rleCountry" type="text" value="{{ data['rleCountry'] }}">
+      </div>
+
+
+      <!-- Check for error -->
+      {% if errorRleNumber %}
+        <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+        <div class="govuk-form-group">
+      {% endif %} 
+          <label class="govuk-label" for="rleNumber">
+            Registration number
+          </label>
+          <div id="rleNumber-hint" class="govuk-hint">
+            For example, the company number
+          </div>
+          <!-- Check for error -->
+        {% if errorRleNumber %}
+          <p id="rleNumber-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Enter the registration number
+          </p>
+        {% endif %} 
+          <input class="govuk-input govuk-!-width-two-thirds" id="rleNumber" name="rleNumber" type="text" value="{{ data['rleNumber'] }}">
+      </div>
+
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

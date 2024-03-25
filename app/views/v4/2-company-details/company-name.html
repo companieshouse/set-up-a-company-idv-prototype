@@ -1,0 +1,106 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Company name
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- Check for error -->
+    {% if errorCompanyName %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+    <form action="{{currentUrl}}" method="post">
+
+      <h1 class="govuk-heading-l">Company name</h1>
+
+      <!-- Check for error -->
+      {% if errorCompanyName %}
+      <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+      <div class="govuk-form-group">
+      {% endif %} 
+        <h1 class="govuk-label-wrapper">
+          <label class="govuk-label govuk-label--m" for="companyName">
+            What is the company name?
+          </label>
+        </h1>
+        <div id="companyName-hint" class="govuk-hint">
+          Do not enter the company name ending, such as LIMITED or LTD, in this box. We will add it for you.
+        </div>
+        <!-- Check for error -->
+        {% if errorCompanyName %}
+        <p id="companyName-error" class="govuk-error-message">
+          <span class="govuk-visually-hidden">Error:</span> Enter the company name
+        </p>
+        {% endif %} 
+        <input class="govuk-input govuk-!-width-one-half" id="companyName" name="companyName" type="text">
+      </div>
+
+      <p class="govuk-body"><a href="#" class="govuk-link">Check the company name against an existing trademark</a></p>
+
+      <!-- Check for error -->
+      {% if errorCompanyEnding %}
+      <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+      <div class="govuk-form-group">
+      {% endif %} 
+        <fieldset class="govuk-fieldset" aria-describedby="companyEnding-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h1 class="govuk-fieldset__heading">
+            Which company name ending would you prefer to go on the public record?
+            </h1>
+          </legend>
+          <div id="companyEnding-hint" class="govuk-hint">
+            There is no difference between the name endings 'Limited' or 'Ltd', except for how they look.
+          </div>
+          <!-- Check for error -->
+          {% if errorCompanyEnding %}
+          <p id="companyEnding-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Select the company ending
+          </p>
+          {% endif %} 
+
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="companyEnding" name="companyEnding" type="radio" value="Limited">
+              <label class="govuk-label govuk-radios__label" for="companyEnding">
+                Limited
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="companyEnding-2" name="companyEnding" type="radio" value="Ltd">
+              <label class="govuk-label govuk-radios__label" for="companyEnding-2">
+              Ltd
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="companyEnding-3" name="companyEnding" type="radio" value="Ltd">
+              <label class="govuk-label govuk-radios__label" for="companyEnding-3">
+                Other name endings - including Welsh
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

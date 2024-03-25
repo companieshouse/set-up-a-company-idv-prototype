@@ -1,0 +1,29 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  You cannot set up a service
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">You cannot set up a company with this service</h1>
+
+      <p class="govuk-body">To use this service, you need to pay for the application using a card or PayPal.</p>
+
+      {{ govukButton({
+        text: "Use other service"
+      }) }}
+
+  </div>
+</div>
+
+{% endblock %}

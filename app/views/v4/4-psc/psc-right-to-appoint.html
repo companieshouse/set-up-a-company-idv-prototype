@@ -1,0 +1,84 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Right to appoint or remove
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- Check for error -->
+    {% if errorRightAppoint %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+    <form action="{{currentUrl}}" method="post">
+
+      <!-- Check for error -->
+      {% if errorRightAppoint %}
+      <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+      <div class="govuk-form-group">
+      {% endif %} 
+        <fieldset class="govuk-fieldset" aria-describedby="rightAppoint-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <!-- Check if there is a value in 'pscFirstName'. if there is we know the user has filled out the psc details so we use second psc -->
+            {% if data['pscFirstName'] %}
+            <h1 class="govuk-fieldset__heading">
+              Does {{ data['pscTitle']}} {{ data['pscFirstName']}} {{ data['pscMiddleName']}} {{ data['pscLastName']}}
+              have the right to appoint or remove the majority of company directors?
+            </h1>
+            {% else %}
+            <h1 class="govuk-fieldset__heading">
+              Does {{ data['directorTitle']}} {{ data['directorFirstName']}} {{ data['directorMiddleName']}} {{ data['directorLastName']}}
+              have the right to appoint or remove the majority of company directors?
+            </h1>
+            {% endif %}
+
+          </legend>
+          <div id="rightAppoint-hint" class="govuk-hint">
+            This is the right to be involved in making the decision to appoint or remove directors, 
+            either with others or alone.
+          </div>
+          <!-- Check for error -->
+          {% if errorRightAppoint %}
+          <p id="rightAppoint-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Select if you want to add another director
+          </p>
+          {% endif %} 
+
+          <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="rightAppoint" name="rightAppoint" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="rightAppoint">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="rightAppoint-2" name="rightAppoint" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="rightAppoint-2">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}
