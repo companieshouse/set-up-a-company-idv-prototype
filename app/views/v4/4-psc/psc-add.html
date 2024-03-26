@@ -38,13 +38,13 @@
           <details class="govuk-details">
             <summary class="govuk-details__summary">
               <span class="govuk-details__summary-text">
-                Show me examples of the types of Persons with Significant Control
+                Show me examples of the types of person with significant control (PSC)
               </span>
             </summary>
             <div class="govuk-details__text">
               <p class="govuk-body">Person - an individual</p>
 
-              <p class="govuk-body">Corporate body - for example, a company or partnership registered in the UK or elsewhere</p>
+              <p class="govuk-body">Corporate body - for example, a company or partnership registered in the UK or elsewhere.</p>
 
               <p class="govuk-body">Other registrable person (ORP) - an organisation or office such as:</p>
               <ul class="govuk-list govuk-list--bullet">
@@ -59,7 +59,7 @@
           <!-- Check for error -->
           {% if errorAddPsc %}
           <p id="addPsc-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Select if you want to add another director
+            <span class="govuk-visually-hidden">Error:</span> Select what type of PSC you would like to add
           </p>
           {% endif %} 
 
@@ -75,12 +75,18 @@
               <label class="govuk-label govuk-radios__label" for="addPsc-2">
                 A corporate body in control of the company
               </label>
+              <div id="signIn-2-item-hint" class="govuk-hint govuk-radios__hint">
+                This is also known as a relevant legal entity (RLE)
+              </div>
             </div>
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="addPsc-3" name="addPsc" type="radio" value="orp">
               <label class="govuk-label govuk-radios__label" for="addPsc-3">
-                An other registrable person (ORP) in control of the company - this is typically an organisation, office or official position
+                An other registrable person (ORP) in control of the company
               </label>
+              <div id="signIn-2-item-hint" class="govuk-hint govuk-radios__hint">
+                This is typically an organisation, office or official position
+              </div>
             </div>
           </div>
         </fieldset>
