@@ -1,0 +1,62 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Are you starting a new application?
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="{{currentUrl}}" method="post">
+      <h1 class="govuk-heading-l">You're about to set up the company's shareholders</h1>
+
+      <p class="govuk-body">We'll ask you to:</p>
+
+      <ul class="govuk-list govuk-list--number">
+        <li>Tell us who the company's shareholders are.</li>
+        <li>Tell us how many shares you want to give them.</li>
+        <li>Choose a value for each share.</li>
+        <li>Confirm the shareholders and shares you've created</li>
+      </ul>
+
+      <div class="govuk-inset-text">
+        <p class="govuk-body">The company must have at least one shareholder.</p>
+        <p class="govuk-body">Each shareholder must have at least one share.</p>
+      </div>
+
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            What is a shareholder
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          ...
+        </div>
+      </details>
+
+      <p class="govuk-body">You can change the shareholders and their shares at any time after the company is registered by contacting Companies House.</p>
+
+      <div class="govuk-inset-text">
+        The company may not have any PSCs if none of the shareholders own more than 25% of its shares. You'll still need to confirm this.
+      </div>
+
+      
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

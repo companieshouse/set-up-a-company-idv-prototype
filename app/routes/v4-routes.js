@@ -9,65 +9,6 @@ router.get('/v4/1-initial-set-up/sign-in-email', function (req, res) {
   })
 })
 
-router.post('/v4/1-initial-set-up/sign-in-email', function (req, res) {
-// Create empty array and set error variables to false
-var errors = []
-
-// Check if user has filled email
-if (req.session.data['signin-email'] === '') {
-  // No value so add error to array
-  errors.push({
-    text: 'Enter your email address',
-    href: '#signin-email'
-  })
-}
-
-if (req.session.data['signin-email'] === '') {
-  // Re-show page with error value as true so errors will show
-  res.render('v4/1-initial-set-up/sign-in-email', {
-    errorSigninEmail: true,
-    errorList: errors
-  })
-} else {
-  // User inputted value so move to next page
-  res.redirect('/v4/1-initial-set-up/sign-in-password')
-}
-})
-
-
-// ******* Sign in password validation ********************************
-router.get('/v4/1-initial-set-up/sign-in-password', function (req, res) {
-// Set URl
-res.render('v4/1-initial-set-up/sign-in-password', {
-  currentUrl: req.originalUrl
-})
-})
-
-router.post('/v4/1-initial-set-up/sign-in-password', function (req, res) {
-// Create empty array and set error variables to false
-var errors = []
-
-
-// Check if user has filled out password
-if (req.session.data['signin-password'] === '') {
-  // No value so add error to array
-  errors.push({
-    text: 'Enter your password',
-    href: '#signin-password'
-  })
-}
-
-if (req.session.data['signin-password'] === '') {
-  // Re-show page with error value as true so errors will show
-  res.render('v4/1-initial-set-up/sign-in-password', {
-    errorSigninPassword: true,
-    errorList: errors
-  })
-} else {
-  // User inputted value so move to next page
-  res.redirect('/v4/1-initial-set-up/have-you-verified')
-}
-})
 
 // ******* have-you-verified javascript ********************************
 router.get('/v4/1-initial-set-up/have-you-verified', function (req, res) {
@@ -131,93 +72,8 @@ router.post('/v4/1-initial-set-up/starting-a-new-application', function (req, re
     })
   } else {
     if (req.session.data['newApplication'] === 'yes') {
-      res.redirect('/v4/1-initial-set-up/check-before')
-    } 
-  }
-})
-
-
-// ******* check-before javascript ********************************
-router.get('/v4/1-initial-set-up/check-before', function (req, res) {
-  // Set URl
-  res.render('v4/1-initial-set-up/check-before', {
-    currentUrl: req.originalUrl
-  })
-})
-
-router.post('/v4/1-initial-set-up/check-before', function (req, res) {
-  res.redirect('/v4/1-initial-set-up/card-or-paypal')
-})
-
-
-// ******* card-or-paypal javascript ********************************
-router.get('/v4/1-initial-set-up/card-or-paypal', function (req, res) {
-  // Set URl
-  res.render('v4/1-initial-set-up/card-or-paypal', {
-    currentUrl: req.originalUrl
-  })
-})
-
-router.post('/v4/1-initial-set-up/card-or-paypal', function (req, res) {
-  // Create empty array
-  var errors = []
-
-  // Check if user has filled out a value
-  if (typeof req.session.data['paypal'] === 'undefined') {
-    // No value so add error to array
-    errors.push({
-      text: 'Select yes if you are able to use a card or PayPal',
-      href: '#paypal'
-    })
-
-    // Re-show page with error value as true so errors will show
-    res.render('v4/1-initial-set-up/card-or-paypal', {
-      errorPaypal: true,
-      errorList: errors
-    })
-  } else {
-    if (req.session.data['paypal'] === 'yes') {
-      res.redirect('/v4/1-initial-set-up/secure-register')
-    } else {
-      // User inputted value so move to next page
-      res.redirect('/v4/1-initial-set-up/card-or-paypal-stop')
-    }
-  }
-})
-
-
-// ******* secure-register javascript ********************************
-router.get('/v4/1-initial-set-up/secure-register', function (req, res) {
-  // Set URl
-  res.render('v4/1-initial-set-up/secure-register', {
-    currentUrl: req.originalUrl
-  })
-})
-
-router.post('/v4/1-initial-set-up/secure-register', function (req, res) {
-  // Create empty array
-  var errors = []
-
-  // Check if user has filled out a value
-  if (typeof req.session.data['secureRegister'] === 'undefined') {
-    // No value so add error to array
-    errors.push({
-      text: 'Select yes if you are able to use a card or PayPal',
-      href: '#secureRegister'
-    })
-
-    // Re-show page with error value as true so errors will show
-    res.render('v4/1-initial-set-up/secure-register', {
-      errorSercure: true,
-      errorList: errors
-    })
-  } else {
-    if (req.session.data['secureRegister'] === 'yes') {
-      res.redirect('/v4/1-initial-set-up/secure-register-stop')
-    } else {
-      // User inputted value so move to next page
       res.redirect('/v4/2-company-details/company-relationship')
-    }
+    } 
   }
 })
 
@@ -300,79 +156,9 @@ router.post('/v4/2-company-details/company-name', function (req, res) {
       errorList: errors
     })
   } else {
-    res.redirect('/v4/2-company-details/company-contact')
-  }
-  
-})
-
-
-// ******* company-contact javascript ******************************
-router.get('/v4/2-company-details/company-contact', function (req, res) {
-  // Set URl
-  res.render('v4/2-company-details/company-contact', {
-    currentUrl: req.originalUrl
-  })
-})
-
-router.post('/v4/2-company-details/company-contact', function (req, res) {
-    // Create empty array and set error variables to false
-    var errors = []
-    var contactError = false
-  
-    // Check if user has filled out any contact details
-    if (req.session.data['companyNumber'] === '' &&
-        req.session.data['companyEmail'] === '' &&
-        req.session.data['companyOtherNumber'] === '' ) {
-      // No value so add error to array
-      contactError = true
-      errors.push({
-        text: 'Give us one or more ways to contact the company',
-        href: '#companyNumber'
-      })
-    }
-
-  // Check if eother filed not filled out
-  if (contactError) {
-    // Re-show page with error value as true so errors will show
-    res.render('v4/2-company-details/company-contact', {
-      errorCompanyContact: contactError,
-      errorList: errors
-    })
-  } else {
-    res.redirect('/v4/2-company-details/replacing')
-  }
-  
-})
-
-
-// ******* replacing javascript ********************************
-router.get('/v4/2-company-details/replacing', function (req, res) {
-  // Set URl
-  res.render('v4/2-company-details/replacing', {
-    currentUrl: req.originalUrl
-  })
-})
-
-router.post('/v4/2-company-details/replacing', function (req, res) {
-  // Create empty array
-  var errors = []
-
-  // Check if user has filled out a value
-  if (typeof req.session.data['replacingBusiness'] === 'undefined') {
-    // No value so add error to array
-    errors.push({
-      text: 'Select yes if the new company is replacing another business',
-      href: '#replacingBusiness'
-    })
-
-    // Re-show page with error value as true so errors will show
-    res.render('v4/2-company-details/replacing', {
-      errorReplacing: true,
-      errorList: errors
-    })
-  } else {
     res.redirect('/v4/3-director/director-details')
   }
+  
 })
 
 
@@ -572,38 +358,7 @@ router.get('/v4/3-director/director-confirm-address', function (req, res) {
 })
 
 router.post('/v4/3-director/director-confirm-address', function (req, res) {
-  res.redirect('/v4/3-director/director-reminders')
-})
-
-
-// ******* director-reminders javascript ********************************
-router.get('/v4/3-director/director-reminders', function (req, res) {
-  // Set URl
-  res.render('v4/3-director/director-reminders', {
-    currentUrl: req.originalUrl
-  })
-})
-
-router.post('/v4/3-director/director-reminders', function (req, res) {
-  // Create empty array
-  var errors = []
-
-  // Check if user has filled out a value
-  if (typeof req.session.data['reminders'] === 'undefined') {
-    // No value so add error to array
-    errors.push({
-      text: 'Select if the director wants to receive filing reminders',
-      href: '#reminders'
-    })
-
-    // Re-show page with error value as true so errors will show
-    res.render('v4/3-director/director-reminders', {
-      errorReminders: true,
-      errorList: errors
-    })
-  } else {
-      res.redirect('/v4/3-director/director-statement')
-  }
+  res.redirect('/v4/3-director/director-statement')
 })
 
 
@@ -714,46 +469,512 @@ router.post('/v4/3-director/director-check-details', function (req, res) {
       errorList: errors
     })
   } else {
-    res.redirect('/v4/4-psc/set-up-pscs')
+    res.redirect('/v4/4-shareholders/set-up-shareholders')
   }
   
 })
 
-// ******* set-up-pscs javascript ******************************
-router.get('/v4/4-psc/set-up-pscs', function (req, res) {
+// ******* set-up-shareholders javascript ******************************
+router.get('/v4/4-shareholders/set-up-shareholders', function (req, res) {
   // Set URl
-  res.render('v4/4-psc/set-up-pscs', {
+  res.render('v4/4-shareholders/set-up-shareholders', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v4/4-psc/set-up-pscs', function (req, res) {
-  res.redirect('/v4/4-psc/psc-previous-answers')
+router.post('/v4/4-shareholders/set-up-shareholders', function (req, res) {
+  res.redirect('/v4/4-shareholders/is-a-shareholder')
+})
+
+// ******* add-shareholder javascript ********************************
+router.get('/v4/4-shareholders/is-a-shareholder', function (req, res) {
+  // Set URl
+  res.render('v4/4-shareholders/is-a-shareholder', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v4/4-shareholders/is-a-shareholder', function (req, res) {
+  // Create empty array
+  var errors = []
+
+  // Check if user has filled out a value
+  if (typeof req.session.data['isShareholder'] === 'undefined') {
+    // No value so add error to array
+    errors.push({
+      text: 'Select if they are a shareholder',
+      href: '#isShareholder'
+    })
+
+    // Re-show page with error value as true so errors will show
+    res.render('v4/4-shareholders/is-a-shareholder', {
+      errorIsShareholder: true,
+      errorList: errors
+    })
+  } else {
+      // User inputted value so move to next page
+      res.redirect('/v4/4-shareholders/shareholder-add')
+    }
+})
+
+
+// ******* add-shareholder javascript ********************************
+router.get('/v4/4-shareholders/shareholder-add', function (req, res) {
+  // Set URl
+  res.render('v4/4-shareholders/shareholder-add', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v4/4-shareholders/shareholder-add', function (req, res) {
+  // Create empty array
+  var errors = []
+
+  // Check if user has filled out a value
+  if (typeof req.session.data['addShareholder'] === 'undefined') {
+    // No value so add error to array
+    errors.push({
+      text: 'Select if you want to add another shareholder',
+      href: '#addShareholder'
+    })
+
+    // Re-show page with error value as true so errors will show
+    res.render('v4/4-shareholders/shareholder-add', {
+      errorAddShareholder: true,
+      errorList: errors
+    })
+  } else if (req.session.data['addShareholder'] === 'yes') {
+    res.redirect('/v4/4-shareholders/shareholder-type')
+  } else {
+    res.redirect('/v4/4-shareholders/check-shareholder-details')
+  }
+})
+
+
+// ******* add-shareholder javascript ********************************
+router.get('/v4/4-shareholders/shareholder-type', function (req, res) {
+  // Set URl
+  res.render('v4/4-shareholders/shareholder-type', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v4/4-shareholders/shareholder-type', function (req, res) {
+  // Create empty array
+  var errors = []
+
+  // Check if user has filled out a value
+  if (typeof req.session.data['typeShareholder'] === 'undefined') {
+    // No value so add error to array
+    errors.push({
+      text: 'Select the type of shareholder you would like to add',
+      href: '#typeShareholder'
+    })
+
+    // Re-show page with error value as true so errors will show
+    res.render('v4/4-shareholders/shareholder-type', {
+      errorTypeShareholder: true,
+      errorList: errors
+    })
+  }   else if (req.session.data['typeShareholder'] === 'person') {
+    res.redirect('/v4/4-shareholders/shareholder-name')
+  } else {
+    res.redirect('/v4/4-shareholders/corporate-shareholder-name')
+  }
+})
+
+
+// ******* shareholder-name javascript *********************
+router.get('/v4/4-shareholders/shareholder-name', function (req, res) {
+  // Set URl
+  res.render('v4/4-shareholders/shareholder-name', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v4/4-shareholders/shareholder-name', function (req, res) {
+  // Create empty array and set error variables to false
+  var errors = [];
+  var firstNameError = false
+  var lastNameError = false
+  var shareholderNameError = false
+
+  if (req.session.data['shareholderFirstName'] === '') {
+    firstNameError = true
+    shareholderNameError = true
+    errors.push({
+      text: 'Enter the first name',
+      href: '#shareholderFirstName'
+    })
+  }
+
+  if (req.session.data['shareholderLastName'] === '') {
+    lastNameError = true
+    shareholderNameError = true
+    errors.push({
+      text: 'Enter the last name',
+      href: '#shareholderLastName'
+    })
+  }
+
+  if (shareholderNameError) {
+  res.render('v4/4-shareholders/shareholder-name', {
+    errorShareholderFirstName: firstNameError,
+    errorShareholderLastName: lastNameError,
+    errorShareholderName: shareholderNameError,
+    errorList: errors
+  })
+  } else {
+      res.redirect('/v4/4-shareholders/shareholder-address')
+    }
+})
+
+
+// ******* shareholder-address javascript ********************************
+router.get('/v4/4-shareholders/shareholder-address', function (req, res) {
+  // Set URl
+  res.render('v4/4-shareholders/shareholder-address', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v4/4-shareholders/shareholder-address', function (req, res) {
+  // Create empty array
+  var errors = []
+
+  // Check if user has filled out a value
+  if (typeof req.session.data['shareholderAddress'] === 'undefined') {
+    // No value so add error to array
+    errors.push({
+      text: 'Select the address of shareholder',
+      href: '#shareholderAddress'
+    })
+
+    // Re-show page with error value as true so errors will show
+    res.render('v4/4-shareholders/shareholder-address', {
+      errorShareholderAddress: true,
+      errorList: errors
+    })
+  }   else if (req.session.data['shareholderAddress'] === 'address') {
+    res.redirect('/v4/4-shareholders/shareholder-add')
+  } else {
+    res.redirect('/v4/4-shareholders/shareholder-address-2')
+  }
+})
+
+
+// ******* shareholder-address2 javascript ********************************
+router.get('/v4/4-shareholders/shareholder-address-2', function (req, res) {
+  // Set URl
+  res.render('v4/4-shareholders/shareholder-address-2', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v4/4-shareholders/shareholder-address-2', function (req, res) {
+    res.redirect('/v4/4-shareholders/shareholder-confirm-address')
+})
+
+
+// ******* confirm-address javascript ********************************
+router.get('/v4/4-shareholders/shareholder-confirm-address', function (req, res) {
+  // Set URl
+  res.render('v4/4-shareholders/shareholder-confirm-address', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v4/4-shareholders/shareholder-confirm-address', function (req, res) {
+  res.redirect('/v4/4-shareholders/shareholder-add')
+})
+
+
+// ******* corporate-shareholder-name javascript *********************
+router.get('/v4/4-shareholders/corporate-shareholder-name', function (req, res) {
+  // Set URl
+  res.render('v4/4-shareholders/corporate-shareholder-name', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v4/4-shareholders/corporate-shareholder-name', function (req, res) {
+  // Create empty array and set error variables to false
+  var errors = [];
+  var nameError = false
+
+  if (req.session.data['shareholderCorporateName'] === '') {
+    nameError = true
+    errors.push({
+      text: 'Enter the corporate shareholders name',
+      href: '#shareholderCorporateName'
+    })
+  }
+
+  if (nameError) {
+  res.render('v4/4-shareholders/corporate-shareholder-name', {
+    errorShareholderCorporateName: nameError,
+    errorList: errors
+  })
+  } else {
+      res.redirect('/v4/4-shareholders/corporate-shareholder-name-warning')
+    }
+})
+
+
+// ******* confirm-address javascript ********************************
+router.get('/v4/4-shareholders/corporate-shareholder-name-warning', function (req, res) {
+  // Set URl
+  res.render('v4/4-shareholders/corporate-shareholder-name-warning', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v4/4-shareholders/corporate-shareholder-name-warning', function (req, res) {
+  res.redirect('/v4/4-shareholders/corporate-shareholder-address')
+})
+
+
+
+// ******* corporate-shareholder-address javascript ********************************
+router.get('/v4/4-shareholders/corporate-shareholder-address', function (req, res) {
+  // Set URl
+  res.render('v4/4-shareholders/corporate-shareholder-address', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v4/4-shareholders/corporate-shareholder-address', function (req, res) {
+  // Create empty array
+  var errors = []
+
+  // Check if user has filled out a value
+  if (typeof req.session.data['corporateShareholderAddress'] === 'undefined') {
+    // No value so add error to array
+    errors.push({
+      text: 'Select the address of corporate shareholder',
+      href: '#corporateShareholderAddress'
+    })
+
+    // Re-show page with error value as true so errors will show
+    res.render('v4/4-shareholders/corporate-shareholder-address', {
+      errorCorporateShareholderAddress: true,
+      errorList: errors
+    })
+  }   else if (req.session.data['corporateShareholderAddress'] === 'address') {
+    res.redirect('/v4/4-shareholders/corporate-shareholder-person')
+  } else {
+    res.redirect('/v4/4-shareholders/corporate-shareholder-address-2')
+  }
+})
+
+
+// ******* corporate-shareholder-address2 javascript ********************************
+router.get('/v4/4-shareholders/corporate-shareholder-address-2', function (req, res) {
+  // Set URl
+  res.render('v4/4-shareholders/corporate-shareholder-address-2', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v4/4-shareholders/corporate-shareholder-address-2', function (req, res) {
+    res.redirect('/v4/4-shareholders/corporate-shareholder-confirm-address')
+})
+
+
+// ******* corporate-confirm-address javascript ********************************
+router.get('/v4/4-shareholders/corporate-shareholder-confirm-address', function (req, res) {
+  // Set URl
+  res.render('v4/4-shareholders/corporate-shareholder-confirm-address', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v4/4-shareholders/corporate-shareholder-confirm-address', function (req, res) {
+  res.redirect('/v4/4-shareholders/corporate-shareholder-person')
+})
+
+
+// ******* corporate-shareholder-person javascript *********************
+router.get('/v4/4-shareholders/corporate-shareholder-person', function (req, res) {
+  // Set URl
+  res.render('v4/4-shareholders/corporate-shareholder-person', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v4/4-shareholders/corporate-shareholder-person', function (req, res) {
+  // Create empty array and set error variables to false
+  var errors = [];
+  var firstNameError = false
+  var lastNameError = false
+  var shareholderNameError = false
+
+  if (req.session.data['corporatePersonFirstName'] === '') {
+    firstNameError = true
+    shareholderNameError = true
+    errors.push({
+      text: 'Enter the first name',
+      href: '#corporatePersonFirstName'
+    })
+  }
+
+  if (req.session.data['corporatePersonLastName'] === '') {
+    lastNameError = true
+    shareholderNameError = true
+    errors.push({
+      text: 'Enter the last name',
+      href: '#corporatePersonLastName'
+    })
+  }
+
+  if (shareholderNameError) {
+  res.render('v4/4-shareholders/corporate-shareholder-person', {
+    errorCorporatePersonFirstName: firstNameError,
+    errorCorporatePersonlastName: lastNameError,
+    errorCorporatePerson: shareholderNameError,
+    errorList: errors
+  })
+  } else {
+      res.redirect('/v4/4-shareholders/shareholder-add')
+    }
+})
+
+
+// ******* check-shareholder-details javascript ********************************
+router.get('/v4/4-shareholders/check-shareholder-details', function (req, res) {
+  // Set URl
+  res.render('v4/4-shareholders/check-shareholder-details', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v4/4-shareholders/check-shareholder-details', function (req, res) {
+  res.redirect('/v4/4-shareholders/share-type')
+})
+
+
+
+// ******* share-type javascript ********************************
+router.get('/v4/4-shareholders/share-type', function (req, res) {
+  // Set URl
+  res.render('v4/4-shareholders/share-type', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v4/4-shareholders/share-type', function (req, res) {
+  // Create empty array
+  var errors = []
+
+  // Check if user has filled out a value
+  if (typeof req.session.data['shareType'] === 'undefined') {
+    // No value so add error to array
+    errors.push({
+      text: 'Select if you want to use the most common type of share',
+      href: '#shareType'
+    })
+
+    // Re-show page with error value as true so errors will show
+    res.render('v4/4-shareholders/share-type', {
+      errorShareType: true,
+      errorList: errors
+    })
+  } else 
+    res.redirect('/v4/4-shareholders/share-number')
+})
+
+
+// ******* share-number javascript ********************************
+router.get('/v4/4-shareholders/share-number', function (req, res) {
+  // Set URl
+  res.render('v4/4-shareholders/share-number', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v4/4-shareholders/share-number', function (req, res) {
+  res.redirect('/v4/4-shareholders/share-value')
+})
+
+
+// ******* share-type javascript ********************************
+router.get('/v4/4-shareholders/share-value', function (req, res) {
+  // Set URl
+  res.render('v4/4-shareholders/share-value', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v4/4-shareholders/share-value', function (req, res) {
+  // Create empty array
+  var errors = []
+
+  // Check if user has filled out a value
+  if (typeof req.session.data['shareValue'] === 'undefined') {
+    // No value so add error to array
+    errors.push({
+      text: 'Select the share value',
+      href: '#shareValue'
+    })
+
+    // Re-show page with error value as true so errors will show
+    res.render('v4/4-shareholders/share-value', {
+      errorShareValue: true,
+      errorList: errors
+    })
+  } else 
+    res.redirect('/v4/4-shareholders/check-shares')
+})
+
+
+// ******* check-shares javascript ********************************
+router.get('/v4/4-shareholders/check-shares', function (req, res) {
+  // Set URl
+  res.render('v4/4-shareholders/check-shares', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v4/4-shareholders/check-shares', function (req, res) {
+  res.redirect('/v4/5-psc/set-up-pscs')
+})
+
+
+// ******* set-up-pscs javascript ******************************
+router.get('/v4/5-psc/set-up-pscs', function (req, res) {
+  // Set URl
+  res.render('v4/5-psc/set-up-pscs', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v4/5-psc/set-up-pscs', function (req, res) {
+  res.redirect('/v4/5-psc/psc-previous-answers')
 })
 
 
 // ******* psc-previous-answers javascript ******************************
-router.get('/v4/4-psc/psc-previous-answers', function (req, res) {
+router.get('/v4/5-psc/psc-previous-answers', function (req, res) {
   // Set URl
-  res.render('v4/4-psc/psc-previous-answers', {
+  res.render('v4/5-psc/psc-previous-answers', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v4/4-psc/psc-previous-answers', function (req, res) {
-  res.redirect('/v4/4-psc/psc-right-to-appoint')
+router.post('/v4/5-psc/psc-previous-answers', function (req, res) {
+  res.redirect('/v4/5-psc/psc-right-to-appoint')
 })
 
 
 // ******* psc-right-to-appoint javascript ********************************
-router.get('/v4/4-psc/psc-right-to-appoint', function (req, res) {
+router.get('/v4/5-psc/psc-right-to-appoint', function (req, res) {
   // Set URl
-  res.render('v4/4-psc/psc-right-to-appoint', {
+  res.render('v4/5-psc/psc-right-to-appoint', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v4/4-psc/psc-right-to-appoint', function (req, res) {
+router.post('/v4/5-psc/psc-right-to-appoint', function (req, res) {
   // Create empty array
   var errors = []
 
@@ -766,28 +987,28 @@ router.post('/v4/4-psc/psc-right-to-appoint', function (req, res) {
     })
 
     // Re-show page with error value as true so errors will show
-    res.render('v4/4-psc/psc-right-to-appoint', {
+    res.render('v4/5-psc/psc-right-to-appoint', {
       errorRightAppoint: true,
       errorList: errors
     })
   } else {
     if (typeof req.session.data['pscFirstName'] === 'undefined')
-       res.redirect('/v4/4-psc/psc-check-details')
+       res.redirect('/v4/5-psc/psc-check-details')
     else 
-      res.redirect('/v4/4-psc/psc-Statement')
+      res.redirect('/v4/5-psc/psc-Statement')
     }
 })
 
 
 // ******* add-psc javascript ********************************
-router.get('/v4/4-psc/psc-add', function (req, res) {
+router.get('/v4/5-psc/psc-add', function (req, res) {
   // Set URl
-  res.render('v4/4-psc/psc-add', {
+  res.render('v4/5-psc/psc-add', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v4/4-psc/psc-add', function (req, res) {
+router.post('/v4/5-psc/psc-add', function (req, res) {
   // Create empty array
   var errors = []
 
@@ -800,13 +1021,13 @@ router.post('/v4/4-psc/psc-add', function (req, res) {
     })
 
     // Re-show page with error value as true so errors will show
-    res.render('v4/4-psc/psc-add', {
+    res.render('v4/5-psc/psc-add', {
       errorAddPsc: true,
       errorList: errors
     })
   } else {
     if (req.session.data['addPsc'] === 'psc') {
-      res.redirect('/v4/4-psc/psc-details')
+      res.redirect('/v4/5-psc/psc-details')
     } else if (req.session.data['addPsc'] === 'rle') {
       res.redirect('/v4/5-rle/rle-name')
     }
@@ -815,14 +1036,14 @@ router.post('/v4/4-psc/psc-add', function (req, res) {
 
 
 // ******* check-director-details javascript ******************************
-router.get('/v4/4-psc/psc-check-details', function (req, res) {
+router.get('/v4/5-psc/psc-check-details', function (req, res) {
   // Set URl
-  res.render('v4/4-psc/psc-check-details', {
+  res.render('v4/5-psc/psc-check-details', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v4/4-psc/psc-check-details', function (req, res) {
+router.post('/v4/5-psc/psc-check-details', function (req, res) {
     // Create empty array and set error variables to false
     var errors = []
     var directorDetailsError = false
@@ -850,7 +1071,7 @@ router.post('/v4/4-psc/psc-check-details', function (req, res) {
   // Check if eother filed not filled out
   if (pscDetailsError) {
     // Re-show page with error value as true so errors will show
-    res.render('v4/4-psc/psc-check-details', {
+    res.render('v4/5-psc/psc-check-details', {
       errorConfirmPscAddress: pscConfirmAddressError,
       errorConfirmPscAgree: pscConfirmAgreeError,
       errorPscStatements: pscStatementsError,
@@ -858,21 +1079,21 @@ router.post('/v4/4-psc/psc-check-details', function (req, res) {
       errorList: errors
     })
   } else {
-    res.redirect('/v4/4-psc/set-up-pscs')
+    res.redirect('/v4/5-psc/set-up-pscs')
   }
   
 })
 
 
 // ******* psc-details javascript ******************************
-router.get('/v4/4-psc/psc-details', function (req, res) {
+router.get('/v4/5-psc/psc-details', function (req, res) {
   // Set URl
-  res.render('v4/4-psc/psc-details', {
+  res.render('v4/5-psc/psc-details', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v4/4-psc/psc-details', function (req, res) {
+router.post('/v4/5-psc/psc-details', function (req, res) {
     // Create empty array and set error variables to false
     var errors = []
     var firstNameError = false
@@ -953,7 +1174,7 @@ router.post('/v4/4-psc/psc-details', function (req, res) {
   // Check if eother filed not filled out
   if (detailsError) {
     // Re-show page with error value as true so errors will show
-    res.render('v4/4-psc/psc-details', {
+    res.render('v4/5-psc/psc-details', {
       errorPscFirstName: firstNameError,
       errorPscLastName: lastNameError,
       errorPscNationality: nationalityError,
@@ -970,7 +1191,7 @@ router.post('/v4/4-psc/psc-details', function (req, res) {
     href: '#PscPersonalCode'
     })
     
-    res.render('v4/4-psc/psc-details', {
+    res.render('v4/5-psc/psc-details', {
       errorPscDobDay: true,
       errorPscDobMonth: true,
       errorPscDobYear: true,
@@ -980,61 +1201,61 @@ router.post('/v4/4-psc/psc-details', function (req, res) {
     })
   } // name mis-match
   else if (req.session.data['pscPersonalCode'] === '111-2222-3333') {
-    res.redirect('/v4/4-psc/psc-why-this-name')
+    res.redirect('/v4/5-psc/psc-why-this-name')
   } else {
-    res.redirect('/v4/4-psc/psc-address')
+    res.redirect('/v4/5-psc/psc-address')
   }
 })
 
 
 // ******* pscwhy-this-name javascript ********************************
-router.get('/v4/4-psc/psc-why-this-name', function (req, res) {
+router.get('/v4/5-psc/psc-why-this-name', function (req, res) {
   // Set URl
-  res.render('v4/4-psc/psc-why-this-name', {
+  res.render('v4/5-psc/psc-why-this-name', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v4/4-psc/psc-why-this-name', function (req, res) {
-  res.redirect('/v4/4-psc/psc-address')
+router.post('/v4/5-psc/psc-why-this-name', function (req, res) {
+  res.redirect('/v4/5-psc/psc-address')
 })
 
 
 // ******* psc-address javascript ********************************
-router.get('/v4/4-psc/psc-address', function (req, res) {
+router.get('/v4/5-psc/psc-address', function (req, res) {
   // Set URl
-  res.render('v4/4-psc/psc-address', {
+  res.render('v4/5-psc/psc-address', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v4/4-psc/psc-address', function (req, res) {
-  res.redirect('/v4/4-psc/psc-confirm-address')
+router.post('/v4/5-psc/psc-address', function (req, res) {
+  res.redirect('/v4/5-psc/psc-confirm-address')
 })
 
 
 // ******* psc-confirm-address javascript ********************************
-router.get('/v4/4-psc/psc-confirm-address', function (req, res) {
+router.get('/v4/5-psc/psc-confirm-address', function (req, res) {
   // Set URl
-  res.render('v4/4-psc/psc-confirm-address', {
+  res.render('v4/5-psc/psc-confirm-address', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v4/4-psc/psc-confirm-address', function (req, res) {
-  res.redirect('/v4/4-psc/psc-right-to-appoint')
+router.post('/v4/5-psc/psc-confirm-address', function (req, res) {
+  res.redirect('/v4/5-psc/psc-right-to-appoint')
 })
 
 
 // ******* psc-statement javascript ********************************
-router.get('/v4/4-psc/psc-statement', function (req, res) {
+router.get('/v4/5-psc/psc-statement', function (req, res) {
   // Set URl
-  res.render('v4/4-psc/psc-statement', {
+  res.render('v4/5-psc/psc-statement', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v4/4-psc/psc-statement', function (req, res) {
+router.post('/v4/5-psc/psc-statement', function (req, res) {
   // Create empty array
   var errors = []
 
@@ -1046,12 +1267,12 @@ router.post('/v4/4-psc/psc-statement', function (req, res) {
     })
 
     // Re-show page with error value as true so errors will show
-    res.render('v4/4-psc/psc-statement', {
+    res.render('v4/5-psc/psc-statement', {
       errorPscStatement: true,
       errorList: errors
     })
   } else {
-      res.redirect('/v4/4-psc/psc-check-details')
+      res.redirect('/v4/5-psc/psc-check-details')
   }
 })
 
@@ -1285,7 +1506,7 @@ router.post('/v4/5-rle/ro-have-details', function (req, res) {
       res.redirect('/v4/5-rle/ro-details')
     } else {
       // User inputted value so move to next page
-      res.redirect('/v4/4-psc/psc-check-details')
+      res.redirect('/v4/5-psc/psc-check-details')
     }
   }
 })
@@ -1464,7 +1685,7 @@ router.get('/v4/5-rle/ro-statements', function (req, res) {
 })
 
 router.post('/v4/5-rle/ro-statements', function (req, res) {
-  res.redirect('/v4/4-psc/psc-check-details')
+  res.redirect('/v4/5-psc/psc-check-details')
 })
 
 

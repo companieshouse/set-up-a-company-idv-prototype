@@ -1,0 +1,59 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  What is the relevant officer's details? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-error-summary warning-box" data-module="govuk-error-summary">
+      <div role="alert">
+        <h2 class="govuk-error-summary__title">
+          This is a warning
+        </h2>.</b>
+          <p class="govuk-body warning-box-text"><b>A corporate shareholder must have legal personality. You 
+            can continue, but you may be asked to provide evidence that the corporate shareholder 
+            has legal personality</b>
+          </p>
+      </div>
+    </div>
+
+    <h1 class="govuk-heading-l">What is the corporate shareholder's name?</h1>
+
+    <form action="{{currentUrl}}" method="post">
+
+      <div class="govuk-inset-text">
+        The shareholder's name will appear on the public record and be available online.
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="shareholderCorporateName2">
+          Enter the corporate shareholder's namefirst name
+        </label>
+        <div id="shareholderCorporateName-hint" class="govuk-hint">
+          This can be a company, corporate body or firm
+        </div>
+        <p class="govuk-body"><b>A corporate shareholder must have legal personality. You 
+          can continue, but you may be asked to provide evidence that the corporate shareholder 
+          has legal personality.</b>
+        </p>
+
+        <input class="govuk-input govuk-!-width-two-thirds" id="shareholderCorporateName2" name="shareholderCorporateName2" type="text" value="{{ data['shareholderCorporateName'] }}">
+      </div>
+
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+{% endblock %}

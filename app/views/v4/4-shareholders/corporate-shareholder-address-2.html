@@ -1,0 +1,58 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Right to appoint or remove
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="{{currentUrl}}" method="post">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="shareholderAddress-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              What is the address for {{ data['shareholderCorporateName'] }}?
+            </h1>
+          </legend>
+
+          <div class="govuk-inset-text">
+            Use the principal place of business or registered office addess of the corporate shareholder.
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="shareholderPostcode">
+              UK postcode
+            </label>
+            <input class="govuk-input govuk-input--width-10" id="shareholderPostcode" name="shareholderPostcode" type="text">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="shareholderPropertyName">
+              Property name or number (optional)
+            </label>
+            <div id="shareholderPropertyName-hint" class="govuk-hint">
+              For example, 'The Mill', '116' or 'Flat 37a'
+            </div>
+            <input class="govuk-input govuk-input--width-5" id="shareholderPropertyName" name="shareholderPropertyName" type="text">
+          </div>
+        </fieldset>
+      </div>
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

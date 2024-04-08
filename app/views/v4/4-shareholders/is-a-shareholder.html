@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Are you able to pay for this application using a card or PayPal? 
+  Do you want to add another director?
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,7 +15,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <!-- Check for error -->
-    {% if errorPaypal %}
+    {% if errorIsShareholder %}
       {{ govukErrorSummary({
         titleText: "There is a problem",
         errorList: errorList
@@ -24,37 +24,34 @@
     <form action="{{currentUrl}}" method="post">
 
       <!-- Check for error -->
-      {% if errorPaypal %}
+      {% if errorIsShareholder %}
       <div class="govuk-form-group govuk-form-group--error">
       {% else %}
       <div class="govuk-form-group">
       {% endif %} 
-        <fieldset class="govuk-fieldset" aria-describedby="newApplication-hint">
+        <fieldset class="govuk-fieldset" aria-describedby="isShareholder-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
-            Are you able to pay for this application using a card or PayPal?
+              Is {{ data['directorTitle']}} {{ data['directorFirstName']}} {{ data['directorMiddleName']}} {{ data['directorLastName']}} a shareholder?
             </h1>
           </legend>
-          <div id="paypal-hint" class="govuk-hint">
-            We only accept card or PayPal payments on this service.
-          </div>
           <!-- Check for error -->
-          {% if errorPaypal %}
-          <p id="paypal-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Select yes if you are able to use a card or PayPal
+          {% if errorIsShareholder %}
+          <p id="isShareholder-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Select if they are a shareholder
           </p>
           {% endif %} 
 
           <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="paypal" name="paypal" type="radio" value="yes">
-              <label class="govuk-label govuk-radios__label" for="paypal">
+              <input class="govuk-radios__input" id="isShareholder" name="isShareholder" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="isShareholder">
                 Yes
               </label>
             </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="paypal-2" name="paypal" type="radio" value="no">
-              <label class="govuk-label govuk-radios__label" for="paypal-2">
+              <input class="govuk-radios__input" id="isShareholder-2" name="isShareholder" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="isShareholder-2">
                 No
               </label>
             </div>
@@ -63,7 +60,7 @@
       </div>
 
       {{ govukButton({
-        text: "Continue"
+        text: "Save and continue"
       }) }}
 
     </form>

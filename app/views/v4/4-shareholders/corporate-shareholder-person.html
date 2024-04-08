@@ -1,0 +1,72 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  What is the relevant officer's details? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- Check for error -->
+    {% if errorCorporatePerson %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+    <h1 class="govuk-heading-l">What is the name of the person acting on behalf of {{ data['shareholderCorporateName'] }}?</h1>
+
+    <form action="{{currentUrl}}" method="post">
+
+      <!-- Check for error -->
+      {% if errorCorporatePersonFirstName %}
+        <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+        <div class="govuk-form-group">
+      {% endif %} 
+          <label class="govuk-label" for="corporatePersonFirstName">
+            Enter first name
+          </label>
+          <!-- Check for error -->
+        {% if errorCorporatePersonFirstName %}
+          <p id="corporatePersonFirstName-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Enter the first name
+          </p>
+        {% endif %} 
+          <input class="govuk-input govuk-!-width-two-thirds" id="corporatePersonFirstName" name="corporatePersonFirstName" type="text">
+      </div>
+  
+    
+      <!-- Check for error -->
+      {% if errorCorporatePersonlastName %}
+        <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+        <div class="govuk-form-group">
+      {% endif %} 
+          <label class="govuk-label" for="corporatePersonLastName">
+            Last name
+          </label>
+          <!-- Check for error -->
+        {% if errorCorporatePersonlastName %}
+          <p id="corporatePersonLastName-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Enter the last name
+          </p>
+        {% endif %} 
+          <input class="govuk-input govuk-!-width-two-thirds" id="corporatePersonLastName" name="corporatePersonLastName" type="text">
+      </div>
+
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+{% endblock %}

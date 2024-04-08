@@ -1,0 +1,129 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Do you want to add another director?
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- Check for error -->
+    {% if errorShareNumber %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+    <form action="{{currentUrl}}" method="post">
+
+        <h1 class="govuk-heading-l">How many shares do you want to give to each shareholder?</h1>
+
+        <div class="govuk-inset-text">
+          The number of shares you give to each shareholder should reflect the proportion of the company they own.
+        </div>
+
+        <details class="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Show me some examples of how shares could be given
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            ...
+          </div>
+        </details>
+
+        <div class="govuk-form-group govuk-!-margin-bottom-9">
+          <fieldset class="govuk-fieldset" aria-describedby="shareNumber-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h2 class="govuk-fieldset__heading">
+                How many shares does {{ data['directorTitle']}} {{ data['directorFirstName']}} {{ data['directorMiddleName']}} {{ data['directorLastName']}} own?
+              </h2>
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="shareholderOneNumber" name="shareholderOneNumber" type="radio" value="1">
+                <label class="govuk-label govuk-radios__label" for="shareholderOneNumber">
+                  1 share
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="shareholderOneNumber-2" name="shareholderOneNumber" type="radio" value="other">
+                <label class="govuk-label govuk-radios__label" for="shareholderOneNumber-2">
+                  Other amount
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="govuk-form-group govuk-!-margin-bottom-9">
+          <fieldset class="govuk-fieldset" aria-describedby="shareNumber-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h2 class="govuk-fieldset__heading">
+                How many shares does {{ data['shareholderFirstName']}} {{ data['shareholderLastName']}} own?
+              </h2>
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="shareholderOneNumber" name="shareholderOneNumber" type="radio" value="1">
+                <label class="govuk-label govuk-radios__label" for="shareholderOneNumber">
+                  1 share
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="shareholderOneNumber-2" name="shareholderOneNumber" type="radio" value="other">
+                <label class="govuk-label govuk-radios__label" for="shareholderOneNumber-2">
+                  Other amount
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="shareNumber-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h2 class="govuk-fieldset__heading">
+                How many shares does {{ data['shareholderCorporateName']}} own?
+              </h2>
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="shareholderOneNumber" name="shareholderOneNumber" type="radio" value="1">
+                <label class="govuk-label govuk-radios__label" for="shareholderOneNumber">
+                  1 share
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="shareholderOneNumber-2" name="shareholderOneNumber" type="radio" value="other">
+                <label class="govuk-label govuk-radios__label" for="shareholderOneNumber-2">
+                  Other amount
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <p class="govuk-body">These are 'ordinary shares' in British pounds. The entitle the shareholder to:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>receive company profits through dividends</li>
+          <li>vote on importent company issues like choosing directors</li>
+        </ul>
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}
