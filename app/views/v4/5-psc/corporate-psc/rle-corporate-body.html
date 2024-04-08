@@ -1,0 +1,112 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Right to appoint or remove
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- Check for error -->
+    {% if errorRleCorporate %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+    <form action="{{currentUrl}}" method="post">
+
+      <!-- Check for error -->
+      {% if errorRleCorporate %}
+      <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+      <div class="govuk-form-group">
+      {% endif %} 
+        <fieldset class="govuk-fieldset" aria-describedby="rleCorporate-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              What type of corporate body is {{ data['shareholderCorporateName']| uppercase }}?
+            </h1>
+          </legend>
+          <!-- Check for error -->
+          {% if errorRleCorporate %}
+          <p id="rleCorporate-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Select the corporate body type
+          </p>
+          {% endif %} 
+
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="rleCorporate" name="rleCorporate" type="radio" value="Private Limited Company">
+              <label class="govuk-label govuk-radios__label" for="rleCorporate">
+                Private Limited Company
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="rleCorporate-2" name="rleCorporate" type="radio" value="Private Unlimited Company">
+              <label class="govuk-label govuk-radios__label" for="rleCorporate-2">
+                Private Unlimited Company
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="rleCorporate-3" name="rleCorporate" type="radio" value="Public Limited Company">
+              <label class="govuk-label govuk-radios__label" for="rleCorporate-3">
+                Public Limited Company
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="rleCorporate-4" name="rleCorporate" type="radio" value="Limited Liability Partnership (LLP)">
+              <label class="govuk-label govuk-radios__label" for="rleCorporate-4">
+                Limited Liability Partnership (LLP)
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="rleCorporate-5" name="rleCorporate" type="radio" value="Scottish Limited Partnership">
+              <label class="govuk-label govuk-radios__label" for="rleCorporate-5">
+                Scottish Limited Partnership
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="rleCorporate-6" name="rleCorporate" type="radio" value="Scottish Partnership">
+              <label class="govuk-label govuk-radios__label" for="rleCorporate-6">
+                Scottish Partnership
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="rleCorporate-7" name="rleCorporate" type="radio" value="United Kingdom Societas">
+              <label class="govuk-label govuk-radios__label" for="rleCorporate-7">
+                United Kingdom Societas
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="rleCorporate-8" name="rleCorporate" type="radio" value="Unregistered Company">
+              <label class="govuk-label govuk-radios__label" for="rleCorporate-8">
+                Unregistered Company
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="rleCorporate-9" name="rleCorporate" type="radio" value="None">
+              <label class="govuk-label govuk-radios__label" for="rleCorporate-9">
+                None of the above
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

@@ -189,8 +189,6 @@
         </div>
       </div>
 
-      <!-- Check if there is a value in 'pscFirstName'. if there is we know the user has filled out the psc details so we can show the second psc -->
-      {% if data['pscFirstName'] %}
       <div class="govuk-summary-card">
         <div class="govuk-summary-card__title-wrapper">
           <h2 class="govuk-summary-card__title">{{ data['pscTitle']}} {{ data['pscFirstName']}} {{ data['pscMiddleName']}} {{ data['pscLastName']}}</h2>
@@ -347,13 +345,10 @@
           </dl>
         </div>
       </div>
-      {% endif %} 
 
-      <!-- Check if there is a value in 'rleName'. if there is we know the user has filled out the psc details so we can show the third psc -->
-      {% if data['rleName'] %}
       <div class="govuk-summary-card">
         <div class="govuk-summary-card__title-wrapper">
-          <h2 class="govuk-summary-card__title">{{ data['rleName']| uppercase }}</h2>
+          <h2 class="govuk-summary-card__title">{{ data['shareholderCorporateName']| uppercase }}</h2>
           <ul class="govuk-summary-card__actions">
             <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
                 Remove Person with Significant Control<span class="govuk-visually-hidden"></span>
@@ -368,7 +363,7 @@
                 What is the corporate body name?
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data['rleName']| uppercase }}
+                {{ data['shareholderCorporateName']| uppercase }}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="#">
@@ -394,7 +389,7 @@
                 Corporate body type
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ data['rleType'] }}
+                {{ data['rleCorporate'] }}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="#">
@@ -558,8 +553,6 @@
           </dl>
         </div>
       </div>
-      {% endif %} 
-
 
     <p class="govuk-body govuk-!-margin-bottom-9"><b><a class="govuk-link" href="psc-add" 
       class="govuk-link">Add another person in control of the company</a></b>

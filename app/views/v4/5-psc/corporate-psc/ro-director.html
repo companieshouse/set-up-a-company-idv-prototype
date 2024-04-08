@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Right to appoint or remove
+  What is the relevant officer's details? – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,7 +15,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <!-- Check for error -->
-    {% if errorRleRightAppoint %}
+    {% if errorDirector %}
       {{ govukErrorSummary({
         titleText: "There is a problem",
         errorList: errorList
@@ -24,41 +24,36 @@
     <form action="{{currentUrl}}" method="post">
 
       <!-- Check for error -->
-      {% if errorRleRightAppoint %}
+      {% if errorDirector %}
       <div class="govuk-form-group govuk-form-group--error">
       {% else %}
       <div class="govuk-form-group">
       {% endif %} 
-        <fieldset class="govuk-fieldset" aria-describedby="rleRightAppoint-hint">
+        <fieldset class="govuk-fieldset" aria-describedby="roDirector-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-
             <h1 class="govuk-fieldset__heading">
-              Does {{ data['rleName']| uppercase }}
-              have the right to appoint or remove the majority of company directors?
+            Are they a director of {{ data['shareholderCorporateName']| uppercase }}?
             </h1>
-          
+            <div id="ro-director-hint" class="govuk-hint">
+             Select 'yes' if they are a director of the relevant legal entity, or someone whose roles and responsibilities correspond to that of a company director. 
+            </div>
           </legend>
-          <div id="rleRightAppoint-hint" class="govuk-hint">
-            This is the right to be involved in making the decision to appoint or remove directors, 
-            either with others or alone.
-          </div>
           <!-- Check for error -->
-          {% if errorRleRightAppoint %}
-          <p id="rleRightAppoint-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Select if the RLE has the right to appoint or remove directors
+          {% if errorDirector %}
+          <p id="roDirector-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Select yes if the relevant officer is a director of the entity
           </p>
           {% endif %} 
-
           <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="rleRightAppoint" name="rleRightAppoint" type="radio" value="yes">
-              <label class="govuk-label govuk-radios__label" for="rleRightAppoint">
+              <input class="govuk-radios__input" id="roDirector" name="roDirector" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="roDirector">
                 Yes
               </label>
             </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="rleRightAppoint-2" name="rleRightAppoint" type="radio" value="no">
-              <label class="govuk-label govuk-radios__label" for="rleRightAppoint-2">
+              <input class="govuk-radios__input" id="roDirector-2" name="roDirector" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="roDirector-2">
                 No
               </label>
             </div>
@@ -67,7 +62,7 @@
       </div>
 
       {{ govukButton({
-        text: "Save and continue"
+        text: "Continue"
       }) }}
 
     </form>

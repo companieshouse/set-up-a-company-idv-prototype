@@ -53,7 +53,7 @@
             <span class="govuk-visually-hidden">Error:</span> Enter the full first name
           </p>
         {% endif %} 
-          <input class="govuk-input govuk-!-width-two-thirds" id="pscFirstName" name="pscFirstName" type="text" value="{{ data['pscFirstName'] }}">
+          <input class="govuk-input govuk-!-width-two-thirds" id="pscFirstName" name="pscFirstName" type="text" value="{{ data['shareholderFirstName']}}">
       </div>
 
       <div class="govuk-form-group">
@@ -84,7 +84,7 @@
             <span class="govuk-visually-hidden">Error:</span> Enter the full last name
           </p>
         {% endif %} 
-          <input class="govuk-input govuk-!-width-two-thirds" id="pscLastName" name="pscLastName" type="text" value="{{ data['pscLastName'] }}">
+          <input class="govuk-input govuk-!-width-two-thirds" id="pscLastName" name="pscLastName" type="text" value="{{ data['shareholderLastName']}}">
       </div>
 
       <!-- Check for error -->
