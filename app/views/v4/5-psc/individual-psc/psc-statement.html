@@ -44,12 +44,7 @@
               <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" id="pscStatement" name="pscStatement" type="checkbox">
                 <label class="govuk-label govuk-checkboxes__label" for="pscStatement">
-                  <!-- Check if there is a value in 'pscFirstName'. if there is we know the user has filled out the psc details so we can show the second psc -->
-                  {% if data['pscFirstName'] %}
-                    I confirm that <b>{{ data['pscTitle']}} {{ data['pscFirstName']}} {{ data['pscMiddleName']}} {{ data['pscLastName']}}</b> has verified their identity.
-                  {% else %}
-                    I confirm that <b>{{ data['directorTitle']}} {{ data['directorFirstName']}} {{ data['directorMiddleName']}} {{ data['directorLastName']}}</b> has verified their identity for Companies House.
-                  {% endif %}
+                    I confirm that <b>{{ data['shareholderFirstName']}} {{ data['shareholderLastName']}}</b> has verified their identity.
                 </label>
               </div>
             </div>

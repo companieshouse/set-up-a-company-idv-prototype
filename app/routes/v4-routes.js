@@ -362,7 +362,7 @@ router.post('/v4/3-director/director-confirm-address', function (req, res) {
 })
 
 
-// ******* psc-statement javascript ********************************
+// ******* director-statement javascript ********************************
 router.get('/v4/3-director/director-statement', function (req, res) {
   // Set URl
   res.render('v4/3-director/director-statement', {
@@ -646,7 +646,7 @@ router.post('/v4/4-shareholders/shareholder-address', function (req, res) {
   if (typeof req.session.data['shareholderAddress'] === 'undefined') {
     // No value so add error to array
     errors.push({
-      text: 'Select the address of shareholder',
+      text: 'Select the address of the shareholder',
       href: '#shareholderAddress'
     })
 
@@ -1036,8 +1036,38 @@ router.post('/v4/5-psc/individual-psc/psc-right-to-appoint', function (req, res)
       errorList: errors
     })
   } else {
-      res.redirect('/v4/5-psc/corporate-psc/rle-previous-answers')
+      res.redirect('/v4/5-psc/individual-psc/psc-statement')
     }
+})
+
+
+// ******* psc-statement javascript ********************************
+router.get('/v4/5-psc/individual-psc/psc-statement', function (req, res) {
+  // Set URl
+  res.render('v4/5-psc/individual-psc/psc-statement', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v4/5-psc/individual-psc/psc-statement', function (req, res) {
+  // Create empty array
+  var errors = []
+
+  if (typeof req.session.data['pscStatement'] === 'undefined') {
+    // No value so add error to array
+    errors.push({
+      text: 'Confirm if the identity verification statement is correct',
+      href: '#pscStatement'
+    })
+
+    // Re-show page with error value as true so errors will show
+    res.render('v4/5-psc/individual-psc/psc-statement', {
+      errorPscStatement: true,
+      errorList: errors
+    })
+  } else {
+      res.redirect('/v4/5-psc/corporate-psc/rle-previous-answers')
+  }
 })
 
 
@@ -1304,35 +1334,6 @@ router.post('/v4/5-psc/psc-confirm-address', function (req, res) {
   res.redirect('/v4/5-psc/psc-right-to-appoint')
 })
 
-
-// ******* psc-statement javascript ********************************
-router.get('/v4/5-psc/psc-statement', function (req, res) {
-  // Set URl
-  res.render('v4/5-psc/psc-statement', {
-    currentUrl: req.originalUrl
-  })
-})
-
-router.post('/v4/5-psc/psc-statement', function (req, res) {
-  // Create empty array
-  var errors = []
-
-  if (typeof req.session.data['pscStatement'] === 'undefined') {
-    // No value so add error to array
-    errors.push({
-      text: 'Confirm if the identity verification statement is correct',
-      href: '#pscStatement'
-    })
-
-    // Re-show page with error value as true so errors will show
-    res.render('v4/5-psc/psc-statement', {
-      errorPscStatement: true,
-      errorList: errors
-    })
-  } else {
-      res.redirect('/v4/5-psc/psc-check-details')
-  }
-})
 
 
 // ******* individual-psc/psc-previous-answers javascript ******************************
@@ -1681,12 +1682,12 @@ router.post('/v4/5-psc/corporate-psc/ro-director', function (req, res) {
   if (typeof req.session.data['roDirector'] === 'undefined') {
     // No value so add error to array
     errors.push({
-      text: 'You must select if the relevant officer is a director',
+      text: 'Select if the relevant officer is a director',
       href: '#roDirector'
     })
 
     // Re-show page with error value as true so errors will show
-    res.render('v4/5-rlee/ro-director', {
+    res.render('v4/5-psc/corporate-psc/ro-director', {
       errorDirector: true,
       errorList: errors
     })
