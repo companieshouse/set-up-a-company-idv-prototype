@@ -1345,7 +1345,7 @@ router.get('/v4/5-psc/corporate-psc/rle-previous-answers', function (req, res) {
 })
 
 router.post('/v4/5-psc/corporate-psc/rle-previous-answers', function (req, res) {
-  res.redirect('/v4/5-psc/corporate-psc/rle-details')
+  res.redirect('/v4/5-psc/corporate-psc/rle-registered')
 })
 
 
@@ -1424,7 +1424,7 @@ router.post('/v4/5-psc/corporate-psc/rle-details', function (req, res) {
       errorList: errors
     })
   } else {
-    res.redirect('/v4/5-psc/corporate-psc/rle-registered')
+    res.redirect('/v4/5-psc/corporate-psc/rle-right-to-appoint')
   }
 })
 
@@ -1486,7 +1486,7 @@ router.post('/v4/5-psc/corporate-psc/rle-corporate-body', function (req, res) {
       errorList: errors
     })
   } else {
-       res.redirect('/v4/5-psc/corporate-psc/rle-right-to-appoint')}
+       res.redirect('/v4/5-psc/corporate-psc/rle-details')}
 })
 
 
