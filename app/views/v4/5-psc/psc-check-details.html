@@ -189,370 +189,376 @@
       </div>
     </div>
 
-    <div class="govuk-summary-card">
-      <div class="govuk-summary-card__title-wrapper">
-        <h2 class="govuk-summary-card__title">{{ data['pscTitle']}} {{ data['pscFirstName']}} {{ data['pscMiddleName']}} {{ data['pscLastName']}}</h2>
-        <ul class="govuk-summary-card__actions">
-          <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
-              Remove Person with Significant Control<span class="govuk-visually-hidden"></span>
-            </a>
-          </li>
-        </ul>
+    <!-- Check if there is a value in 'shareholderFirstName'. if there is we know the user has filled out the individual psc details so we can show the individual psc -->
+    {% if data['shareholderFirstName'] %}
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">{{ data['pscTitle']}} {{ data['pscFirstName']}} {{ data['pscMiddleName']}} {{ data['pscLastName']}}</h2>
+          <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+                Remove Person with Significant Control<span class="govuk-visually-hidden"></span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Name
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['pscTitle']}} {{ data['pscFirstName']}} {{ data['pscMiddleName']}} {{ data['pscLastName']}}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">
+                  Change<span class="govuk-visually-hidden"> name</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Date of birth
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  {{ data['pscDob-day'] }} 
+                  {{ data['pscDob-month'] | displayMonth }} 
+                  {{ data['pscDob-year'] }} 
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">
+                  Change<span class="govuk-visually-hidden"> dob</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Nationality
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['pscNationality'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">
+                  Change<span class="govuk-visually-hidden"> nationality</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Companies House personal code
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['pscPersonalCode'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">
+                  Change<span class="govuk-visually-hidden"> code</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                What is the correspondence address for {{ data['pscTitle']}} {{ data['pscFirstName']}} {{ data['pscMiddleName']}} {{ data['pscLastName']}}
+              </dt>
+              <dd class="govuk-summary-list__value">
+                8 New Street<br>Woodland<br>Townville<br>England<br>XX3 YY5
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">
+                  Change<span class="govuk-visually-hidden"> address</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                What is the home address for {{ data['pscTitle']}} {{ data['pscFirstName']}} {{ data['pscMiddleName']}} {{ data['pscLastName']}}
+              </dt>
+              <dd class="govuk-summary-list__value">
+                The home address is the same as the correspondence address
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">
+                  Change<span class="govuk-visually-hidden"> home address</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Country the PSC lives in
+              </dt>
+              <dd class="govuk-summary-list__value">
+                England
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">
+                  Change<span class="govuk-visually-hidden"> country lived in</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                As an individual, what percentage of voting rights does {{ data['pscTitle']}} {{ data['pscFirstName']}} {{ data['pscMiddleName']}} {{ data['pscLastName']}} own?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>The person holds, directly or indirectly, more than 25% but not more 
+                      than 50% of the voting rights in the company.</li>
+                  </ul>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">
+                  Change<span class="govuk-visually-hidden"> Voting rights</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                As an individual, what percentage of share does {{ data['pscTitle']}} {{ data['pscFirstName']}} {{ data['pscMiddleName']}} {{ data['pscLastName']}} own?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>The person holds, directly or indirectly, more than 25% but not more 
+                      than 50% of the shares in the company.</li>
+                  </ul>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">
+                  Change<span class="govuk-visually-hidden"> Shares</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                As an individual, does {{ data['pscTitle']}} {{ data['pscFirstName']}} {{ data['pscMiddleName']}} {{ data['pscLastName']}} 
+                have the right to appoint or remove directors?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>The person holds, directly or indirectly, the right to appoint or remove a majority of the board of directors of the company.</li>
+                  </ul>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">
+                  Change<span class="govuk-visually-hidden"> appoint or remove</span>
+                </a>
+              </dd>
+            </div>
+          </dl>
+        </div>
       </div>
-      <div class="govuk-summary-card__content">
-        <dl class="govuk-summary-list">
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Name
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['pscTitle']}} {{ data['pscFirstName']}} {{ data['pscMiddleName']}} {{ data['pscLastName']}}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Change<span class="govuk-visually-hidden"> name</span>
-              </a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Date of birth
-            </dt>
-            <dd class="govuk-summary-list__value">
-                {{ data['pscDob-day'] }} 
-                {{ data['pscDob-month'] | displayMonth }} 
-                {{ data['pscDob-year'] }} 
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Change<span class="govuk-visually-hidden"> dob</span>
-              </a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Nationality
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['pscNationality'] }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Change<span class="govuk-visually-hidden"> nationality</span>
-              </a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Companies House personal code
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['pscPersonalCode'] }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Change<span class="govuk-visually-hidden"> code</span>
-              </a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              What is the correspondence address for {{ data['pscTitle']}} {{ data['pscFirstName']}} {{ data['pscMiddleName']}} {{ data['pscLastName']}}
-            </dt>
-            <dd class="govuk-summary-list__value">
-              8 New Street<br>Woodland<br>Townville<br>England<br>XX3 YY5
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Change<span class="govuk-visually-hidden"> address</span>
-              </a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              What is the home address for {{ data['pscTitle']}} {{ data['pscFirstName']}} {{ data['pscMiddleName']}} {{ data['pscLastName']}}
-            </dt>
-            <dd class="govuk-summary-list__value">
-              The home address is the same as the correspondence address
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Change<span class="govuk-visually-hidden"> home address</span>
-              </a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Country the PSC lives in
-            </dt>
-            <dd class="govuk-summary-list__value">
-              England
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Change<span class="govuk-visually-hidden"> country lived in</span>
-              </a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              As an individual, what percentage of voting rights does {{ data['pscTitle']}} {{ data['pscFirstName']}} {{ data['pscMiddleName']}} {{ data['pscLastName']}} own?
-            </dt>
-            <dd class="govuk-summary-list__value">
-                <ul class="govuk-list govuk-list--bullet">
-                  <li>The person holds, directly or indirectly, more than 25% but not more 
-                    than 50% of the voting rights in the company.</li>
-                </ul>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Change<span class="govuk-visually-hidden"> Voting rights</span>
-              </a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              As an individual, what percentage of share does {{ data['pscTitle']}} {{ data['pscFirstName']}} {{ data['pscMiddleName']}} {{ data['pscLastName']}} own?
-            </dt>
-            <dd class="govuk-summary-list__value">
-                <ul class="govuk-list govuk-list--bullet">
-                  <li>The person holds, directly or indirectly, more than 25% but not more 
-                    than 50% of the shares in the company.</li>
-                </ul>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Change<span class="govuk-visually-hidden"> Shares</span>
-              </a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              As an individual, does {{ data['pscTitle']}} {{ data['pscFirstName']}} {{ data['pscMiddleName']}} {{ data['pscLastName']}} 
-              have the right to appoint or remove directors?
-            </dt>
-            <dd class="govuk-summary-list__value">
-                <ul class="govuk-list govuk-list--bullet">
-                  <li>The person holds, directly or indirectly, the right to appoint or remove a majority of the board of directors of the company.</li>
-                </ul>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Change<span class="govuk-visually-hidden"> appoint or remove</span>
-              </a>
-            </dd>
-          </div>
-        </dl>
-      </div>
-    </div>
+    {% endif %}
 
-    <div class="govuk-summary-card">
-      <div class="govuk-summary-card__title-wrapper">
-        <h2 class="govuk-summary-card__title">{{ data['shareholderCorporateName']| uppercase }}</h2>
-        <ul class="govuk-summary-card__actions">
-          <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
-              Remove Person with Significant Control<span class="govuk-visually-hidden"></span>
-            </a>
-          </li>
-        </ul>
+    <!-- Check if there is a value in 'shareholderCorporateName'. if there is we know the user has filled out the corporate details so we can show the corporate psc -->
+    {% if data['shareholderCorporateName'] %}
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">{{ data['shareholderCorporateName']| uppercase }}</h2>
+          <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+                Remove Person with Significant Control<span class="govuk-visually-hidden"></span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                What is the corporate body name?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['shareholderCorporateName']| uppercase }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">
+                  Change<span class="govuk-visually-hidden">Corporate body name</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                What is the address of {{ data['shareholderCorporateName']| uppercase }}
+              </dt>
+              <dd class="govuk-summary-list__value">
+                5 New Town Road<br>Peverall<br>Plymouth<br>England<br>PL3 6QD
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">
+                  Change<span class="govuk-visually-hidden"> Corporate body address</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Corporate body type
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['rleCorporate'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">
+                  Change<span class="govuk-visually-hidden"> Corporate body type</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Governing law
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['governingLaw'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">
+                  Change<span class="govuk-visually-hidden">Governing law</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Register that {{ data['shareholderCorporateName']| uppercase }} is entered in
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['rleRegister'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">
+                  Change<span class="govuk-visually-hidden">Register</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Country of registration
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['rleCountry'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">
+                  Change<span class="govuk-visually-hidden">Country of registration</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Registration number
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['rleNumber'] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">
+                  Change<span class="govuk-visually-hidden">Registration number</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Relevant officer's name
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data['roFirstName'] %}
+                  {{ data['roFirstName']}} {{ data['roMiddleName']}} {{ data['roLastName']}}
+                {% else %}
+                  Not provided
+                {% endif %}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">
+                  Change<span class="govuk-visually-hidden">Relevant officer's name</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Relevant officer's date of birth
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data['roFirstName'] %}
+                  {{ data['roDob-day'] }} 
+                  {{ data['roDob-month'] | displayMonth }} 
+                  {{ data['roDob-year'] }} 
+                {% else %}
+                  Not provided
+                {% endif %}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">
+                  Change<span class="govuk-visually-hidden">Relevant officer's date of birth</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Relevant officer's Companies House personal code
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data['roFirstName'] %}
+                  {{ data['roPersonalCode'] }}
+                {% else %}
+                  Not provided
+                {% endif %}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">
+                  Change<span class="govuk-visually-hidden"> Relevant officer's Companies House personal code</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                As an individual, what percentage of voting rights does {{ data['rleName']| uppercase }} own?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>The person holds, directly or indirectly, more than 25% but not more 
+                      than 50% of the voting rights in the company.</li>
+                  </ul>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">
+                  Change<span class="govuk-visually-hidden"> Voting rights</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                As an individual, what percentage of share does {{ data['rleName']| uppercase }} own?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>The person holds, directly or indirectly, more than 25% but not more 
+                      than 50% of the shares in the company.</li>
+                  </ul>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">
+                  Change<span class="govuk-visually-hidden"> Shares</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                As an individual, does {{ data['rleName']| uppercase }} 
+                have the right to appoint or remove directors?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>The person holds, directly or indirectly, the right to appoint or remove a majority of the board of directors of the company.</li>
+                  </ul>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">
+                  Change<span class="govuk-visually-hidden"> appoint or remove</span>
+                </a>
+              </dd>
+            </div>
+          </dl>
+        </div>
       </div>
-      <div class="govuk-summary-card__content">
-        <dl class="govuk-summary-list">
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              What is the corporate body name?
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['shareholderCorporateName']| uppercase }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Change<span class="govuk-visually-hidden">Corporate body name</span>
-              </a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              What is the address of {{ data['shareholderCorporateName']| uppercase }}
-            </dt>
-            <dd class="govuk-summary-list__value">
-              5 New Town Road<br>Peverall<br>Plymouth<br>England<br>PL3 6QD
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Change<span class="govuk-visually-hidden"> Corporate body address</span>
-              </a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Corporate body type
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['rleCorporate'] }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Change<span class="govuk-visually-hidden"> Corporate body type</span>
-              </a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Governing law
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['governingLaw'] }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Change<span class="govuk-visually-hidden">Governing law</span>
-              </a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Register that {{ data['shareholderCorporateName']| uppercase }} is entered in
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['rleRegister'] }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Change<span class="govuk-visually-hidden">Register</span>
-              </a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Country of registration
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['rleCountry'] }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Change<span class="govuk-visually-hidden">Country of registration</span>
-              </a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Registration number
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['rleNumber'] }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Change<span class="govuk-visually-hidden">Registration number</span>
-              </a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Relevant officer's name
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {% if data['roFirstName'] %}
-                {{ data['roFirstName']}} {{ data['roMiddleName']}} {{ data['roLastName']}}
-              {% else %}
-                Not provided
-              {% endif %}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Change<span class="govuk-visually-hidden">Relevant officer's name</span>
-              </a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Relevant officer's date of birth
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {% if data['roFirstName'] %}
-                {{ data['roDob-day'] }} 
-                {{ data['roDob-month'] | displayMonth }} 
-                {{ data['roDob-year'] }} 
-              {% else %}
-                Not provided
-              {% endif %}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Change<span class="govuk-visually-hidden">Relevant officer's date of birth</span>
-              </a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Relevant officer's Companies House personal code
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {% if data['roFirstName'] %}
-                {{ data['roPersonalCode'] }}
-              {% else %}
-                Not provided
-              {% endif %}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Change<span class="govuk-visually-hidden"> Relevant officer's Companies House personal code</span>
-              </a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              As an individual, what percentage of voting rights does {{ data['rleName']| uppercase }} own?
-            </dt>
-            <dd class="govuk-summary-list__value">
-                <ul class="govuk-list govuk-list--bullet">
-                  <li>The person holds, directly or indirectly, more than 25% but not more 
-                    than 50% of the voting rights in the company.</li>
-                </ul>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Change<span class="govuk-visually-hidden"> Voting rights</span>
-              </a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              As an individual, what percentage of share does {{ data['rleName']| uppercase }} own?
-            </dt>
-            <dd class="govuk-summary-list__value">
-                <ul class="govuk-list govuk-list--bullet">
-                  <li>The person holds, directly or indirectly, more than 25% but not more 
-                    than 50% of the shares in the company.</li>
-                </ul>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Change<span class="govuk-visually-hidden"> Shares</span>
-              </a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              As an individual, does {{ data['rleName']| uppercase }} 
-              have the right to appoint or remove directors?
-            </dt>
-            <dd class="govuk-summary-list__value">
-                <ul class="govuk-list govuk-list--bullet">
-                  <li>The person holds, directly or indirectly, the right to appoint or remove a majority of the board of directors of the company.</li>
-                </ul>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Change<span class="govuk-visually-hidden"> appoint or remove</span>
-              </a>
-            </dd>
-          </div>
-        </dl>
-      </div>
-    </div>
+    {% endif %}
 
     <h2 class="govuk-heading-m">Add another PSC</h2>
 

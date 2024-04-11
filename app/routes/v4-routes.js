@@ -417,10 +417,9 @@ router.post('/v4/3-director/director-add', function (req, res) {
       errorAnotherDirector: true,
       errorList: errors
     })
-  } else {
-      // User inputted value so move to next page
-      res.redirect('/v4/3-director/director-check-details')
-    }
+  } else if (req.session.data['anotherDirector'] === 'no') {
+    res.redirect('/v4/3-director/director-check-details')
+  } 
 })
 
 
@@ -511,10 +510,9 @@ router.post('/v4/4-shareholders/is-a-shareholder', function (req, res) {
       errorIsShareholder: true,
       errorList: errors
     })
-  } else {
-      // User inputted value so move to next page
-      res.redirect('/v4/4-shareholders/shareholder-add')
-    }
+  } else if (req.session.data['isShareholder'] === 'yes') {
+    res.redirect('/v4/4-shareholders/shareholder-add')
+  } 
 })
 
 
@@ -879,8 +877,9 @@ router.post('/v4/4-shareholders/share-type', function (req, res) {
       errorShareType: true,
       errorList: errors
     })
-  } else 
+  } else if (req.session.data['shareType'] === 'yes') {
     res.redirect('/v4/4-shareholders/share-number')
+  } 
 })
 
 
@@ -991,9 +990,16 @@ router.post('/v4/5-psc/director-psc/psc-right-to-appoint', function (req, res) {
       errorRightAppoint: true,
       errorList: errors
     })
-  } else {
-      res.redirect('/v4/5-psc/individual-psc/psc-previous-answers')
-    }
+  } // Check if individual shareholder filled out
+  else if (req.session.data['shareholderFirstName']) {
+    res.redirect('/v4/5-psc/individual-psc/psc-previous-answers')
+  } // Check if corporate shareholder filled out
+  else if (req.session.data['shareholderCorporateName']){
+    res.redirect('/v4/5-psc/corporate-psc/rle-previous-answers')
+  } else
+  {
+    res.redirect('/v4/5-psc/psc-check-details')
+  }
 })
 
 
@@ -1065,8 +1071,13 @@ router.post('/v4/5-psc/individual-psc/psc-statement', function (req, res) {
       errorPscStatement: true,
       errorList: errors
     })
-  } else {
-      res.redirect('/v4/5-psc/corporate-psc/rle-previous-answers')
+  } 
+  // Check if corporate shareholder filled out
+  else if (req.session.data['shareholderCorporateName']){
+    res.redirect('/v4/5-psc/corporate-psc/rle-previous-answers')
+  } else
+  {
+    res.redirect('/v4/5-psc/psc-check-details')
   }
 })
 

@@ -64,102 +64,108 @@
         </div>
       </div>
 
-      <div class="govuk-summary-card">
-        <div class="govuk-summary-card__title-wrapper">
-          <h2 class="govuk-summary-card__title">{{ data['shareholderFirstName']}} {{ data['shareholderLastName']}}</h2>
-          <ul class="govuk-summary-card__actions">
-            <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
-                Remove shareholder<span class="govuk-visually-hidden"></span>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="govuk-summary-card__content">
-          <dl class="govuk-summary-list">
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                What is the shareholder's name
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {{ data['shareholderFirstName']}} {{ data['shareholderLastName']}}
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="director-details">
-                  Change<span class="govuk-visually-hidden"> name</span>
+      <!-- Check if there is a value in 'shareholderFirstName'. if there is we know the user has filled out the individual psc details so we can show the individual psc -->
+      {% if data['shareholderFirstName'] %}
+        <div class="govuk-summary-card">
+          <div class="govuk-summary-card__title-wrapper">
+            <h2 class="govuk-summary-card__title">{{ data['shareholderFirstName']}} {{ data['shareholderLastName']}}</h2>
+            <ul class="govuk-summary-card__actions">
+              <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+                  Remove shareholder<span class="govuk-visually-hidden"></span>
                 </a>
-              </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                What is the address for {{ data['shareholderFirstName']}} {{ data['shareholderLastName']}}
-              </dt>
-              <dd class="govuk-summary-list__value">
-                10 Old Street<br>Parkland<br>Townville<br>England<br>XX1 ZZ2
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="director-address">
-                  Change<span class="govuk-visually-hidden"> address</span>
-                </a>
-              </dd>
-            </div>
-          </dl>
+              </li>
+            </ul>
+          </div>
+          <div class="govuk-summary-card__content">
+            <dl class="govuk-summary-list">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  What is the shareholder's name
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data['shareholderFirstName']}} {{ data['shareholderLastName']}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="director-details">
+                    Change<span class="govuk-visually-hidden"> name</span>
+                  </a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  What is the address for {{ data['shareholderFirstName']}} {{ data['shareholderLastName']}}
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  10 Old Street<br>Parkland<br>Townville<br>England<br>XX1 ZZ2
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="director-address">
+                    Change<span class="govuk-visually-hidden"> address</span>
+                  </a>
+                </dd>
+              </div>
+            </dl>
+          </div>
         </div>
-      </div>
+      {% endif %}
 
-      <div class="govuk-summary-card">
-        <div class="govuk-summary-card__title-wrapper">
-          <h2 class="govuk-summary-card__title">{{ data['shareholderCorporateName']}} </h2>
-          <ul class="govuk-summary-card__actions">
-            <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
-                Remove shareholder<span class="govuk-visually-hidden"></span>
-              </a>
-            </li>
-          </ul>
+      <!-- Check if there is a value in 'shareholderCorporateName'. if there is we know the user has filled out the corporate details so we can show the corporate psc -->
+      {% if data['shareholderCorporateName'] %}
+        <div class="govuk-summary-card">
+          <div class="govuk-summary-card__title-wrapper">
+            <h2 class="govuk-summary-card__title">{{ data['shareholderCorporateName']}} </h2>
+            <ul class="govuk-summary-card__actions">
+              <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+                  Remove shareholder<span class="govuk-visually-hidden"></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="govuk-summary-card__content">
+            <dl class="govuk-summary-list">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  What is the corporate shareholder's name
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data['shareholderCorporateName']}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="director-details">
+                    Change<span class="govuk-visually-hidden"> name</span>
+                  </a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  What is the address for {{ data['shareholderCorporateName']}}
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  5 New Town Road<br>Peverall<br>Plymouth<br>England<br>PL3 6QD</p>
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="director-address">
+                    Change<span class="govuk-visually-hidden"> address</span>
+                  </a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  What is the name of the person acting on behalf of {{ data['shareholderCorporateName']}}
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data['corporatePersonFirstName']}} {{ data['corporatePersonLastName']}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="">
+                    Change<span class="govuk-visually-hidden"> corporate person</span>
+                  </a>
+                </dd>
+              </div>
+            </dl>
+          </div>
         </div>
-        <div class="govuk-summary-card__content">
-          <dl class="govuk-summary-list">
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                What is the corporate shareholder's name
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {{ data['shareholderCorporateName']}}
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="director-details">
-                  Change<span class="govuk-visually-hidden"> name</span>
-                </a>
-              </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                What is the address for {{ data['shareholderCorporateName']}}
-              </dt>
-              <dd class="govuk-summary-list__value">
-                5 New Town Road<br>Peverall<br>Plymouth<br>England<br>PL3 6QD</p>
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="director-address">
-                  Change<span class="govuk-visually-hidden"> address</span>
-                </a>
-              </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                What is the name of the person acting on behalf of {{ data['shareholderCorporateName']}}
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {{ data['corporatePersonFirstName']}} {{ data['corporatePersonLastName']}}
-              </dd>
-              <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="">
-                  Change<span class="govuk-visually-hidden"> corporate person</span>
-                </a>
-              </dd>
-            </div>
-          </dl>
-        </div>
-      </div>
+      {% endif %}
 
       <p class="govuk-body govuk-!-margin-bottom-9"><b><a class="govuk-link" href="shareholder-type" class="govuk-link">Add another shareholder</a></b></p>
 
