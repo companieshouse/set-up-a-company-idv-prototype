@@ -1194,6 +1194,19 @@ router.post('/v4/5-psc/individual-psc/psc-details', function (req, res) {
 })
 
 
+// ******* individual-psc/psc-why-this-name javascript ********************************
+router.get('/v4/5-psc/individual-psc/psc-why-this-name', function (req, res) {
+  // Set URl
+  res.render('v4/5-psc/individual-psc/psc-why-this-name', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v4/5-psc/individual-psc/psc-why-this-name', function (req, res) {
+  res.redirect('/v4/5-psc/individual-psc/psc-right-to-appoint')
+})
+
+
 // ******* corporate-psc/psc-previous-answers javascript ******************************
 router.get('/v4/5-psc/corporate-psc/psc-previous-answers', function (req, res) {
   // Set URl
