@@ -22,6 +22,10 @@
     {% endif %}
     <h1 class="govuk-heading-l">Relevant officer's details</h1>
 
+<p class="govuk-body">The relevant officer must be a director of the relevant legal entity, or someone whose roles and responsibilities correspond to that of a company director.</p>
+
+
+
     <form action="{{currentUrl}}" method="post">
 
       <!-- Check for error -->
@@ -182,19 +186,18 @@
       {% endif %} 
         <fieldset class="govuk-fieldset" aria-describedby="roDirector">
           <label class="govuk-label govuk-date-input__label" for="roDirector">
-            Is the relevant officer a director? 
           </label>
           <!-- Check for error -->
           {% if errorRoDirector %}
           <p id="roDirector-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span>Confirm if the relevant officer is a director
+            <span class="govuk-visually-hidden">Error:</span>Confirm if the relevant officer is a director of the relevant legal entity, or someone whose roles and responsibilities correspond to that of a company director. 
           </p>
           {% endif %} 
           <div class="govuk-checkboxes" data-module="govuk-checkboxes">
             <div class="govuk-checkboxes__item">
               <input class="govuk-checkboxes__input" id="roDirector" name="roDirector" type="checkbox">
               <label class="govuk-label govuk-checkboxes__label" for="roDirector">
-                I confirm that the relevant officer is a director of the relevant legal entity, or someone whose roles and responsibilities correspond to that of a company director.
+                The relevant officer is a director of the relevant legal entity, or someone whose roles and responsibilities correspond to that of a company director.
               </label>
             </div>
           </div>
