@@ -1,0 +1,102 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Are you starting a new application?
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="{{currentUrl}}" method="post">
+      <h1 class="govuk-heading-l">You're about to set up the people with significant control over the company</h1>
+
+      <p class="govuk-body">A person with significant control (PSC) is an individual or company that has at least one of the following:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>more than 25% of the company's shares and voting rights</li>
+        <li>the right to appoint or remove directors</li>
+        <li>the right to make decisions of influence decisions that affect the company</li>
+      </ul>
+
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Who is the PSC when shareholders have equal ownership?
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p class="govuk-body">If 2 shareholders own half of the company each, 
+            both shareholders are in control of the company equally and both are 
+            considered a PSC. This is because they each own more than 25% of shares.</p>
+
+          <p class="govuk-body">If 3 shareholders have equal ownership of the company, 
+            each shareholder is in control of the company equally and each shareholder 
+            is considered a PSC. This is because they all own more than 25% of shares.</p>
+        </div>
+      </details>
+
+      <h2 class="govuk-heading-m">Providing PSC information</h2>
+
+      <p class="govuk-body">Based on the shareholders you've told us about, we have some information about the company's PSCs. We'll guide you through the process of giving us the rest.</p>
+
+      <div class="govuk-inset-text">
+        The company may not have any PSCs if none of the shareholders own more than 25% of its shares. You'll still need to confirm this.
+      </div>
+
+      <h2 class="govuk-heading-m">Identity verification</h2>
+
+
+        <p class="govuk-body">All individual PSCs need to verify their identity and get a Companies House personal code, if they have not done so already. </p>
+
+        <p class="govuk-body">If you have the PSC's personal code, you should provide it in this section.</p>
+
+        <p class="govuk-body">If you do not, the PSC will need to verify their identity and give us their personal code within 14 days of the company's incorporation date.</p>
+      
+<details class="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      What identity verification is needed if the PSC is a company
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    <p class="govuk-body">If the PSC is a company, we refer to it as a relevant 
+      legal entity (RLE). 
+      
+    <p class="govuk-body">We'll need some details about the RLE's relevant officer. 
+
+    <p class="govuk-body">The relevant officer must be a director of the entity, 
+      or someone whose roles and responsibilities correspond to that of a company 
+      director. They must be aged 16 or over. 
+
+    <p class="govuk-body">If you have the relevant officer's details, you should 
+      provide it in this section. This includes their:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>full name</li>
+      <li>date of birth</li>
+      <li>Companies House personal code</li>
+    </ul></p>
+
+    <p class="govuk-body">Otherwise, the RLE will need to provide its relevant officer's 
+      details within 28 days of the company's incorporation date.</p>
+  </div>
+</details>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
