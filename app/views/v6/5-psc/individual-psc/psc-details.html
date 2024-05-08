@@ -1,0 +1,225 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  PSC details
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- Check for error -->
+    {% if errorPscDetails %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+    <h1 class="govuk-heading-l">Details of the person in control of the company</h1>
+
+    <form action="{{currentUrl}}" method="post">
+
+      <div class="govuk-form-group">
+          <label class="govuk-label" for="pscTitle">
+            Title (Optional)
+          </label>
+          <div id="pscTitle-hint" class="govuk-hint">
+            For example, Mr, Mrs, Miss, Ms, Dr.
+        </div>
+          <input class="govuk-input govuk-!-width-two-thirds" id="pscTitle" name="pscTitle" type="text" value="{{ data['pscTitle'] }}">
+      </div>
+
+      <!-- Check for error -->
+      {% if errorPscFirstName %}
+        <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+        <div class="govuk-form-group">
+      {% endif %} 
+          <label class="govuk-label" for="pscFirstName">
+            First name
+          </label>
+          <div id="pscFirstName-hint" class="govuk-hint">
+            Enter first name in full not just initials.
+        </div>
+          <!-- Check for error -->
+        {% if errorPscFirstName %}
+          <p id="pscFirstName-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Enter the full first name
+          </p>
+        {% endif %} 
+          <input class="govuk-input govuk-!-width-two-thirds" id="pscFirstName" name="pscFirstName" type="text" value="{{ data['shareholderFirstName']}}">
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="pscMiddleName">
+          Middle name(s)
+        </label>
+        <div id="pscMiddleName-hint" class="govuk-hint">
+          Enter middle name(s) in full not just initials.
+      </div>
+          <input class="govuk-input govuk-!-width-two-thirds" id="pscMiddleName" name="pscMiddleName" type="text" value="{{ data['pscMiddleName'] }}">
+      </div>
+
+      <!-- Check for error -->
+      {% if errorPscLastName%}
+        <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+        <div class="govuk-form-group">
+      {% endif %} 
+          <label class="govuk-label" for="pscLastName">
+            Last name
+          </label>
+          <div id="pscLastName-hint" class="govuk-hint">
+            Enter your full last name.
+        </div>
+          <!-- Check for error -->
+        {% if errorPscLastName %}
+          <p id="pscLastName-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Enter the full last name
+          </p>
+        {% endif %} 
+          <input class="govuk-input govuk-!-width-two-thirds" id="pscLastName" name="pscLastName" type="text" value="{{ data['shareholderLastName']}}">
+      </div>
+
+      <!-- Check for error -->
+      {% if errorPscNationality%}
+        <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+        <div class="govuk-form-group">
+      {% endif %} 
+          <label class="govuk-label" for="pscNationality">
+            Nationality
+          </label>
+          <!-- Check for error -->
+        {% if errorPscNationality %}
+          <p id="pscNationality-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Enter the nationality
+          </p>
+        {% endif %} 
+          <input class="govuk-input govuk-!-width-two-thirds" id="pscNationality" name="pscNationality" type="text" value="{{ data['pscNationality'] }}">
+      </div>
+
+      <!-- Check for error -->
+      {% if errorPscDobDay or errorPscDobMonte or errorPscDobYear %}
+      <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+      <div class="govuk-form-group">
+      {% endif %} 
+        <fieldset class="govuk-fieldset" role="group" aria-describedby="pscDob-hint">
+          <label class="govuk-label" for="pscDob">
+            Date of birth
+          </label>
+          <!-- Check for error -->
+          {% if pscMatchError %}
+          <p id="pscDob-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Enter the correct date of birth
+          </p>
+          {% elif errorPscDobDay or errorPscDobMonte or errorPscDobYear %}
+          <p id="pscDob-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> The date must include a day, month and year
+          </p>
+          {% endif %} 
+          <div id="pscDob-hint" class="govuk-hint">
+            For example, 27 3 1992
+          </div>
+          <div class="govuk-date-input" id="pscDob">
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="pscDob-day">
+                  Day
+                </label>
+                <!-- Check for error -->
+                {% if errorPscDobDay %}
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2 govuk-input--error" id="pscDob-day" name="pscDob-day" type="text" value="{{ data['pscDob-day'] }}">
+                {% else %}
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="pscDob-day-one" name="pscDob-day" type="text" value="{{ data['pscDob-day'] }}">
+                {% endif %} 
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="pscDob-month">
+                  Month
+                </label>
+                <!-- Check for error -->
+                {% if errorPscDobMonth %}
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2 govuk-input--error" id="pscDob-month" name="pscDob-month" type="text" value="{{ data['pscDob-month'] }}">
+                {% else %}
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="pscDob-month-one" name="pscDob-month" type="text" value="{{ data['pscDob-month'] }}">
+                {% endif %} 
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="pscDob-year">
+                  Year
+                </label>
+                <!-- Check for error -->
+                {% if errorPscDobYear %}
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4 govuk-input--error" id="pscDob-year" name="pscDob-year" type="text" value="{{ data['pscDob-year'] }}">
+                {% else %}
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="pscDob-year" name="pscDob-year" type="text" value="{{ data['pscDob-year'] }}">
+                {% endif %} 
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <!-- Check for error -->
+      {% if pscMatchError %}
+        <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+        <div class="govuk-form-group">
+      {% endif %} 
+          <label class="govuk-label govuk-date-input__label" for="pscPersonalCode">
+            Companies House personal code (Optional)
+          </label>
+                <div id="code-hint" class="govuk-hint">
+            If you do not enter this now, the PSC will have 14 days from the company's incorporation date to provide their personal code to Companies House. 
+          </div>
+
+          <!-- Check for error -->
+          {% if pscMatchError%} 
+            <p id="pscPersonalCode-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> Enter the correct Companies House personal code
+            </p>
+            <input class="govuk-input govuk-input--width-10 govuk-input--extra-letter-spacing govuk-input--error" id="pscPersonalCode" name="pscPersonalCode" type="text" aria-describedby="pscPersonalCode-hint" value="{{ data['pscPersonalCode'] }}">
+          {% else %}
+            <input class="govuk-input govuk-input--width-10 govuk-input--extra-letter-spacing" id="pscPersonalCode" name="pscPersonalCode" type="text" aria-describedby="directorPersonalCode-hint" value="{{ data['pscPersonalCode'] }}">
+          {% endif %} 
+      </div> 
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Where to find the Companies House personal code
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          This is an 11 character code that is given to a person after they have verified their identity with Companies House. 
+        </div>
+      </details>
+
+            <div class="govuk-inset-text">
+        <h2 class="govuk-heading-m">What information we'll show on the public register</h2>
+        <p>We will show the full name on the public Companies House register. We will only show the month and year of the date of birth.</p>
+      </div>
+
+
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

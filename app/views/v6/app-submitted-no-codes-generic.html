@@ -1,0 +1,78 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Identity verification complete – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/phase-banner.html" %}
+{% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <div class="govuk-panel govuk-panel--confirmation app-submitted-box">
+      <h1 class="govuk-panel__title">
+        Application submitted
+      </h1>
+      <div class="govuk-panel__body">
+        Your application reference number <strong>000-033742</strong>
+      </div>
+    </div>
+
+    <h2 class="govuk-heading-m">What happens next?</h2>
+
+    <p class="govuk-body">
+      You'll receive:
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>an email with your application reference number</li>
+      <li>another email within 2 working days (or 5 working days for a CIC) letting you know the outcome of your application</li>
+    </ul>
+
+    <p class="govuk-body">
+      If your application is successful, the second email will have the company's registration number and Certificate of Incorporation.
+    </p>
+
+
+    <h2 class="govuk-heading-m">If you did not provide a Companies House personal code for any PSCs</h2>
+      
+    <p class="govuk-body">You should notify those PSCs that they must: 
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+      <a href="https://prove-your-identity-prototype.herokuapp.com/release1-v5/pre-one-login/start">verify their identity for Companies House</a>, if they have not done so already 
+      </li>
+
+      <li>  
+      <a href="https://submit-psc-statement-prototype-8cf558a5f32b.herokuapp.com/v6/start">provide us with their Companies House personal code</a>, so that their verified identity can be linked to our records 
+      </li>
+    </ul>
+
+    <p class="govuk-body">Individual PSCs must do this within 14 days of the company's incorporation date.
+
+    <p class="govuk-body">If any of the PSCs is a relevant legal entity (RLE), the RLE must <a href="https://submit-psc-statement-prototype-8cf558a5f32b.herokuapp.com/v6/start">provide its relevant officer's details</a> within 28 days of the company's incorporation date. 
+    
+
+  <div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-visually-hidden">Warning</span>
+    If a PSC or RLE does not comply with identity verification requirements, they will be committing an offence and may have to pay a fine.
+  </strong>
+</div>
+ 
+      
+    </p>
+
+    <a class="govuk-link" href="#">Sign out</a>
+
+  </div>
+</div>
+
+
+{% endblock %}
