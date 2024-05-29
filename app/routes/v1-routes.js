@@ -1,6 +1,17 @@
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
+// Show session data and URLs in the terminal  
+router.use((req, res, next) => {  
+  const log = {  
+    method: req.method,  
+    url: req.originalUrl,  
+    data: req.session.data  
+  }  
+  console.log(JSON.stringify(log, null, 2))  
+  next()  
+}) 
+
 // ******* starting-a-new-application javascript ********************************
 router.get('/v1/idv/starting-a-new-application', function (req, res) {
   // Set URl
