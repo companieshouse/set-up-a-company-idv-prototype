@@ -37,7 +37,7 @@ router.post('/v6/1-initial-set-up/have-you-verified', function (req, res) {
   if (typeof req.session.data['haveVerified'] === 'undefined') {
     // No value so add error to array
     errors.push({
-      text: 'Select if all the directors have verified their identity',
+      text: 'Select if you have the Companies House personal codes for all directors',
       href: '#haveVerified'
     })
 

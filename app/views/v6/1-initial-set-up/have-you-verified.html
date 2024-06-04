@@ -23,6 +23,18 @@
     {% endif %}
     <form action="{{currentUrl}}" method="post">
 
+      <h1 class="govuk-heading-l">
+        Identity verification for company directors 
+      </h1>
+
+      <p class="govuk-body">Before you can incorporate a company, all company directors need to have <a class="govuk-link" href="https://prove-your-identity-prototype.herokuapp.com/release1-v5/pre-one-login/start" target="blank">verified their identity for Companies House (opens in a new tab)</a>.</p>
+
+      <p class="govuk-body">When they’ve successfully verified their identity, we’ll give them a Companies House personal code.</p>
+
+      <div class="govuk-inset-text">
+       You’ll need to provide each director’s personal code as part of this registration, so that we can connect their verified identity to our records. 
+      </div>
+
       <!-- Check for error -->
       {% if errorHaveVerified %}
       <div class="govuk-form-group govuk-form-group--error">
@@ -30,30 +42,16 @@
       <div class="govuk-form-group">
       {% endif %} 
         <fieldset class="govuk-fieldset" aria-describedby="haveVerified-hint">
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-            <h1 class="govuk-fieldset__heading">
-              Identity verification for company directors 
-            </h1>
-          </legend>
-
-          <p class="govuk-body">Before you can incorporate a company, all company directors need to have <a class="govuk-link" href="https://prove-your-identity-prototype.herokuapp.com/release1-v5/pre-one-login/start" target="blank">verified their identity for Companies House (opens in a new tab)</a>.</p>
-
-          <p class="govuk-body">When they’ve successfully verified their identity, we’ll give them a Companies House personal code.</p>
-
-          <div class="govuk-inset-text">
-           You’ll need to provide each director’s personal code as part of this registration, so that we can connect their verified identity to our records. 
-          </div>
-          
-          <!-- Check for error -->
-          {% if errorHaveVerified %}
-          <p id="haveVerified-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Select if all the directors have verified their identity
-          </p>
-          {% endif %} 
 
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                 Do you have the Companies House personal codes for all company directors?
-              </legend>
+          </legend>
+          <!-- Check for error -->
+          {% if errorHaveVerified %}
+          <p id="haveVerified-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Select if you have the Companies House personal codes for all directors
+          </p>
+          {% endif %} 
           <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="haveVerified" name="haveVerified" type="radio" value="yes">

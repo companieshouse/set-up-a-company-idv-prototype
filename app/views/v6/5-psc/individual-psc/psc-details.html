@@ -25,6 +25,10 @@
 
     <form action="{{currentUrl}}" method="post">
 
+      <div class="govuk-inset-text">
+        Details of the Person with Significant Control will appear on the public record except for the full date of birth.
+      </div>
+
       <div class="govuk-form-group">
           <label class="govuk-label" for="pscTitle">
             Title (Optional)
@@ -32,7 +36,7 @@
           <div id="pscTitle-hint" class="govuk-hint">
             For example, Mr, Mrs, Miss, Ms, Dr.
         </div>
-          <input class="govuk-input govuk-!-width-two-thirds" id="pscTitle" name="pscTitle" type="text" value="{{ data['pscTitle'] }}">
+          <input class="govuk-input govuk-!-width-one-half" id="pscTitle" name="pscTitle" type="text" value="{{ data['pscTitle'] }}">
       </div>
 
       <!-- Check for error -->
@@ -53,7 +57,7 @@
             <span class="govuk-visually-hidden">Error:</span> Enter the full first name
           </p>
         {% endif %} 
-          <input class="govuk-input govuk-!-width-two-thirds" id="pscFirstName" name="pscFirstName" type="text" value="{{ data['shareholderFirstName']}}">
+          <input class="govuk-input govuk-!-width-one-half" id="pscFirstName" name="pscFirstName" type="text" value="{{ data['shareholderFirstName']}}">
       </div>
 
       <div class="govuk-form-group">
@@ -63,7 +67,7 @@
         <div id="pscMiddleName-hint" class="govuk-hint">
           Enter middle name(s) in full not just initials.
       </div>
-          <input class="govuk-input govuk-!-width-two-thirds" id="pscMiddleName" name="pscMiddleName" type="text" value="{{ data['pscMiddleName'] }}">
+          <input class="govuk-input govuk-!-width-one-half" id="pscMiddleName" name="pscMiddleName" type="text" value="{{ data['pscMiddleName'] }}">
       </div>
 
       <!-- Check for error -->
@@ -75,16 +79,13 @@
           <label class="govuk-label" for="pscLastName">
             Last name
           </label>
-          <div id="pscLastName-hint" class="govuk-hint">
-            Enter your full last name.
-        </div>
           <!-- Check for error -->
         {% if errorPscLastName %}
           <p id="pscLastName-error" class="govuk-error-message">
             <span class="govuk-visually-hidden">Error:</span> Enter the full last name
           </p>
         {% endif %} 
-          <input class="govuk-input govuk-!-width-two-thirds" id="pscLastName" name="pscLastName" type="text" value="{{ data['shareholderLastName']}}">
+          <input class="govuk-input govuk-!-width-one-half" id="pscLastName" name="pscLastName" type="text" value="{{ data['shareholderLastName']}}">
       </div>
 
       <!-- Check for error -->
@@ -102,7 +103,10 @@
             <span class="govuk-visually-hidden">Error:</span> Enter the nationality
           </p>
         {% endif %} 
-          <input class="govuk-input govuk-!-width-two-thirds" id="pscNationality" name="pscNationality" type="text" value="{{ data['pscNationality'] }}">
+          <input class="govuk-input govuk-!-width-one-half" id="pscNationality" name="pscNationality" type="text" value="{{ data['pscNationality'] }}">
+          <p class="govuk-body">
+            <a href="#" class="govuk-link">Add another nationality.</a>
+          </p>
       </div>
 
       <!-- Check for error -->
@@ -206,13 +210,6 @@
           This is an 11 character code that is given to a person after they have verified their identity with Companies House. 
         </div>
       </details>
-
-            <div class="govuk-inset-text">
-        <h2 class="govuk-heading-m">What information we'll show on the public register</h2>
-        <p>We will show the full name on the public Companies House register. We will only show the month and year of the date of birth.</p>
-      </div>
-
-
 
       {{ govukButton({
         text: "Save and continue"

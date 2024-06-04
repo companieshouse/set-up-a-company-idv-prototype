@@ -25,14 +25,18 @@
 
     <form action="{{currentUrl}}" method="post">
 
+      <div class="govuk-inset-text">
+        Director's details will appear on the public record except for the full date of birth.
+      </div>
+
       <div class="govuk-form-group">
           <label class="govuk-label" for="directorTitle">
-            Professional or honorary title (if relevant)
+            Title (optional)
           </label>
           <div id="directorTitle-hint" class="govuk-hint">
             For example, Mr, Mrs, Miss, Ms, Dr.
         </div>
-          <input class="govuk-input govuk-!-width-two-thirds" id="directorTitle" name="directorTitle" type="text" value="{{ data['directorTitle'] }}">
+          <input class="govuk-input govuk-!-width-one-half" id="directorTitle" name="directorTitle" type="text" value="{{ data['directorTitle'] }}">
       </div>
 
       <!-- Check for error -->
@@ -45,7 +49,7 @@
             First name
           </label>
           <div id="directorFirstName-hint" class="govuk-hint">
-            Enter your full first name.
+            Enter first name in full not just initials.
         </div>
           <!-- Check for error -->
         {% if errorDirectorFirstName %}
@@ -53,7 +57,7 @@
             <span class="govuk-visually-hidden">Error:</span> Enter your full first name
           </p>
         {% endif %} 
-          <input class="govuk-input govuk-!-width-two-thirds" id="directorFirstName" name="directorFirstName" type="text" value="{{ data['directorFirstName'] }}">
+          <input class="govuk-input govuk-!-width-one-half" id="directorFirstName" name="directorFirstName" type="text" value="{{ data['directorFirstName'] }}">
       </div>
 
       <div class="govuk-form-group">
@@ -61,9 +65,9 @@
           Middle names
         </label>
         <div id="directorMiddleName-hint" class="govuk-hint">
-          Enter your full middle name or names.
-      </div>
-          <input class="govuk-input govuk-!-width-two-thirds" id="directorMiddleName" name="directorMiddleName" type="text" value="{{ data['directorMiddleName'] }}">
+          Enter middle name(s) in full not just initials.
+        </div>
+          <input class="govuk-input govuk-!-width-one-half" id="directorMiddleName" name="directorMiddleName" type="text" value="{{ data['directorMiddleName'] }}">
       </div>
 
       <!-- Check for error -->
@@ -75,16 +79,14 @@
           <label class="govuk-label" for="directorLastName">
             Last name
           </label>
-          <div id="directorLastName-hint" class="govuk-hint">
-            Enter your full last name.
-        </div>
+          
           <!-- Check for error -->
         {% if errorDirectorLastName %}
           <p id="directorLastName-error" class="govuk-error-message">
             <span class="govuk-visually-hidden">Error:</span> Enter your full last name
           </p>
         {% endif %} 
-          <input class="govuk-input govuk-!-width-two-thirds" id="directorLastName" name="directorLastName" type="text" value="{{ data['directorLastName'] }}">
+          <input class="govuk-input govuk-!-width-one-half" id="directorLastName" name="directorLastName" type="text" value="{{ data['directorLastName'] }}">
       </div>
 
       <!-- Check for error -->
@@ -136,28 +138,10 @@
             <span class="govuk-visually-hidden">Error:</span> Enter the director's nationality
           </p>
         {% endif %} 
-          <input class="govuk-input govuk-!-width-two-thirds" id="directorNationality" name="directorNationality" type="text" value="{{ data['directorNationality'] }}">
-      </div>
-
-      <!-- Check for error -->
-      {% if errorDirectorJobTitle%}
-        <div class="govuk-form-group govuk-form-group--error">
-      {% else %}
-        <div class="govuk-form-group">
-      {% endif %} 
-          <label class="govuk-label" for="directorJobTitle">
-            Job title
-          </label>
-          <div id="directorJobTitle-hint" class="govuk-hint">
-            Enter what the person works as. For example, carpenter.
-          </div>
-          <!-- Check for error -->
-        {% if errorDirectorJobTitle %}
-          <p id="directorJobTitle-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Enter the director's job title
+          <input class="govuk-input govuk-!-width-one-half" id="directorNationality" name="directorNationality" type="text" value="{{ data['directorNationality'] }}">
+          <p class="govuk-body">
+            <a href="#" class="govuk-link">Add another nationality.</a>
           </p>
-        {% endif %} 
-          <input class="govuk-input govuk-!-width-two-thirds" id="directorJobTitle" name="directorJobTitle" type="text" value="{{ data['directorJobTitle'] }}">
       </div>
 
       <!-- Check for error -->
@@ -229,6 +213,27 @@
       </div>
 
       <!-- Check for error -->
+      {% if errorDirectorJobTitle%}
+        <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+        <div class="govuk-form-group">
+      {% endif %} 
+          <label class="govuk-label" for="directorJobTitle">
+            Job title
+          </label>
+          <div id="directorJobTitle-hint" class="govuk-hint">
+            Enter what the person works as. For example, carpenter.
+          </div>
+          <!-- Check for error -->
+        {% if errorDirectorJobTitle %}
+          <p id="directorJobTitle-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Enter the director's job title
+          </p>
+        {% endif %} 
+          <input class="govuk-input govuk-!-width-one-half" id="directorJobTitle" name="directorJobTitle" type="text" value="{{ data['directorJobTitle'] }}">
+      </div>
+
+      <!-- Check for error -->
       {% if errorDirectorPersonalCode or directorMatchError %}
         <div class="govuk-form-group govuk-form-group--error">
       {% else %}
@@ -264,13 +269,6 @@
           This is an 11 character code that is given to a person after they have verified their identity with Companies House. 
         </div>
       </details>
-
-
-      <div class="govuk-inset-text">
-        <h2 class="govuk-heading-m">What information we'll show on the public register</h2>
-        <p>We will show the full name on the public Companies House register. We will only show the month and year of the date of birth.</p>
-      </div>
-
 
       {{ govukButton({
         text: "Save and continue"

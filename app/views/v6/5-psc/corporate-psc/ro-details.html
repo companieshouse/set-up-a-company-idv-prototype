@@ -37,20 +37,26 @@
           <label class="govuk-label" for="roFirstName">
             First name
           </label>
+          <div id="roFirstName-hint" class="govuk-hint">
+            Enter first name in full not just initials.
+        </div>
           <!-- Check for error -->
         {% if errorRoFirstName %}
           <p id="roFirstName-error" class="govuk-error-message">
             <span class="govuk-visually-hidden">Error:</span> Enter the first name
           </p>
         {% endif %} 
-          <input class="govuk-input govuk-!-width-two-thirds" id="roFirstName" name="roFirstName" type="text" value="{{ data['roFirstName'] }}">
+          <input class="govuk-input govuk-!-width-one-half" id="roFirstName" name="roFirstName" type="text" value="{{ data['roFirstName'] }}">
       </div>
     
       <div class="govuk-form-group">
         <label class="govuk-label" for="roMddleName">
-          Middle names
+          Middle name(s)
         </label>
-          <input class="govuk-input govuk-!-width-two-thirds" id="roMddleName" name="roMddleName" type="text" value="{{ data['roMddleName'] }}">
+        <div id="roMddleName-hint" class="govuk-hint">
+          Enter middle name(s) in full not just initials.
+        </div>
+        <input class="govuk-input govuk-!-width-one-half" id="roMddleName" name="roMddleName" type="text" value="{{ data['roMddleName'] }}">
       </div>
     
       <!-- Check for error -->
@@ -68,7 +74,7 @@
             <span class="govuk-visually-hidden">Error:</span> Enter the last name
           </p>
         {% endif %} 
-          <input class="govuk-input govuk-!-width-two-thirds" id="roLastName" name="roLastName" type="text" value="{{ data['roLastName'] }}">
+          <input class="govuk-input govuk-!-width-one-half" id="roLastName" name="roLastName" type="text" value="{{ data['roLastName'] }}">
       </div>
 
 
