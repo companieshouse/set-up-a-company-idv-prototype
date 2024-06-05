@@ -327,9 +327,45 @@ router.post('/v6/3-director/director-details', function (req, res) {
     })
   } // name mis-match
   else if (req.session.data['directorPersonalCode'] === '111-2222-3333') {
-    res.redirect('/v6/3-director/director-why-this-name')
+    res.redirect('/v6/3-director/director-name-different')
   } else {
     res.redirect('/v6/3-director/director-address')
+  }
+})
+
+
+// ******* director-name-different' javascript ********************************
+router.get('/v6/3-director/director-name-different', function (req, res) {
+  // Set URl
+  res.render('v6/3-director/director-name-different', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v6/3-director/director-name-different', function (req, res) {
+  // Create empty array
+  var errors = []
+
+  // Check if user has filled out a value
+  if (typeof req.session.data['nameDifferent'] === 'undefined') {
+    // No value so add error to array
+    errors.push({
+      text: 'Select if you want to continue with a different name',
+      href: '#nameDifferent'
+    })
+
+    // Re-show page with error value as true so errors will show
+    res.render('v6/3-director/director-name-different', {
+      errorNameDifferent: true,
+      errorList: errors
+    })
+  } else {
+    if (req.session.data['nameDifferent'] === 'yes') {
+      res.redirect('/v6/3-director/director-why-this-name')
+    } else {
+      // User inputted value so move to next page
+      res.redirect('/v6/3-director/director-details')
+    }
   }
 })
 
