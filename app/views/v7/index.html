@@ -1,0 +1,346 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+  {{ govukTag({
+    classes: "govuk-tag--blue govuk-!-margin-bottom-4",
+    text: "Version 7"
+  }) }}
+
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl">
+        Set up a limited company and register for Corporation Tax <span class="govuk-caption-xl"></span>
+      </h1>
+
+      <a href="1-initial-set-up/start" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+        Start now
+      </a>
+
+      <h2 class="govuk-heading-m">Application submitted pages</h2>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a class="govuk-link" href="app-submitted-no-codes-generic">Application submitted - PSC personal codes not given - generic</a>
+        </li>
+    
+      </ul>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible govuk-!-margin-bottom-6">
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-l">Prototype data</h2>
+
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+            Personal code
+          </h2>
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                111-2222-3333
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Shows the 'Why is the verified name different?' page 
+                in the Director or PSC journey.
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                444-5555-6666
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Shows the data doesn't match page in the Director or PSC journey.
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+
+      <h2 class="govuk-heading-l">Individual screen links</h2>
+
+      <h2 class="govuk-heading-m">Initial set up</h2>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a class="govuk-link" href="1-initial-set-up/start">Start</a>
+        </li>   
+        <li>
+          <a class="govuk-link" href="1-initial-set-up/have-you-verified">have you verified?</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="1-initial-set-up/verification-stop">verification-stop</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="1-initial-set-up/starting-a-new-application">Are you starting a new application?</a>
+        </li>   
+      </ul>
+
+      <h2 class="govuk-heading-m">Company details</h2>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a class="govuk-link" href="2-company-details/company-relationship">company-relationship</a>
+        </li> 
+        <li>
+          <a class="govuk-link" href="2-company-details/company-name">company-name</a>
+        </li>      
+      </ul>
+
+      <h2 class="govuk-heading-m">Director</h2>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a class="govuk-link" href="3-director/director-details">director-details</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="3-director/director-why-this-name">why-this-name</a>
+        </li>    
+        <li>
+          <a class="govuk-link" href="3-director/director-address">director-address</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="3-director/director-confirm-address">confirm-address</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="3-director/director-add">Add director</a>
+        </li> 
+        <li>
+          <a class="govuk-link" href="3-director/director-statement">Director statement</a>
+        </li>   
+        <li>
+          <a class="govuk-link" href="3-director/director-check-details">Check details</a>
+        </li>    
+      </ul>
+
+      <h2 class="govuk-heading-m">Shareholders</h2>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a class="govuk-link" href="4-shareholders/set-up-shareholders">set-up-shareholders</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="4-shareholders/is-a-shareholder">is-a-shareholder</a>
+        </li>      
+        <li>
+          <a class="govuk-link" href="4-shareholders/shareholder-add">shareholder-add</a>
+        </li>   
+        <li>
+          <a class="govuk-link" href="4-shareholders/shareholder-type">shareholder-type</a>
+        </li> 
+        <li>
+          <a class="govuk-link" href="4-shareholders/shareholder-name">shareholder-name</a>
+        </li>   
+        <li>
+          <a class="govuk-link" href="4-shareholders/shareholder-address">shareholder-address</a>
+        </li> 
+        <li>
+          <a class="govuk-link" href="4-shareholders/shareholder-confirm-address">shareholder confirm address</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="4-shareholders/shareholder-address-2">shareholder-address-2</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="4-shareholders/corporate-shareholder-name">corporate shareholder name</a>
+        </li>   
+        <li>
+          <a class="govuk-link" href="4-shareholders/corporate-shareholder-name-warning">corporaste shareholder name warning</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="4-shareholders/corporate-shareholder-address">Corporate shareholder address</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="4-shareholders/corporate-shareholder-address-2">Corporate shareholder address 2</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="4-shareholders/corporate-shareholder-confirm-address">Corporate shareholder confirm address</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="4-shareholders/corporate-shareholder-person">Corporate shareholder person</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="4-shareholders/check-shareholder-details">check shareholder details</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="4-shareholders/share-type">share type</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="4-shareholders/share-number">share number</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="4-shareholders/share-value">share value</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="4-shareholders/check-shares">check shares</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="4-shareholders/psc-statement">Psc statement</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="4-shareholders/psc-statement">Psc statement</a>
+        </li>  
+      </ul>
+
+      <h2 class="govuk-heading-m">PSC</h2>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a class="govuk-link" href="5-psc/set-up-pscs">set up psc</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="5-psc/director-psc/psc-previous-answers">director psc previous answers</a>
+        </li>      
+        <li>
+          <a class="govuk-link" href="5-psc/director-psc/psc-right-to-appoint">director psc Right to appoint or remove</a>
+        </li> 
+        <li>
+          <a class="govuk-link" href="5-psc/individual-psc/psc-previous-answers">individual psc previous answers</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="5-psc/individual-psc/psc-details">individual psc details</a>
+        </li>   
+        <li>
+          <a class="govuk-link" href="5-psc/individual-psc/psc-why-this-name">individual psc why this name</a>
+        </li>   
+        <li>
+          <a class="govuk-link" href="5-psc/individual-psc/psc-right-to-appoint">individual psc right to appoint</a>
+        </li> 
+        <li>
+          <a class="govuk-link" href="5-psc/individual-psc/psc-statement">individual psc statement</a>
+        </li> 
+        <li>
+          <a class="govuk-link" href="5-psc/corporate-psc/rle-previous-answers">rle previous answers</a>
+        </li> 
+        <li>
+          <a class="govuk-link" href="5-psc/corporate-psc/rle-registered">rle registered</a>
+        </li> 
+        <li>
+          <a class="govuk-link" href="5-psc/corporate-psc/rle-corporate-body">rle corporate body</a>
+        </li> 
+        <li>
+          <a class="govuk-link" href="5-psc/corporate-psc/rle-details">rle-details</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="5-psc/corporate-psc/rle-right-to-appoint">rle right to appoint</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="5-psc/corporate-psc/ro-have-details">ro do you have details</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="5-psc/corporate-psc/ro-details">ro details</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="5-psc/corporate-psc/ro-why-this-name">ro why this name</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="5-psc/corporate-psc/ro-statements">ro-statements</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="5-psc/psc-check-details">psc-check-details</a>
+        </li>
+      </ul> 
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible govuk-!-margin-bottom-6">
+
+      <h2 class="govuk-heading-m" id="authScreens">Changes this version</h2>
+      <ul class="govuk-list govuk-list--bullet">      
+        <li>
+          "card" style check answers pages removed and reverted to standard summary lists
+        </li>
+      </ul>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible govuk-!-margin-bottom-6">
+
+      <h2 class="govuk-heading-m">User research</h2>
+      <ul class="govuk-list govuk-list--bullet">      
+        <li>
+          <a class="govuk-link" target="_blank" href="https://companieshouse.sharepoint.com/sites/IDVThink-piece/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FIDVThink%2Dpiece%2FShared%20Documents%2FGeneral%2FAlpha%2FResearch%2FWork%20stream%203%20%2D%20Cross%20service%20preparedness%2FR1%20SCRS%20usability%20testing%2FResearch%20videos%20%2D%20DO%20NOT%20DOWNLOAD%20OR%20COPY%20THESE%20VIDEOS%21%20WATCHING%20ONLY&viewid=0afa5689%2D13a6%2D4121%2Daba9%2D5a6bec0c05de&OR=Teams%2DHL&CT=1692969231387&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiIyOC8yMzA3MDMwNzM0NiIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D">User research videos</a>
+        </li>
+      </ul>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible govuk-!-margin-bottom-6">
+
+      <h2 class="govuk-heading-m">Journey flow</h2>
+      <p class="govuk-body"><a class="govuk-link" target="_blank" href="https://app.mural.co/t/companieshouse8589/m/companieshouse8589/1715953804268/34fd944af7b10dd9f950b86271a2b4e1c9b09d85?sender=u9bc72e5725f1871777091172">Prototype version 6 screen flow</a></p>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible govuk-!-margin-bottom-6">
+
+      <h2 class="govuk-heading-m">
+        IDV services
+      </h2>
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="col">Links</th>
+
+            <th class="govuk-table__header" scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+              <a href="https://idv-prototype.herokuapp.com/">Register as an Authorised Corporate Service Provider</a>
+            </td>
+          
+            <td class="govuk-table__cell">
+              <strong class="govuk-tag govuk-tag--blue">
+                PROTOTYPE
+              </strong>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+              <a href="https://prove-your-identity-prototype.herokuapp.com/">How people verify prototype</a>
+            </td>
+          
+            <td class="govuk-table__cell">
+              <strong class="govuk-tag govuk-tag--blue">
+                PROTOTYPE
+              </strong>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+              <a href="https://submit-psc-statement-prototype-8cf558a5f32b.herokuapp.com/">Provide identity verification details for a PSC or relevant legal entity</a>
+            </td>
+          
+            <td class="govuk-table__cell">
+              <strong class="govuk-tag govuk-tag--blue">
+                PROTOTYPE
+              </strong>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+
+
+        
+    </div>
+  </div>
+
+
+
+
+
+{% endblock %}

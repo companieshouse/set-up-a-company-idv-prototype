@@ -13,23 +13,23 @@ router.use((req, res, next) => {
 }) 
 
 // ******* Sign in email validation ********************************
-router.get('/v6/1-initial-set-up/sign-in-email', function (req, res) {
+router.get('/v7/1-initial-set-up/sign-in-email', function (req, res) {
   // Set URl
-  res.render('v6/1-initial-set-up/sign-in-email', {
+  res.render('v7/1-initial-set-up/sign-in-email', {
     currentUrl: req.originalUrl
   })
 })
 
 
 // ******* have-you-verified javascript ********************************
-router.get('/v6/1-initial-set-up/have-you-verified', function (req, res) {
+router.get('/v7/1-initial-set-up/have-you-verified', function (req, res) {
   // Set URl
-  res.render('v6/1-initial-set-up/have-you-verified', {
+  res.render('v7/1-initial-set-up/have-you-verified', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/1-initial-set-up/have-you-verified', function (req, res) {
+router.post('/v7/1-initial-set-up/have-you-verified', function (req, res) {
   // Create empty array
   var errors = []
 
@@ -42,29 +42,29 @@ router.post('/v6/1-initial-set-up/have-you-verified', function (req, res) {
     })
 
     // Re-show page with error value as true so errors will show
-    res.render('v6/1-initial-set-up/have-you-verified', {
+    res.render('v7/1-initial-set-up/have-you-verified', {
       errorHaveVerified: true,
       errorList: errors
     })
   } else {
     if (req.session.data['haveVerified'] === 'yes') {
-      res.redirect('/v6/1-initial-set-up/starting-a-new-application')
+      res.redirect('/v7/1-initial-set-up/starting-a-new-application')
     } else {
       // User inputted value so move to next page
-      res.redirect('/v6/1-initial-set-up/verification-stop')
+      res.redirect('/v7/1-initial-set-up/verification-stop')
     }
   }
 })
 
 // ******* starting-a-new-application javascript ********************************
-router.get('/v6/1-initial-set-up/starting-a-new-application', function (req, res) {
+router.get('/v7/1-initial-set-up/starting-a-new-application', function (req, res) {
   // Set URl
-  res.render('v6/1-initial-set-up/starting-a-new-application', {
+  res.render('v7/1-initial-set-up/starting-a-new-application', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/1-initial-set-up/starting-a-new-application', function (req, res) {
+router.post('/v7/1-initial-set-up/starting-a-new-application', function (req, res) {
   // Create empty array
   var errors = []
 
@@ -77,27 +77,27 @@ router.post('/v6/1-initial-set-up/starting-a-new-application', function (req, re
     })
 
     // Re-show page with error value as true so errors will show
-    res.render('v6/1-initial-set-up/starting-a-new-application', {
+    res.render('v7/1-initial-set-up/starting-a-new-application', {
       errorNew: true,
       errorList: errors
     })
   } else {
     if (req.session.data['newApplication'] === 'yes') {
-      res.redirect('/v6/2-company-details/company-relationship')
+      res.redirect('/v7/2-company-details/company-relationship')
     } 
   }
 })
 
 
 // ******* company-relationship javascript ********************************
-router.get('/v6/2-company-details/company-relationship', function (req, res) {
+router.get('/v7/2-company-details/company-relationship', function (req, res) {
   // Set URl
-  res.render('v6/2-company-details/company-relationship', {
+  res.render('v7/2-company-details/company-relationship', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/2-company-details/company-relationship', function (req, res) {
+router.post('/v7/2-company-details/company-relationship', function (req, res) {
   // Create empty array
   var errors = []
 
@@ -110,25 +110,25 @@ router.post('/v6/2-company-details/company-relationship', function (req, res) {
     })
 
     // Re-show page with error value as true so errors will show
-    res.render('v6/2-company-details/company-relationship', {
+    res.render('v7/2-company-details/company-relationship', {
       errorRelationship: true,
       errorList: errors
     })
   } else {
-    res.redirect('/v6/2-company-details/company-name')
+    res.redirect('/v7/2-company-details/company-name')
   }
 })
 
 
 // ******* company-name javascript ******************************
-router.get('/v6/2-company-details/company-name', function (req, res) {
+router.get('/v7/2-company-details/company-name', function (req, res) {
   // Set URl
-  res.render('v6/2-company-details/company-name', {
+  res.render('v7/2-company-details/company-name', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/2-company-details/company-name', function (req, res) {
+router.post('/v7/2-company-details/company-name', function (req, res) {
     // Create empty array and set error variables to false
     var errors = []
     var nameError = false
@@ -160,28 +160,28 @@ router.post('/v6/2-company-details/company-name', function (req, res) {
   // Check if either values not filled out
   if (companyNameError) {
     // Re-show page with error value as true so errors will show
-    res.render('v6/2-company-details/company-name', {
+    res.render('v7/2-company-details/company-name', {
       errorCompanyName: nameError,
       errorCompanyEnding: nameEndingError,
       errorCompanyName: companyNameError,
       errorList: errors
     })
   } else {
-    res.redirect('/v6/3-director/director-details')
+    res.redirect('/v7/3-director/director-details')
   }
   
 })
 
 
 // ******* director-details javascript ******************************
-router.get('/v6/3-director/director-details', function (req, res) {
+router.get('/v7/3-director/director-details', function (req, res) {
   // Set URl
-  res.render('v6/3-director/director-details', {
+  res.render('v7/3-director/director-details', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/3-director/director-details', function (req, res) {
+router.post('/v7/3-director/director-details', function (req, res) {
   // Create empty array and set error variables to false
   var errors = []
   var firstNameError = false
@@ -297,7 +297,7 @@ router.post('/v6/3-director/director-details', function (req, res) {
   // Check if eother filed not filled out
   if (detailsError) {
     // Re-show page with error value as true so errors will show
-    res.render('v6/3-director/director-details', {
+    res.render('v7/3-director/director-details', {
       errorDirectorFirstName: firstNameError,
       errorDirectorLastName: lastNameError,
       errorDirectorDifferentName: differentNameError,
@@ -317,7 +317,7 @@ router.post('/v6/3-director/director-details', function (req, res) {
     href: '#directorPersonalCode'
     })
     
-    res.render('v6/3-director/director-details', {
+    res.render('v7/3-director/director-details', {
       errorDirectorDobDay: true,
       errorDirectorDobMonth: true,
       errorDirectorDobYear: true,
@@ -327,62 +327,97 @@ router.post('/v6/3-director/director-details', function (req, res) {
     })
   } // name mis-match
   else if (req.session.data['directorPersonalCode'] === '111-2222-3333') {
-    res.redirect('/v6/3-director/director-why-this-name')
+    res.redirect('/v7/3-director/director-name-different')
   } else {
-    res.redirect('/v6/3-director/director-address')
+    res.redirect('/v7/3-director/director-address')
   }
 })
 
 
-
-// ******* why-this-name javascript ********************************
-router.get('/v6/3-director/director-why-this-name', function (req, res) {
+// ******* director-name-different' javascript ********************************
+router.get('/v7/3-director/director-name-different', function (req, res) {
   // Set URl
-  res.render('v6/3-director/director-why-this-name', {
+  res.render('v7/3-director/director-name-different', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/3-director/director-why-this-name', function (req, res) {
-  res.redirect('/v6/3-director/director-address')
+router.post('/v7/3-director/director-name-different', function (req, res) {
+  // Create empty array
+  var errors = []
+
+  // Check if user has filled out a value
+  if (typeof req.session.data['nameDifferent'] === 'undefined') {
+    // No value so add error to array
+    errors.push({
+      text: 'Select if you want to continue with a different name',
+      href: '#nameDifferent'
+    })
+
+    // Re-show page with error value as true so errors will show
+    res.render('v7/3-director/director-name-different', {
+      errorNameDifferent: true,
+      errorList: errors
+    })
+  } else {
+    if (req.session.data['nameDifferent'] === 'yes') {
+      res.redirect('/v7/3-director/director-why-this-name')
+    } else {
+      // User inputted value so move to next page
+      res.redirect('/v7/3-director/director-details')
+    }
+  }
+})
+
+
+// ******* why-this-name javascript ********************************
+router.get('/v7/3-director/director-why-this-name', function (req, res) {
+  // Set URl
+  res.render('v7/3-director/director-why-this-name', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v7/3-director/director-why-this-name', function (req, res) {
+  res.redirect('/v7/3-director/director-address')
 })
 
 
 // ******* director-address javascript ********************************
-router.get('/v6/3-director/director-address', function (req, res) {
+router.get('/v7/3-director/director-address', function (req, res) {
   // Set URl
-  res.render('v6/3-director/director-address', {
+  res.render('v7/3-director/director-address', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/3-director/director-address', function (req, res) {
-  res.redirect('/v6/3-director/director-confirm-address')
+router.post('/v7/3-director/director-address', function (req, res) {
+  res.redirect('/v7/3-director/director-confirm-address')
 })
 
 
 // ******* confirm-address javascript ********************************
-router.get('/v6/3-director/director-confirm-address', function (req, res) {
+router.get('/v7/3-director/director-confirm-address', function (req, res) {
   // Set URl
-  res.render('v6/3-director/director-confirm-address', {
+  res.render('v7/3-director/director-confirm-address', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/3-director/director-confirm-address', function (req, res) {
-  res.redirect('/v6/3-director/director-statement')
+router.post('/v7/3-director/director-confirm-address', function (req, res) {
+  res.redirect('/v7/3-director/director-statement')
 })
 
 
 // ******* director-statement javascript ********************************
-router.get('/v6/3-director/director-statement', function (req, res) {
+router.get('/v7/3-director/director-statement', function (req, res) {
   // Set URl
-  res.render('v6/3-director/director-statement', {
+  res.render('v7/3-director/director-statement', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/3-director/director-statement', function (req, res) {
+router.post('/v7/3-director/director-statement', function (req, res) {
   // Create empty array
   var errors = []
 
@@ -394,25 +429,25 @@ router.post('/v6/3-director/director-statement', function (req, res) {
     })
 
     // Re-show page with error value as true so errors will show
-    res.render('v6/3-director/director-statement', {
+    res.render('v7/3-director/director-statement', {
       errorDirectorStatement: true,
       errorList: errors
     })
   } else {
-      res.redirect('/v6/3-director/director-add')
+      res.redirect('/v7/3-director/director-add')
   }
 })
 
 
 // ******* add-director javascript ********************************
-router.get('/v6/3-director/director-add', function (req, res) {
+router.get('/v7/3-director/director-add', function (req, res) {
   // Set URl
-  res.render('v6/3-director/director-add', {
+  res.render('v7/3-director/director-add', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/3-director/director-add', function (req, res) {
+router.post('/v7/3-director/director-add', function (req, res) {
   // Create empty array
   var errors = []
 
@@ -425,25 +460,25 @@ router.post('/v6/3-director/director-add', function (req, res) {
     })
 
     // Re-show page with error value as true so errors will show
-    res.render('v6/3-director/director-add', {
+    res.render('v7/3-director/director-add', {
       errorAnotherDirector: true,
       errorList: errors
     })
   } else if (req.session.data['anotherDirector'] === 'no') {
-    res.redirect('/v6/3-director/director-check-details')
+    res.redirect('/v7/3-director/director-check-details')
   } 
 })
 
 
 // ******* check-director-details javascript ******************************
-router.get('/v6/3-director/director-check-details', function (req, res) {
+router.get('/v7/3-director/director-check-details', function (req, res) {
   // Set URl
-  res.render('v6/3-director/director-check-details', {
+  res.render('v7/3-director/director-check-details', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/3-director/director-check-details', function (req, res) {
+router.post('/v7/3-director/director-check-details', function (req, res) {
     // Create empty array and set error variables to false
     var errors = []
     var directorDetailsError = false
@@ -473,39 +508,39 @@ router.post('/v6/3-director/director-check-details', function (req, res) {
   // Check if eother filed not filled out
   if (directorDetailsError) {
     // Re-show page with error value as true so errors will show
-    res.render('v6/3-director/director-check-details', {
+    res.render('v7/3-director/director-check-details', {
       errorConfirmDirectorAddress: directorConfirmAddressError,
       errorConfirmDirectorsAgree: directorConfirmAgreeError,
       errorDirectorCheck: directorDetailsError,
       errorList: errors
     })
   } else {
-    res.redirect('/v6/4-shareholders/set-up-shareholders')
+    res.redirect('/v7/4-shareholders/set-up-shareholders')
   }
   
 })
 
 // ******* set-up-shareholders javascript ******************************
-router.get('/v6/4-shareholders/set-up-shareholders', function (req, res) {
+router.get('/v7/4-shareholders/set-up-shareholders', function (req, res) {
   // Set URl
-  res.render('v6/4-shareholders/set-up-shareholders', {
+  res.render('v7/4-shareholders/set-up-shareholders', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/4-shareholders/set-up-shareholders', function (req, res) {
-  res.redirect('/v6/4-shareholders/is-a-shareholder')
+router.post('/v7/4-shareholders/set-up-shareholders', function (req, res) {
+  res.redirect('/v7/4-shareholders/is-a-shareholder')
 })
 
 // ******* add-shareholder javascript ********************************
-router.get('/v6/4-shareholders/is-a-shareholder', function (req, res) {
+router.get('/v7/4-shareholders/is-a-shareholder', function (req, res) {
   // Set URl
-  res.render('v6/4-shareholders/is-a-shareholder', {
+  res.render('v7/4-shareholders/is-a-shareholder', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/4-shareholders/is-a-shareholder', function (req, res) {
+router.post('/v7/4-shareholders/is-a-shareholder', function (req, res) {
   // Create empty array
   var errors = []
 
@@ -518,25 +553,25 @@ router.post('/v6/4-shareholders/is-a-shareholder', function (req, res) {
     })
 
     // Re-show page with error value as true so errors will show
-    res.render('v6/4-shareholders/is-a-shareholder', {
+    res.render('v7/4-shareholders/is-a-shareholder', {
       errorIsShareholder: true,
       errorList: errors
     })
   } else if (req.session.data['isShareholder'] === 'yes') {
-    res.redirect('/v6/4-shareholders/shareholder-add')
+    res.redirect('/v7/4-shareholders/shareholder-add')
   } 
 })
 
 
 // ******* add-shareholder javascript ********************************
-router.get('/v6/4-shareholders/shareholder-add', function (req, res) {
+router.get('/v7/4-shareholders/shareholder-add', function (req, res) {
   // Set URl
-  res.render('v6/4-shareholders/shareholder-add', {
+  res.render('v7/4-shareholders/shareholder-add', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/4-shareholders/shareholder-add', function (req, res) {
+router.post('/v7/4-shareholders/shareholder-add', function (req, res) {
   // Create empty array
   var errors = []
 
@@ -549,27 +584,27 @@ router.post('/v6/4-shareholders/shareholder-add', function (req, res) {
     })
 
     // Re-show page with error value as true so errors will show
-    res.render('v6/4-shareholders/shareholder-add', {
+    res.render('v7/4-shareholders/shareholder-add', {
       errorAddShareholder: true,
       errorList: errors
     })
   } else if (req.session.data['addShareholder'] === 'yes') {
-    res.redirect('/v6/4-shareholders/shareholder-type')
+    res.redirect('/v7/4-shareholders/shareholder-type')
   } else {
-    res.redirect('/v6/4-shareholders/check-shareholder-details')
+    res.redirect('/v7/4-shareholders/check-shareholder-details')
   }
 })
 
 
 // ******* add-shareholder javascript ********************************
-router.get('/v6/4-shareholders/shareholder-type', function (req, res) {
+router.get('/v7/4-shareholders/shareholder-type', function (req, res) {
   // Set URl
-  res.render('v6/4-shareholders/shareholder-type', {
+  res.render('v7/4-shareholders/shareholder-type', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/4-shareholders/shareholder-type', function (req, res) {
+router.post('/v7/4-shareholders/shareholder-type', function (req, res) {
   // Create empty array
   var errors = []
 
@@ -582,27 +617,27 @@ router.post('/v6/4-shareholders/shareholder-type', function (req, res) {
     })
 
     // Re-show page with error value as true so errors will show
-    res.render('v6/4-shareholders/shareholder-type', {
+    res.render('v7/4-shareholders/shareholder-type', {
       errorTypeShareholder: true,
       errorList: errors
     })
   }   else if (req.session.data['typeShareholder'] === 'person') {
-    res.redirect('/v6/4-shareholders/shareholder-name')
+    res.redirect('/v7/4-shareholders/shareholder-name')
   } else {
-    res.redirect('/v6/4-shareholders/corporate-shareholder-name')
+    res.redirect('/v7/4-shareholders/corporate-shareholder-name')
   }
 })
 
 
 // ******* shareholder-name javascript *********************
-router.get('/v6/4-shareholders/shareholder-name', function (req, res) {
+router.get('/v7/4-shareholders/shareholder-name', function (req, res) {
   // Set URl
-  res.render('v6/4-shareholders/shareholder-name', {
+  res.render('v7/4-shareholders/shareholder-name', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/4-shareholders/shareholder-name', function (req, res) {
+router.post('/v7/4-shareholders/shareholder-name', function (req, res) {
   // Create empty array and set error variables to false
   var errors = [];
   var firstNameError = false
@@ -628,27 +663,27 @@ router.post('/v6/4-shareholders/shareholder-name', function (req, res) {
   }
 
   if (shareholderNameError) {
-  res.render('v6/4-shareholders/shareholder-name', {
+  res.render('v7/4-shareholders/shareholder-name', {
     errorShareholderFirstName: firstNameError,
     errorShareholderLastName: lastNameError,
     errorShareholderName: shareholderNameError,
     errorList: errors
   })
   } else {
-      res.redirect('/v6/4-shareholders/shareholder-address')
+      res.redirect('/v7/4-shareholders/shareholder-address')
     }
 })
 
 
 // ******* shareholder-address javascript ********************************
-router.get('/v6/4-shareholders/shareholder-address', function (req, res) {
+router.get('/v7/4-shareholders/shareholder-address', function (req, res) {
   // Set URl
-  res.render('v6/4-shareholders/shareholder-address', {
+  res.render('v7/4-shareholders/shareholder-address', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/4-shareholders/shareholder-address', function (req, res) {
+router.post('/v7/4-shareholders/shareholder-address', function (req, res) {
   // Create empty array
   var errors = []
 
@@ -661,53 +696,53 @@ router.post('/v6/4-shareholders/shareholder-address', function (req, res) {
     })
 
     // Re-show page with error value as true so errors will show
-    res.render('v6/4-shareholders/shareholder-address', {
+    res.render('v7/4-shareholders/shareholder-address', {
       errorShareholderAddress: true,
       errorList: errors
     })
   }   else if (req.session.data['shareholderAddress'] === 'address') {
-    res.redirect('/v6/4-shareholders/shareholder-add')
+    res.redirect('/v7/4-shareholders/shareholder-add')
   } else {
-    res.redirect('/v6/4-shareholders/shareholder-address-2')
+    res.redirect('/v7/4-shareholders/shareholder-address-2')
   }
 })
 
 
 // ******* shareholder-address2 javascript ********************************
-router.get('/v6/4-shareholders/shareholder-address-2', function (req, res) {
+router.get('/v7/4-shareholders/shareholder-address-2', function (req, res) {
   // Set URl
-  res.render('v6/4-shareholders/shareholder-address-2', {
+  res.render('v7/4-shareholders/shareholder-address-2', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/4-shareholders/shareholder-address-2', function (req, res) {
-    res.redirect('/v6/4-shareholders/shareholder-confirm-address')
+router.post('/v7/4-shareholders/shareholder-address-2', function (req, res) {
+    res.redirect('/v7/4-shareholders/shareholder-confirm-address')
 })
 
 
 // ******* confirm-address javascript ********************************
-router.get('/v6/4-shareholders/shareholder-confirm-address', function (req, res) {
+router.get('/v7/4-shareholders/shareholder-confirm-address', function (req, res) {
   // Set URl
-  res.render('v6/4-shareholders/shareholder-confirm-address', {
+  res.render('v7/4-shareholders/shareholder-confirm-address', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/4-shareholders/shareholder-confirm-address', function (req, res) {
-  res.redirect('/v6/4-shareholders/shareholder-add')
+router.post('/v7/4-shareholders/shareholder-confirm-address', function (req, res) {
+  res.redirect('/v7/4-shareholders/shareholder-add')
 })
 
 
 // ******* corporate-shareholder-name javascript *********************
-router.get('/v6/4-shareholders/corporate-shareholder-name', function (req, res) {
+router.get('/v7/4-shareholders/corporate-shareholder-name', function (req, res) {
   // Set URl
-  res.render('v6/4-shareholders/corporate-shareholder-name', {
+  res.render('v7/4-shareholders/corporate-shareholder-name', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/4-shareholders/corporate-shareholder-name', function (req, res) {
+router.post('/v7/4-shareholders/corporate-shareholder-name', function (req, res) {
   // Create empty array and set error variables to false
   var errors = [];
   var nameError = false
@@ -721,39 +756,39 @@ router.post('/v6/4-shareholders/corporate-shareholder-name', function (req, res)
   }
 
   if (nameError) {
-  res.render('v6/4-shareholders/corporate-shareholder-name', {
+  res.render('v7/4-shareholders/corporate-shareholder-name', {
     errorShareholderCorporateName: nameError,
     errorList: errors
   })
   } else {
-      res.redirect('/v6/4-shareholders/corporate-shareholder-name-warning')
+      res.redirect('/v7/4-shareholders/corporate-shareholder-name-warning')
     }
 })
 
 
 // ******* confirm-address javascript ********************************
-router.get('/v6/4-shareholders/corporate-shareholder-name-warning', function (req, res) {
+router.get('/v7/4-shareholders/corporate-shareholder-name-warning', function (req, res) {
   // Set URl
-  res.render('v6/4-shareholders/corporate-shareholder-name-warning', {
+  res.render('v7/4-shareholders/corporate-shareholder-name-warning', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/4-shareholders/corporate-shareholder-name-warning', function (req, res) {
-  res.redirect('/v6/4-shareholders/corporate-shareholder-address')
+router.post('/v7/4-shareholders/corporate-shareholder-name-warning', function (req, res) {
+  res.redirect('/v7/4-shareholders/corporate-shareholder-address')
 })
 
 
 
 // ******* corporate-shareholder-address javascript ********************************
-router.get('/v6/4-shareholders/corporate-shareholder-address', function (req, res) {
+router.get('/v7/4-shareholders/corporate-shareholder-address', function (req, res) {
   // Set URl
-  res.render('v6/4-shareholders/corporate-shareholder-address', {
+  res.render('v7/4-shareholders/corporate-shareholder-address', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/4-shareholders/corporate-shareholder-address', function (req, res) {
+router.post('/v7/4-shareholders/corporate-shareholder-address', function (req, res) {
   // Create empty array
   var errors = []
 
@@ -766,53 +801,53 @@ router.post('/v6/4-shareholders/corporate-shareholder-address', function (req, r
     })
 
     // Re-show page with error value as true so errors will show
-    res.render('v6/4-shareholders/corporate-shareholder-address', {
+    res.render('v7/4-shareholders/corporate-shareholder-address', {
       errorCorporateShareholderAddress: true,
       errorList: errors
     })
   }   else if (req.session.data['corporateShareholderAddress'] === 'address') {
-    res.redirect('/v6/4-shareholders/corporate-shareholder-person')
+    res.redirect('/v7/4-shareholders/corporate-shareholder-person')
   } else {
-    res.redirect('/v6/4-shareholders/corporate-shareholder-address-2')
+    res.redirect('/v7/4-shareholders/corporate-shareholder-address-2')
   }
 })
 
 
 // ******* corporate-shareholder-address2 javascript ********************************
-router.get('/v6/4-shareholders/corporate-shareholder-address-2', function (req, res) {
+router.get('/v7/4-shareholders/corporate-shareholder-address-2', function (req, res) {
   // Set URl
-  res.render('v6/4-shareholders/corporate-shareholder-address-2', {
+  res.render('v7/4-shareholders/corporate-shareholder-address-2', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/4-shareholders/corporate-shareholder-address-2', function (req, res) {
-    res.redirect('/v6/4-shareholders/corporate-shareholder-confirm-address')
+router.post('/v7/4-shareholders/corporate-shareholder-address-2', function (req, res) {
+    res.redirect('/v7/4-shareholders/corporate-shareholder-confirm-address')
 })
 
 
 // ******* corporate-confirm-address javascript ********************************
-router.get('/v6/4-shareholders/corporate-shareholder-confirm-address', function (req, res) {
+router.get('/v7/4-shareholders/corporate-shareholder-confirm-address', function (req, res) {
   // Set URl
-  res.render('v6/4-shareholders/corporate-shareholder-confirm-address', {
+  res.render('v7/4-shareholders/corporate-shareholder-confirm-address', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/4-shareholders/corporate-shareholder-confirm-address', function (req, res) {
-  res.redirect('/v6/4-shareholders/corporate-shareholder-person')
+router.post('/v7/4-shareholders/corporate-shareholder-confirm-address', function (req, res) {
+  res.redirect('/v7/4-shareholders/corporate-shareholder-person')
 })
 
 
 // ******* corporate-shareholder-person javascript *********************
-router.get('/v6/4-shareholders/corporate-shareholder-person', function (req, res) {
+router.get('/v7/4-shareholders/corporate-shareholder-person', function (req, res) {
   // Set URl
-  res.render('v6/4-shareholders/corporate-shareholder-person', {
+  res.render('v7/4-shareholders/corporate-shareholder-person', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/4-shareholders/corporate-shareholder-person', function (req, res) {
+router.post('/v7/4-shareholders/corporate-shareholder-person', function (req, res) {
   // Create empty array and set error variables to false
   var errors = [];
   var firstNameError = false
@@ -838,41 +873,41 @@ router.post('/v6/4-shareholders/corporate-shareholder-person', function (req, re
   }
 
   if (shareholderNameError) {
-  res.render('v6/4-shareholders/corporate-shareholder-person', {
+  res.render('v7/4-shareholders/corporate-shareholder-person', {
     errorCorporatePersonFirstName: firstNameError,
     errorCorporatePersonlastName: lastNameError,
     errorCorporatePerson: shareholderNameError,
     errorList: errors
   })
   } else {
-      res.redirect('/v6/4-shareholders/shareholder-add')
+      res.redirect('/v7/4-shareholders/shareholder-add')
     }
 })
 
 
 // ******* check-shareholder-details javascript ********************************
-router.get('/v6/4-shareholders/check-shareholder-details', function (req, res) {
+router.get('/v7/4-shareholders/check-shareholder-details', function (req, res) {
   // Set URl
-  res.render('v6/4-shareholders/check-shareholder-details', {
+  res.render('v7/4-shareholders/check-shareholder-details', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/4-shareholders/check-shareholder-details', function (req, res) {
-  res.redirect('/v6/4-shareholders/share-type')
+router.post('/v7/4-shareholders/check-shareholder-details', function (req, res) {
+  res.redirect('/v7/4-shareholders/share-type')
 })
 
 
 
 // ******* share-type javascript ********************************
-router.get('/v6/4-shareholders/share-type', function (req, res) {
+router.get('/v7/4-shareholders/share-type', function (req, res) {
   // Set URl
-  res.render('v6/4-shareholders/share-type', {
+  res.render('v7/4-shareholders/share-type', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/4-shareholders/share-type', function (req, res) {
+router.post('/v7/4-shareholders/share-type', function (req, res) {
   // Create empty array
   var errors = []
 
@@ -885,38 +920,38 @@ router.post('/v6/4-shareholders/share-type', function (req, res) {
     })
 
     // Re-show page with error value as true so errors will show
-    res.render('v6/4-shareholders/share-type', {
+    res.render('v7/4-shareholders/share-type', {
       errorShareType: true,
       errorList: errors
     })
   } else if (req.session.data['shareType'] === 'yes') {
-    res.redirect('/v6/4-shareholders/share-number')
+    res.redirect('/v7/4-shareholders/share-number')
   } 
 })
 
 
 // ******* share-number javascript ********************************
-router.get('/v6/4-shareholders/share-number', function (req, res) {
+router.get('/v7/4-shareholders/share-number', function (req, res) {
   // Set URl
-  res.render('v6/4-shareholders/share-number', {
+  res.render('v7/4-shareholders/share-number', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/4-shareholders/share-number', function (req, res) {
-  res.redirect('/v6/4-shareholders/share-value')
+router.post('/v7/4-shareholders/share-number', function (req, res) {
+  res.redirect('/v7/4-shareholders/share-value')
 })
 
 
 // ******* share-type javascript ********************************
-router.get('/v6/4-shareholders/share-value', function (req, res) {
+router.get('/v7/4-shareholders/share-value', function (req, res) {
   // Set URl
-  res.render('v6/4-shareholders/share-value', {
+  res.render('v7/4-shareholders/share-value', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/4-shareholders/share-value', function (req, res) {
+router.post('/v7/4-shareholders/share-value', function (req, res) {
   // Create empty array
   var errors = []
 
@@ -929,63 +964,63 @@ router.post('/v6/4-shareholders/share-value', function (req, res) {
     })
 
     // Re-show page with error value as true so errors will show
-    res.render('v6/4-shareholders/share-value', {
+    res.render('v7/4-shareholders/share-value', {
       errorShareValue: true,
       errorList: errors
     })
   } else 
-    res.redirect('/v6/4-shareholders/check-shares')
+    res.redirect('/v7/4-shareholders/check-shares')
 })
 
 
 // ******* check-shares javascript ********************************
-router.get('/v6/4-shareholders/check-shares', function (req, res) {
+router.get('/v7/4-shareholders/check-shares', function (req, res) {
   // Set URl
-  res.render('v6/4-shareholders/check-shares', {
+  res.render('v7/4-shareholders/check-shares', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/4-shareholders/check-shares', function (req, res) {
-  res.redirect('/v6/5-psc/set-up-pscs')
+router.post('/v7/4-shareholders/check-shares', function (req, res) {
+  res.redirect('/v7/5-psc/set-up-pscs')
 })
 
 
 // ******* set-up-pscs javascript ******************************
-router.get('/v6/5-psc/set-up-pscs', function (req, res) {
+router.get('/v7/5-psc/set-up-pscs', function (req, res) {
   // Set URl
-  res.render('v6/5-psc/set-up-pscs', {
+  res.render('v7/5-psc/set-up-pscs', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/5-psc/set-up-pscs', function (req, res) {
-  res.redirect('/v6/5-psc/director-psc/psc-previous-answers')
+router.post('/v7/5-psc/set-up-pscs', function (req, res) {
+  res.redirect('/v7/5-psc/director-psc/psc-previous-answers')
 })
 
 
 // ******* director-psc/psc-previous-answers javascript ******************************
-router.get('/v6/5-psc/director-psc/psc-previous-answers', function (req, res) {
+router.get('/v7/5-psc/director-psc/psc-previous-answers', function (req, res) {
   // Set URl
-  res.render('v6/5-psc/director-psc/psc-previous-answers', {
+  res.render('v7/5-psc/director-psc/psc-previous-answers', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/5-psc/director-psc/psc-previous-answers', function (req, res) {
-  res.redirect('/v6/5-psc/director-psc/psc-right-to-appoint')
+router.post('/v7/5-psc/director-psc/psc-previous-answers', function (req, res) {
+  res.redirect('/v7/5-psc/director-psc/psc-right-to-appoint')
 })
 
 
 // ******* director-psc/psc-right-to-appoint javascript ********************************
-router.get('/v6/5-psc/director-psc/psc-right-to-appoint', function (req, res) {
+router.get('/v7/5-psc/director-psc/psc-right-to-appoint', function (req, res) {
   // Set URl
-  res.render('v6/5-psc/director-psc/psc-right-to-appoint', {
+  res.render('v7/5-psc/director-psc/psc-right-to-appoint', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/5-psc/director-psc/psc-right-to-appoint', function (req, res) {
+router.post('/v7/5-psc/director-psc/psc-right-to-appoint', function (req, res) {
   // Create empty array
   var errors = []
 
@@ -998,45 +1033,45 @@ router.post('/v6/5-psc/director-psc/psc-right-to-appoint', function (req, res) {
     })
 
     // Re-show page with error value as true so errors will show
-    res.render('v6/5-psc/director-psc/psc-right-to-appoint', {
+    res.render('v7/5-psc/director-psc/psc-right-to-appoint', {
       errorRightAppoint: true,
       errorList: errors
     })
   } // Check if individual shareholder filled out
   else if (req.session.data['shareholderFirstName']) {
-    res.redirect('/v6/5-psc/individual-psc/psc-previous-answers')
+    res.redirect('/v7/5-psc/individual-psc/psc-previous-answers')
   } // Check if corporate shareholder filled out
   else if (req.session.data['shareholderCorporateName']){
-    res.redirect('/v6/5-psc/corporate-psc/rle-previous-answers')
+    res.redirect('/v7/5-psc/corporate-psc/rle-previous-answers')
   } else
   {
-    res.redirect('/v6/5-psc/psc-check-details')
+    res.redirect('/v7/5-psc/psc-check-details')
   }
 })
 
 
 // ******* individual-psc/psc-previous-answers javascript ******************************
-router.get('/v6/5-psc/individual-psc/psc-previous-answers', function (req, res) {
+router.get('/v7/5-psc/individual-psc/psc-previous-answers', function (req, res) {
   // Set URl
-  res.render('v6/5-psc/individual-psc/psc-previous-answers', {
+  res.render('v7/5-psc/individual-psc/psc-previous-answers', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/5-psc/individual-psc/psc-previous-answers', function (req, res) {
-  res.redirect('/v6/5-psc/individual-psc/psc-details')
+router.post('/v7/5-psc/individual-psc/psc-previous-answers', function (req, res) {
+  res.redirect('/v7/5-psc/individual-psc/psc-details')
 })
 
 
 // ******* individual-psc/psc-right-to-appoint javascript ********************************
-router.get('/v6/5-psc/individual-psc/psc-right-to-appoint', function (req, res) {
+router.get('/v7/5-psc/individual-psc/psc-right-to-appoint', function (req, res) {
   // Set URl
-  res.render('v6/5-psc/individual-psc/psc-right-to-appoint', {
+  res.render('v7/5-psc/individual-psc/psc-right-to-appoint', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/5-psc/individual-psc/psc-right-to-appoint', function (req, res) {
+router.post('/v7/5-psc/individual-psc/psc-right-to-appoint', function (req, res) {
   // Create empty array
   var errors = []
 
@@ -1049,25 +1084,25 @@ router.post('/v6/5-psc/individual-psc/psc-right-to-appoint', function (req, res)
     })
 
     // Re-show page with error value as true so errors will show
-    res.render('v6/5-psc/individual-psc/psc-right-to-appoint', {
+    res.render('v7/5-psc/individual-psc/psc-right-to-appoint', {
       errorIndividualRightAppoint: true,
       errorList: errors
     })
   } else {
-      res.redirect('/v6/5-psc/individual-psc/psc-statement')
+      res.redirect('/v7/5-psc/individual-psc/psc-statement')
     }
 })
 
 
 // ******* psc-statement javascript ********************************
-router.get('/v6/5-psc/individual-psc/psc-statement', function (req, res) {
+router.get('/v7/5-psc/individual-psc/psc-statement', function (req, res) {
   // Set URl
-  res.render('v6/5-psc/individual-psc/psc-statement', {
+  res.render('v7/5-psc/individual-psc/psc-statement', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/5-psc/individual-psc/psc-statement', function (req, res) {
+router.post('/v7/5-psc/individual-psc/psc-statement', function (req, res) {
   // Create empty array
   var errors = []
 
@@ -1079,30 +1114,30 @@ router.post('/v6/5-psc/individual-psc/psc-statement', function (req, res) {
     })
 
     // Re-show page with error value as true so errors will show
-    res.render('v6/5-psc/individual-psc/psc-statement', {
+    res.render('v7/5-psc/individual-psc/psc-statement', {
       errorPscStatement: true,
       errorList: errors
     })
   } 
   // Check if corporate shareholder filled out
   else if (req.session.data['shareholderCorporateName']){
-    res.redirect('/v6/5-psc/corporate-psc/rle-previous-answers')
+    res.redirect('/v7/5-psc/corporate-psc/rle-previous-answers')
   } else
   {
-    res.redirect('/v6/5-psc/psc-check-details')
+    res.redirect('/v7/5-psc/psc-check-details')
   }
 })
 
 
 // ******* psc-details javascript ******************************
-router.get('/v6/5-psc/individual-psc/psc-details', function (req, res) {
+router.get('/v7/5-psc/individual-psc/psc-details', function (req, res) {
   // Set URl
-  res.render('v6/5-psc/individual-psc/psc-details', {
+  res.render('v7/5-psc/individual-psc/psc-details', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/5-psc/individual-psc/psc-details', function (req, res) {
+router.post('/v7/5-psc/individual-psc/psc-details', function (req, res) {
     // Create empty array and set error variables to false
     var errors = []
     var firstNameError = false
@@ -1183,7 +1218,7 @@ router.post('/v6/5-psc/individual-psc/psc-details', function (req, res) {
   // Check if eother filed not filled out
   if (detailsError) {
     // Re-show page with error value as true so errors will show
-    res.render('v6/5-psc/individual-psc/psc-details', {
+    res.render('v7/5-psc/individual-psc/psc-details', {
       errorPscFirstName: firstNameError,
       errorPscLastName: lastNameError,
       errorPscNationality: nationalityError,
@@ -1200,7 +1235,7 @@ router.post('/v6/5-psc/individual-psc/psc-details', function (req, res) {
     href: '#PscPersonalCode'
     })
     
-    res.render('v6/5-psc/individual-psc/psc-details', {
+    res.render('v7/5-psc/individual-psc/psc-details', {
       errorPscDobDay: true,
       errorPscDobMonth: true,
       errorPscDobYear: true,
@@ -1210,36 +1245,36 @@ router.post('/v6/5-psc/individual-psc/psc-details', function (req, res) {
     })
   } // name mis-match
   else if (req.session.data['pscPersonalCode'] === '111-2222-3333') {
-    res.redirect('/v6/5-psc/individual-psc/psc-why-this-name')
+    res.redirect('/v7/5-psc/individual-psc/psc-why-this-name')
   } else {
-    res.redirect('/v6/5-psc/individual-psc/psc-right-to-appoint')
+    res.redirect('/v7/5-psc/individual-psc/psc-right-to-appoint')
   }
 })
 
 
 // ******* individual-psc/psc-why-this-name javascript ********************************
-router.get('/v6/5-psc/individual-psc/psc-why-this-name', function (req, res) {
+router.get('/v7/5-psc/individual-psc/psc-why-this-name', function (req, res) {
   // Set URl
-  res.render('v6/5-psc/individual-psc/psc-why-this-name', {
+  res.render('v7/5-psc/individual-psc/psc-why-this-name', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/5-psc/individual-psc/psc-why-this-name', function (req, res) {
-  res.redirect('/v6/5-psc/individual-psc/psc-right-to-appoint')
+router.post('/v7/5-psc/individual-psc/psc-why-this-name', function (req, res) {
+  res.redirect('/v7/5-psc/individual-psc/psc-right-to-appoint')
 })
 
 
 // ******* corporate-psc/psc-previous-answers javascript ******************************
-router.get('/v6/5-psc/corporate-psc/psc-previous-answers', function (req, res) {
+router.get('/v7/5-psc/corporate-psc/psc-previous-answers', function (req, res) {
   // Set URl
-  res.render('v6/5-psc/corporate-psc/psc-previous-answers', {
+  res.render('v7/5-psc/corporate-psc/psc-previous-answers', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/5-psc/corporate-psc/psc-previous-answers', function (req, res) {
-  res.redirect('/v6/5-psc/corporate-psc/rle-details')
+router.post('/v7/5-psc/corporate-psc/psc-previous-answers', function (req, res) {
+  res.redirect('/v7/5-psc/corporate-psc/rle-details')
 })
 
 
@@ -1247,14 +1282,14 @@ router.post('/v6/5-psc/corporate-psc/psc-previous-answers', function (req, res) 
 
 
 // ******* add-psc javascript ********************************
-router.get('/v6/5-psc/psc-add', function (req, res) {
+router.get('/v7/5-psc/psc-add', function (req, res) {
   // Set URl
-  res.render('v6/5-psc/psc-add', {
+  res.render('v7/5-psc/psc-add', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/5-psc/psc-add', function (req, res) {
+router.post('/v7/5-psc/psc-add', function (req, res) {
   // Create empty array
   var errors = []
 
@@ -1267,29 +1302,29 @@ router.post('/v6/5-psc/psc-add', function (req, res) {
     })
 
     // Re-show page with error value as true so errors will show
-    res.render('v6/5-psc/psc-add', {
+    res.render('v7/5-psc/psc-add', {
       errorAddPsc: true,
       errorList: errors
     })
   } else {
     if (req.session.data['addPsc'] === 'psc') {
-      res.redirect('/v6/5-psc/psc-details')
+      res.redirect('/v7/5-psc/psc-details')
     } else if (req.session.data['addPsc'] === 'rle') {
-      res.redirect('/v6/5-psc/corporate-psc/rle-name')
+      res.redirect('/v7/5-psc/corporate-psc/rle-name')
     }
     }
 })
 
 
 // ******* check-director-details javascript ******************************
-router.get('/v6/5-psc/psc-check-details', function (req, res) {
+router.get('/v7/5-psc/psc-check-details', function (req, res) {
   // Set URl
-  res.render('v6/5-psc/psc-check-details', {
+  res.render('v7/5-psc/psc-check-details', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/5-psc/psc-check-details', function (req, res) {
+router.post('/v7/5-psc/psc-check-details', function (req, res) {
     // Create empty array and set error variables to false
     var errors = []
     var directorDetailsError = false
@@ -1317,7 +1352,7 @@ router.post('/v6/5-psc/psc-check-details', function (req, res) {
   // Check if eother filed not filled out
   if (pscDetailsError) {
     // Re-show page with error value as true so errors will show
-    res.render('v6/5-psc/psc-check-details', {
+    res.render('v7/5-psc/psc-check-details', {
       errorConfirmPscAddress: pscConfirmAddressError,
       errorConfirmPscAgree: pscConfirmAgreeError,
       errorPscStatements: pscStatementsError,
@@ -1325,7 +1360,7 @@ router.post('/v6/5-psc/psc-check-details', function (req, res) {
       errorList: errors
     })
   } else {
-    res.redirect('/v6/5-psc/set-up-pscs')
+    res.redirect('/v7/5-psc/set-up-pscs')
   }
   
 })
@@ -1333,67 +1368,67 @@ router.post('/v6/5-psc/psc-check-details', function (req, res) {
 
 
 // ******* pscwhy-this-name javascript ********************************
-router.get('/v6/5-psc/psc-why-this-name', function (req, res) {
+router.get('/v7/5-psc/psc-why-this-name', function (req, res) {
   // Set URl
-  res.render('v6/5-psc/psc-why-this-name', {
+  res.render('v7/5-psc/psc-why-this-name', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/5-psc/psc-why-this-name', function (req, res) {
-  res.redirect('/v6/5-psc/psc-address')
+router.post('/v7/5-psc/psc-why-this-name', function (req, res) {
+  res.redirect('/v7/5-psc/psc-address')
 })
 
 
 // ******* psc-address javascript ********************************
-router.get('/v6/5-psc/psc-address', function (req, res) {
+router.get('/v7/5-psc/psc-address', function (req, res) {
   // Set URl
-  res.render('v6/5-psc/psc-address', {
+  res.render('v7/5-psc/psc-address', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/5-psc/psc-address', function (req, res) {
-  res.redirect('/v6/5-psc/psc-confirm-address')
+router.post('/v7/5-psc/psc-address', function (req, res) {
+  res.redirect('/v7/5-psc/psc-confirm-address')
 })
 
 
 // ******* psc-confirm-address javascript ********************************
-router.get('/v6/5-psc/psc-confirm-address', function (req, res) {
+router.get('/v7/5-psc/psc-confirm-address', function (req, res) {
   // Set URl
-  res.render('v6/5-psc/psc-confirm-address', {
+  res.render('v7/5-psc/psc-confirm-address', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/5-psc/psc-confirm-address', function (req, res) {
-  res.redirect('/v6/5-psc/psc-right-to-appoint')
+router.post('/v7/5-psc/psc-confirm-address', function (req, res) {
+  res.redirect('/v7/5-psc/psc-right-to-appoint')
 })
 
 
 
 // ******* individual-psc/psc-previous-answers javascript ******************************
-router.get('/v6/5-psc/corporate-psc/rle-previous-answers', function (req, res) {
+router.get('/v7/5-psc/corporate-psc/rle-previous-answers', function (req, res) {
   // Set URl
-  res.render('v6/5-psc/corporate-psc/rle-previous-answers', {
+  res.render('v7/5-psc/corporate-psc/rle-previous-answers', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/5-psc/corporate-psc/rle-previous-answers', function (req, res) {
-  res.redirect('/v6/5-psc/corporate-psc/rle-registered')
+router.post('/v7/5-psc/corporate-psc/rle-previous-answers', function (req, res) {
+  res.redirect('/v7/5-psc/corporate-psc/rle-registered')
 })
 
 
 // ******* rle-details javascript ******************************
-router.get('/v6/5-psc/corporate-psc/rle-details', function (req, res) {
+router.get('/v7/5-psc/corporate-psc/rle-details', function (req, res) {
   // Set URl
-  res.render('v6/5-psc/corporate-psc/rle-details', {
+  res.render('v7/5-psc/corporate-psc/rle-details', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/5-psc/corporate-psc/rle-details', function (req, res) {
+router.post('/v7/5-psc/corporate-psc/rle-details', function (req, res) {
     // Create empty array and set error variables to false
     var errors = []
     var rleTypeError = false
@@ -1451,7 +1486,7 @@ router.post('/v6/5-psc/corporate-psc/rle-details', function (req, res) {
   // Check if eother filed not filled out
   if (detailsError) {
     // Re-show page with error value as true so errors will show
-    res.render('v6/5-psc/corporate-psc/rle-details', {
+    res.render('v7/5-psc/corporate-psc/rle-details', {
       errorRleType: rleTypeError,
       errorGoverningLaw: governingLawError,
       errorRleRegister: registerError,
@@ -1460,21 +1495,21 @@ router.post('/v6/5-psc/corporate-psc/rle-details', function (req, res) {
       errorList: errors
     })
   } else {
-    res.redirect('/v6/5-psc/corporate-psc/rle-right-to-appoint')
+    res.redirect('/v7/5-psc/corporate-psc/rle-right-to-appoint')
   }
 })
 
 
 
 // ******* rle-registered javascript ********************************
-router.get('/v6/5-psc/corporate-psc/rle-registered', function (req, res) {
+router.get('/v7/5-psc/corporate-psc/rle-registered', function (req, res) {
   // Set URl
-  res.render('v6/5-psc/corporate-psc/rle-registered', {
+  res.render('v7/5-psc/corporate-psc/rle-registered', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/5-psc/corporate-psc/rle-registered', function (req, res) {
+router.post('/v7/5-psc/corporate-psc/rle-registered', function (req, res) {
   // Create empty array
   var errors = []
 
@@ -1487,24 +1522,24 @@ router.post('/v6/5-psc/corporate-psc/rle-registered', function (req, res) {
     })
 
     // Re-show page with error value as true so errors will show
-    res.render('v6/5-psc/corporate-psc/rle-registered', {
+    res.render('v7/5-psc/corporate-psc/rle-registered', {
       errorRleRegistered: true,
       errorList: errors
     })
   } else {
-       res.redirect('/v6/5-psc/corporate-psc/rle-corporate-body')}
+       res.redirect('/v7/5-psc/corporate-psc/rle-corporate-body')}
 })
 
 
 // ******* rle-corporate-body javascript ********************************
-router.get('/v6/5-psc/corporate-psc/rle-corporate-body', function (req, res) {
+router.get('/v7/5-psc/corporate-psc/rle-corporate-body', function (req, res) {
   // Set URl
-  res.render('v6/5-psc/corporate-psc/rle-corporate-body', {
+  res.render('v7/5-psc/corporate-psc/rle-corporate-body', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/5-psc/corporate-psc/rle-corporate-body', function (req, res) {
+router.post('/v7/5-psc/corporate-psc/rle-corporate-body', function (req, res) {
   // Create empty array
   var errors = []
 
@@ -1517,25 +1552,25 @@ router.post('/v6/5-psc/corporate-psc/rle-corporate-body', function (req, res) {
     })
 
     // Re-show page with error value as true so errors will show
-    res.render('v6/5-psc/corporate-psc/rle-corporate-body', {
+    res.render('v7/5-psc/corporate-psc/rle-corporate-body', {
       errorRleCorporate: true,
       errorList: errors
     })
   } else {
-       res.redirect('/v6/5-psc/corporate-psc/rle-details')}
+       res.redirect('/v7/5-psc/corporate-psc/rle-details')}
 })
 
 
 
 // ******* psc-right-to-appoint javascript ********************************
-router.get('/v6/5-psc/corporate-psc/ro-right-to-appoint', function (req, res) {
+router.get('/v7/5-psc/corporate-psc/ro-right-to-appoint', function (req, res) {
   // Set URl
-  res.render('v6/5-psc/corporate-psc/ro-right-to-appoint', {
+  res.render('v7/5-psc/corporate-psc/ro-right-to-appoint', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/5-psc/corporate-psc/rle-right-to-appoint', function (req, res) {
+router.post('/v7/5-psc/corporate-psc/rle-right-to-appoint', function (req, res) {
   // Create empty array
   var errors = []
 
@@ -1548,19 +1583,19 @@ router.post('/v6/5-psc/corporate-psc/rle-right-to-appoint', function (req, res) 
     })
 
     // Re-show page with error value as true so errors will show
-    res.render('v6/5-psc/corporate-psc/rle-right-to-appoint', {
+    res.render('v7/5-psc/corporate-psc/rle-right-to-appoint', {
       errorRleRightAppoint: true,
       errorList: errors
     })
   } else {
-      res.redirect('/v6/5-psc/corporate-psc/ro-have-details')
+      res.redirect('/v7/5-psc/corporate-psc/ro-have-details')
     }
 })
 
 
 
 // ******* ro-have-details javascript *********************
-router.post('/v6/5-psc/corporate-psc/ro-have-details', function (req, res) {
+router.post('/v7/5-psc/corporate-psc/ro-have-details', function (req, res) {
   // Create empty array
   var errors = []
 
@@ -1573,16 +1608,16 @@ router.post('/v6/5-psc/corporate-psc/ro-have-details', function (req, res) {
     })
 
     // Re-show page with error value as true so errors will show
-    res.render('v6/5-psc/corporate-psc/ro-have-details', {
+    res.render('v7/5-psc/corporate-psc/ro-have-details', {
       errorRoHaveDetails: true,
       errorList: errors
     })
   } else {
     if (req.session.data['roHaveDetails'] === 'yes') {
-      res.redirect('/v6/5-psc/corporate-psc/ro-details')
+      res.redirect('/v7/5-psc/corporate-psc/ro-details')
     } else {
       // User inputted value so move to next page
-      res.redirect('/v6/5-psc/psc-check-details')
+      res.redirect('/v7/5-psc/psc-check-details')
     }
   }
 })
@@ -1590,14 +1625,14 @@ router.post('/v6/5-psc/corporate-psc/ro-have-details', function (req, res) {
 
 
 // ******* ro-details javascript *********************
-router.get('/v6/5-psc/corporate-psc/ro-details', function (req, res) {
+router.get('/v7/5-psc/corporate-psc/ro-details', function (req, res) {
   // Set URl
-  res.render('v6/5-psc/corporate-psc/ro-details', {
+  res.render('v7/5-psc/corporate-psc/ro-details', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/5-psc/corporate-psc/ro-details', function (req, res) {
+router.post('/v7/5-psc/corporate-psc/ro-details', function (req, res) {
   // Create empty array and set error variables to false
   var errors = [];
   var firstNameError = false
@@ -1675,7 +1710,7 @@ router.post('/v6/5-psc/corporate-psc/ro-details', function (req, res) {
   }
 
   if (roDetailsError) {
-  res.render('v6/5-psc/corporate-psc/ro-details', {
+  res.render('v7/5-psc/corporate-psc/ro-details', {
     errorRoFirstName: firstNameError,
     errorRoLastName: lastNameError,
     errorRoDobDay: dobDayError,
@@ -1689,7 +1724,7 @@ router.post('/v6/5-psc/corporate-psc/ro-details', function (req, res) {
   } else {
     // name mis-match
     if (req.session.data['roPersonalCode'] === '111-2222-3333') {
-      res.redirect('/v6/5-psc/corporate-psc/ro-why-this-name')
+      res.redirect('/v7/5-psc/corporate-psc/ro-why-this-name')
     } 
     // dob code mis-match
     else if (req.session.data['roPersonalCode'] === '444-5555-6666') {
@@ -1698,7 +1733,7 @@ router.post('/v6/5-psc/corporate-psc/ro-details', function (req, res) {
       href: '#roPersonalCode'
       })
       
-      res.render('v6/5-psc/corporate-psc/ro-details', {
+      res.render('v7/5-psc/corporate-psc/ro-details', {
         errorRoDobDay: true,
         errorRoDobMonth: true,
         errorRoDobYear: true,
@@ -1707,7 +1742,7 @@ router.post('/v6/5-psc/corporate-psc/ro-details', function (req, res) {
         errorList: errors
       })
     } else {
-      res.redirect('/v6/5-psc/corporate-psc/ro-statements')
+      res.redirect('/v7/5-psc/corporate-psc/ro-statements')
     }
   }
 })
@@ -1715,28 +1750,28 @@ router.post('/v6/5-psc/corporate-psc/ro-details', function (req, res) {
 
 
 // ******* ro-why-this-name javascript ********************************
-router.get('/v6/5-psc/corporate-psc/ro-why-this-name', function (req, res) {
+router.get('/v7/5-psc/corporate-psc/ro-why-this-name', function (req, res) {
   // Set URl
-  res.render('v6/5-psc/corporate-psc/ro-why-this-name', {
+  res.render('v7/5-psc/corporate-psc/ro-why-this-name', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/5-psc/corporate-psc/ro-why-this-name', function (req, res) {
-  res.redirect('/v6/5-psc/corporate-psc/ro-director')
+router.post('/v7/5-psc/corporate-psc/ro-why-this-name', function (req, res) {
+  res.redirect('/v7/5-psc/corporate-psc/ro-director')
 })
 
 
 // ******* ro-statements javascript ********************************
-router.get('/v6/5-psc/corporate-psc/ro-statements', function (req, res) {
+router.get('/v7/5-psc/corporate-psc/ro-statements', function (req, res) {
   // Set URl
-  res.render('v6/5-psc/corporate-psc/ro-statements', {
+  res.render('v7/5-psc/corporate-psc/ro-statements', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v6/5-psc/corporate-psc/ro-statements', function (req, res) {
-  res.redirect('/v6/5-psc/psc-check-details')
+router.post('/v7/5-psc/corporate-psc/ro-statements', function (req, res) {
+  res.redirect('/v7/5-psc/psc-check-details')
 })
 
 

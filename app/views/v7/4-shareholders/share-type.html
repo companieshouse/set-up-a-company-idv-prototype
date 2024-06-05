@@ -1,0 +1,84 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Do you want to add another director?
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- Check for error -->
+    {% if errorShareType %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+    <form action="{{currentUrl}}" method="post">
+
+      <!-- Check for error -->
+      {% if errorShareType %}
+      <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+      <div class="govuk-form-group">
+      {% endif %} 
+        <fieldset class="govuk-fieldset" aria-describedby="shareType-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Do you want to use the most common type of shares?
+            </h1>
+          </legend>
+          <!-- Check for error -->
+          {% if errorShareType %}
+          <p id="shareType-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Select if you want to use the most common type of share
+          </p>
+          {% endif %} 
+
+          <p class="govuk-body">Most shares use 'Ordinary' shares in British pounds (GBP)</p>
+
+          <p class="govuk-body">Shareholders will have the following rights:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>One vote per share on company decisions</li>
+            <li>receive a share of profits as dividend payments</li>
+            <li>receive a share of capital, for example if it closes down</li>
+          </ul>
+
+          <div class="govuk-inset-text">
+            Only choose 'No' if you need to create more than one type of share or 
+            need to set up shares in a different way.
+          </div>
+
+          <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="shareType" name="shareType" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="shareType">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="shareType-2" name="shareType" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="shareType-2">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}
