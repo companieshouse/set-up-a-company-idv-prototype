@@ -407,7 +407,7 @@ router.post('/v6/3-director/director-statement', function (req, res) {
   if (typeof req.session.data['directorStatement'] === 'undefined') {
     // No value so add error to array
     errors.push({
-      text: 'Confirm if the identity verification statement is correct',
+      text: 'Select the identity verification statement',
       href: '#directorStatement'
     })
 
