@@ -37,7 +37,7 @@ router.post('/v6/1-initial-set-up/have-you-verified', function (req, res) {
   if (typeof req.session.data['haveVerified'] === 'undefined') {
     // No value so add error to array
     errors.push({
-      text: 'Select if you have the Companies House personal codes for all directors',
+      text: 'Select yes if you have the Companies House personal codes for all directors',
       href: '#haveVerified'
     })
 
@@ -344,7 +344,25 @@ router.get('/v6/3-director/director-why-this-name', function (req, res) {
 })
 
 router.post('/v6/3-director/director-why-this-name', function (req, res) {
-  res.redirect('/v6/3-director/director-address')
+  // Create empty array
+  var errors = []
+
+  // Check if user has filled out a value
+  if (typeof req.session.data['whyThisName'] === 'undefined') {
+    // No value so add error to array
+    errors.push({
+      text: 'Select the reason why the name you have provided is different to the director\'s verified name',
+      href: '#whyThisName'
+    })
+
+    // Re-show page with error value as true so errors will show
+    res.render('v6/3-director/director-why-this-name', {
+      errorWhyName: true,
+      errorList: errors
+    })
+  } else {
+    res.redirect('/v6/3-director/director-address')
+  }
 })
 
 
@@ -1565,10 +1583,10 @@ router.post('/v6/5-psc/corporate-psc/ro-have-details', function (req, res) {
   var errors = []
 
   // Check if user has filled out a value
-  if (typeof req.session.data['roHaveDetails'] === 'undefined') {
+  if (typeof req.session.data['roHaveDetails'] === 'undefined')  {
     // No value so add error to array
     errors.push({
-      html: "Select yes if you have the details of the relevant legal entity's relevant officer",
+      html: "Select yes if you have the details of this entity's relevant officer",
       href: '#roHaveDetails'
     })
 
@@ -1736,7 +1754,24 @@ router.get('/v6/5-psc/corporate-psc/ro-statements', function (req, res) {
 })
 
 router.post('/v6/5-psc/corporate-psc/ro-statements', function (req, res) {
-  res.redirect('/v6/5-psc/psc-check-details')
+  var errors = [];
+
+  if (typeof req.session.data['rleStatementOne'] === 'undefined' || 
+      typeof req.session.data['rleStatementTwo'] === 'undefined' ||
+      typeof req.session.data['rleStatementThree'] === 'undefined')  {
+    errors.push({
+      text: 'Select all three relevant officer statements',
+      href: '#rleStatementOne'
+    })
+
+    // Re-show page with error value as true so errors will show
+    res.render('v6/5-psc/corporate-psc/ro-statements', {
+      errorStatements: true,
+      errorList: errors
+    })
+  } else {
+    res.redirect('/v6/5-psc/psc-check-details')
+  }
 })
 
 
