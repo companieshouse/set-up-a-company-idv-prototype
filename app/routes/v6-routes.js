@@ -1092,7 +1092,7 @@ router.post('/v6/5-psc/individual-psc/psc-statement', function (req, res) {
   if (typeof req.session.data['pscStatement'] === 'undefined') {
     // No value so add error to array
     errors.push({
-      text: 'Confirm if the identity verification statement is correct',
+      text: 'Select the identity verification statement',
       href: '#pscStatement'
     })
 
