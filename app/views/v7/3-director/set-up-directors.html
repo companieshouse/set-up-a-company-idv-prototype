@@ -1,0 +1,42 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Are you starting a new application?
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="{{currentUrl}}" method="post">
+      <h1 class="govuk-heading-l">You're about to set up the directors the company</h1>
+
+      <p class="govuk-body">A director is ...</p>
+
+      <h2 class="govuk-heading-m">Providing director information</h2>
+
+      <p class="govuk-body">...</p>
+
+      <h2 class="govuk-heading-m">Identity verification</h2>
+
+      <p class="govuk-body">All directors need to verify their identity and get a Companies House personal code, if they have not done so already. </p>
+
+      <p class="govuk-body">...</p>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

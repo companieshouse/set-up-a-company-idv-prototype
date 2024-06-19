@@ -167,9 +167,22 @@ router.post('/v7/2-company-details/company-name', function (req, res) {
       errorList: errors
     })
   } else {
-    res.redirect('/v7/3-director/director-details')
+    res.redirect('/v7/3-director/set-up-directors')
   }
   
+})
+
+
+// ******* set-up-directors javascript ******************************
+router.get('/v7/3-director/set-up-directors', function (req, res) {
+  // Set URl
+  res.render('v7/3-director/set-up-directors', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v7/3-director/set-up-directors', function (req, res) {
+  res.redirect('/v7/3-director/director-details')
 })
 
 
@@ -1245,9 +1258,45 @@ router.post('/v7/5-psc/individual-psc/psc-details', function (req, res) {
     })
   } // name mis-match
   else if (req.session.data['pscPersonalCode'] === '111-2222-3333') {
-    res.redirect('/v7/5-psc/individual-psc/psc-why-this-name')
+    res.redirect('/v7/5-psc/individual-psc/psc-name-different')
   } else {
     res.redirect('/v7/5-psc/individual-psc/psc-right-to-appoint')
+  }
+})
+
+
+// ******* psc-name-different' javascript ********************************
+router.get('/v7/5-psc/individual-psc/psc-name-different', function (req, res) {
+  // Set URl
+  res.render('v7/5-psc/individual-psc/psc-name-different', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v7/5-psc/individual-psc/psc-name-different', function (req, res) {
+  // Create empty array
+  var errors = []
+
+  // Check if user has filled out a value
+  if (typeof req.session.data['pscNameDifferent'] === 'undefined') {
+    // No value so add error to array
+    errors.push({
+      text: 'Select if you want to continue with a different name',
+      href: '#pscNameDifferent'
+    })
+
+    // Re-show page with error value as true so errors will show
+    res.render('v7/5-psc/individual-psc/psc-name-different', {
+      errorPscNameDifferent: true,
+      errorList: errors
+    })
+  } else {
+    if (req.session.data['pscNameDifferent'] === 'yes') {
+      res.redirect('/v7/5-psc/individual-psc/psc-why-this-name')
+    } else {
+      // User inputted value so move to next page
+      res.redirect('/v7/5-psc/individual-psc/psc-details')
+    }
   }
 })
 
@@ -1724,7 +1773,7 @@ router.post('/v7/5-psc/corporate-psc/ro-details', function (req, res) {
   } else {
     // name mis-match
     if (req.session.data['roPersonalCode'] === '111-2222-3333') {
-      res.redirect('/v7/5-psc/corporate-psc/ro-why-this-name')
+      res.redirect('/v7/5-psc/corporate-psc/ro-name-different')
     } 
     // dob code mis-match
     else if (req.session.data['roPersonalCode'] === '444-5555-6666') {
@@ -1748,6 +1797,42 @@ router.post('/v7/5-psc/corporate-psc/ro-details', function (req, res) {
 })
 
 
+// ******* psc-name-different' javascript ********************************
+router.get('/v7/5-psc/corporate-psc/ro-name-different', function (req, res) {
+  // Set URl
+  res.render('v7/5-psc/corporate-psc/ro-name-different', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v7/5-psc/corporate-psc/ro-name-different', function (req, res) {
+  // Create empty array
+  var errors = []
+
+  // Check if user has filled out a value
+  if (typeof req.session.data['roNameDifferent'] === 'undefined') {
+    // No value so add error to array
+    errors.push({
+      text: 'Select if you want to continue with a different name',
+      href: '#roNameDifferent'
+    })
+
+    // Re-show page with error value as true so errors will show
+    res.render('v7/5-psc/corporate-psc/ro-name-different', {
+      errorRoNameDifferent: true,
+      errorList: errors
+    })
+  } else {
+    if (req.session.data['roNameDifferent'] === 'yes') {
+      res.redirect('/v7/5-psc/corporate-psc/ro-why-this-name')
+    } else {
+      // User inputted value so move to next page
+      res.redirect('/v7/5-psc/corporate-psc/ro-details')
+    }
+  }
+})
+
+
 
 // ******* ro-why-this-name javascript ********************************
 router.get('/v7/5-psc/corporate-psc/ro-why-this-name', function (req, res) {
@@ -1758,7 +1843,7 @@ router.get('/v7/5-psc/corporate-psc/ro-why-this-name', function (req, res) {
 })
 
 router.post('/v7/5-psc/corporate-psc/ro-why-this-name', function (req, res) {
-  res.redirect('/v7/5-psc/corporate-psc/ro-director')
+  res.redirect('/v7/5-psc/corporate-psc/ro-statements')
 })
 
 

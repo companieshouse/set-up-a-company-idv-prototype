@@ -15,7 +15,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <!-- Check for error -->
-    {% if errorNameDifferent %}
+    {% if errorRoNameDifferent %}
       {{ govukErrorSummary({
         titleText: "There is a problem",
         errorList: errorList
@@ -38,12 +38,12 @@
       </p>
 
       <!-- Check for error -->
-      {% if errorNameDifferent %}
+      {% if errorRoNameDifferent %}
       <div class="govuk-form-group govuk-form-group--error">
       {% else %}
       <div class="govuk-form-group">
       {% endif %} 
-        <fieldset class="govuk-fieldset" aria-describedby="nameDifferent-hint">
+        <fieldset class="govuk-fieldset" aria-describedby="roNameDifferent-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h2 class="govuk-heading-m">
               Do you want to continue with a different name for this person?
@@ -51,22 +51,22 @@
   
           </legend>
           <!-- Check for error -->
-          {% if errorNameDifferent %}
-          <p id="nameDifferent-error" class="govuk-error-message">
+          {% if errorRoNameDifferent %}
+          <p id="roNameDifferent-error" class="govuk-error-message">
             <span class="govuk-visually-hidden">Error:</span> Select if you want to continue with a different name
           </p>
           {% endif %} 
 
           <div class="govuk-radios" data-module="govuk-radios">
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="nameDifferent" name="nameDifferent" type="radio" value="yes">
-              <label class="govuk-label govuk-radios__label" for="nameDifferent">
+              <input class="govuk-radios__input" id="roNameDifferent" name="roNameDifferent" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="roNameDifferent">
                 Yes, I want to continue with a different name
               </label>
             </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="nameDifferent-2" name="nameDifferent" type="radio" value="no">
-              <label class="govuk-label govuk-radios__label" for="nameDifferent-2">
+              <input class="govuk-radios__input" id="roNameDifferent-2" name="roNameDifferent" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="roNameDifferent-2">
                 No, I want to change the name I've provided
               </label>
             </div>
