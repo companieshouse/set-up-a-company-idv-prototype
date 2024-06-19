@@ -289,7 +289,7 @@ router.post('/v6/3-director/director-details', function (req, res) {
     codeHasError = true
     detailsError = true
     errors.push({
-      text: 'Enter the directors Companies House personal code',
+      text: "Enter the director's Companies House personal code",
       href: '#directorPersonalCode'
     })
   }
