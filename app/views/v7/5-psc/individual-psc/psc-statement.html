@@ -15,7 +15,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
     <!-- Check for error -->
-    {% if errorDirectorStatement %}
+    {% if errorPscStatement %}
       {{ govukErrorSummary({
         titleText: "There is a problem",
         errorList: errorList
@@ -37,7 +37,7 @@
             </legend>
             {% if errorPscStatement %}
             <p id="pscStatement-error" class="govuk-error-message">
-              <span class="govuk-visually-hidden">Error:</span>Confirm if the identity verification statement is correct
+              <span class="govuk-visually-hidden">Error:</span>Select the identity verification statement
             </p>
             {% endif %}
             <div class="govuk-checkboxes" data-module="govuk-checkboxes">
