@@ -16,19 +16,34 @@ Are you starting a new application?
   <div class="govuk-grid-column-two-thirds">
 
     <form action="{{currentUrl}}" method="post">
-      <h1 class="govuk-heading-l">You're about to set up the directors the company</h1>
+      <h1 class="govuk-heading-l">You're about to set up the company's directors</h1>
 
-      <p class="govuk-body">A director is ...</p>
+      <p class="govuk-body">The company directors are legally responsible for running the company and making sure information is sent to Companies House on time. </p>
 
-      <h2 class="govuk-heading-m">Providing director information</h2>
-
-      <p class="govuk-body">...</p>
+      <p class="govuk-body">For more information on what these roles and responsibilities include, read the <a href="https://www.gov.uk/guidance/being-a-company-director#general-duties-of-a-company-director" target="blank">guidance on being a company director (opens in a new tab)</a>.</p>
 
       <h2 class="govuk-heading-m">Identity verification</h2>
 
-      <p class="govuk-body">All directors need to verify their identity and get a Companies House personal code, if they have not done so already. </p>
+      <p class="govuk-body">All company directors must have verified their identity for Companies House.</p>
 
-      <p class="govuk-body">...</p>
+      <p class="govuk-body">They can do this using the <a href="https://prove-your-identity-prototype.herokuapp.com/release1-v5/pre-one-login/start" target="blank">Verify your identity for Companies House service (opens in a new tab)</a>.</p>
+
+      <p class="govuk-body">When they’ve successfully verified their identity, we’ll give them a Companies House personal code.</p>
+
+      <div class="govuk-inset-text">
+       You’ll need to provide each director’s personal code as part of this registration, so that we can connect their verified identity to our records. 
+      </div>
+
+            <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Where to find the Companies House personal code
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          This is an 11 character code that is given to a person once they have verified their identity.
+        </div>
+      </details>
 
       {{ govukButton({
         text: "Continue"
