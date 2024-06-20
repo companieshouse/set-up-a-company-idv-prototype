@@ -12,6 +12,51 @@ router.use((req, res, next) => {
   next()  
 }) 
 
+
+// ******* starting-a-new-application javascript ********************************
+router.get('/v7/1-initial-set-up/starting-a-new-application', function (req, res) {
+  // Set URl
+  res.render('v7/1-initial-set-up/starting-a-new-application', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v7/1-initial-set-up/starting-a-new-application', function (req, res) {
+  // Create empty array
+  var errors = []
+
+  // Check if user has filled out a value
+  if (typeof req.session.data['newApplication'] === 'undefined') {
+    // No value so add error to array
+    errors.push({
+      text: 'Select yes if you are starting a new application',
+      href: '#newApplication'
+    })
+
+    // Re-show page with error value as true so errors will show
+    res.render('v7/1-initial-set-up/starting-a-new-application', {
+      errorNew: true,
+      errorList: errors
+    })
+  } else {
+    if (req.session.data['newApplication'] === 'yes') {
+      res.redirect('/v7/1-initial-set-up/check-before')
+    } 
+  }
+})
+
+// ******* check-before javascript ********************************
+router.get('/v7/1-initial-set-up/check-before', function (req, res) {
+  // Set URl
+  res.render('v7/1-initial-set-up/check-before', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v7/1-initial-set-up/check-before', function (req, res) {
+  res.redirect('/v7/1-initial-set-up/have-you-verified')
+})
+
 // ******* Sign in email validation ********************************
 router.get('/v7/1-initial-set-up/sign-in-email', function (req, res) {
   // Set URl
@@ -48,7 +93,7 @@ router.post('/v7/1-initial-set-up/have-you-verified', function (req, res) {
     })
   } else {
     if (req.session.data['haveVerified'] === 'yes') {
-      res.redirect('/v7/1-initial-set-up/starting-a-new-application')
+      res.redirect('/v7/1-initial-set-up/card-or-paypal')
     } else {
       // User inputted value so move to next page
       res.redirect('/v7/1-initial-set-up/verification-stop')
@@ -56,35 +101,75 @@ router.post('/v7/1-initial-set-up/have-you-verified', function (req, res) {
   }
 })
 
-// ******* starting-a-new-application javascript ********************************
-router.get('/v7/1-initial-set-up/starting-a-new-application', function (req, res) {
+
+// ******* card-or-paypal javascript ********************************
+router.get('/v7/1-initial-set-up/card-or-paypal', function (req, res) {
   // Set URl
-  res.render('v7/1-initial-set-up/starting-a-new-application', {
+  res.render('v7/1-initial-set-up/card-or-paypal', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v7/1-initial-set-up/starting-a-new-application', function (req, res) {
+router.post('/v7/1-initial-set-up/card-or-paypal', function (req, res) {
   // Create empty array
   var errors = []
 
   // Check if user has filled out a value
-  if (typeof req.session.data['newApplication'] === 'undefined') {
+  if (typeof req.session.data['paypal'] === 'undefined') {
     // No value so add error to array
     errors.push({
-      text: 'Select yes if you are starting a new application',
-      href: '#newApplication'
+      text: 'Select yes if you are able to use a card or PayPal',
+      href: '#paypal'
     })
 
     // Re-show page with error value as true so errors will show
-    res.render('v7/1-initial-set-up/starting-a-new-application', {
-      errorNew: true,
+    res.render('v7/1-initial-set-up/card-or-paypal', {
+      errorPaypal: true,
       errorList: errors
     })
   } else {
-    if (req.session.data['newApplication'] === 'yes') {
+    if (req.session.data['paypal'] === 'yes') {
+      res.redirect('/v7/1-initial-set-up/secure-register')
+    } else {
+      // User inputted value so move to next page
+      res.redirect('/v7/1-initial-set-up/card-or-paypal-stop')
+    }
+  }
+})
+
+
+// ******* secure-register javascript ********************************
+router.get('/v7/1-initial-set-up/secure-register', function (req, res) {
+  // Set URl
+  res.render('v7/1-initial-set-up/secure-register', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v7/1-initial-set-up/secure-register', function (req, res) {
+  // Create empty array
+  var errors = []
+
+  // Check if user has filled out a value
+  if (typeof req.session.data['secureRegister'] === 'undefined') {
+    // No value so add error to array
+    errors.push({
+      text: 'Select yes if you are able to use a card or PayPal',
+      href: '#secureRegister'
+    })
+
+    // Re-show page with error value as true so errors will show
+    res.render('v7/1-initial-set-up/secure-register', {
+      errorSercure: true,
+      errorList: errors
+    })
+  } else {
+    if (req.session.data['secureRegister'] === 'yes') {
+      res.redirect('/v7/1-initial-set-up/secure-register-stop')
+    } else {
+      // User inputted value so move to next page
       res.redirect('/v7/2-company-details/company-relationship')
-    } 
+    }
   }
 })
 
