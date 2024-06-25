@@ -24,16 +24,21 @@
     <form action="{{currentUrl}}" method="post">
 
       <h1 class="govuk-heading-l">
-        Identity verification for company directors 
+        Identity verification 
       </h1>
 
-      <p class="govuk-body">Before you can register a company, all <a class="govuk-link" href="https://prove-your-identity-prototype.herokuapp.com/release1-v5/pre-one-login/start" target="blank">company directors must verify their identity for Companies House</a> if they haven't done already done so.</p>
+      <p class="govuk-body">All company directors and people with significant control (PSCs) must have verified their identity for Companies House</a> before you can register this company.</p>
 
-      <p class="govuk-body">When they’ve successfully verified their identity, we’ll give them a Companies House personal code.</p>
+      <p class="govuk-body">They can do this using the <a class="govuk-link" href="https://prove-your-identity-prototype.herokuapp.com/release1-v5/pre-one-login/start" target="blank">Verify your identity for Companies House</a> service.</p>
+
+      <p class="govuk-body">When each person has successfully verified their identity, we’ll give them a Companies House personal code.</p>
 
       <div class="govuk-inset-text">
-       You’ll need to provide each director’s personal code as part of this registration, so that we can connect their verified identity to our records. 
+       You’ll need to provide each director and PSC's personal code as part of this registration, so that we can connect their verified identity to our records. 
       </div>
+
+
+      <p class="govuk-body">If the PSC is a company, you will need to provide details of its <a href="#">relevant officer</a>, who must also verify their identity.</p>
 
       <!-- Check for error -->
       {% if errorHaveVerified %}
@@ -44,7 +49,7 @@
         <fieldset class="govuk-fieldset" aria-describedby="haveVerified-hint">
 
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                Do you have the Companies House personal codes for all company directors?
+                Do you have the Companies House personal codes for all company directors and PSCs?
           </legend>
           <!-- Check for error -->
           {% if errorHaveVerified %}
