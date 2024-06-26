@@ -1754,24 +1754,7 @@ router.get('/v6/5-psc/corporate-psc/ro-statements', function (req, res) {
 })
 
 router.post('/v6/5-psc/corporate-psc/ro-statements', function (req, res) {
-  var errors = [];
-
-  if (typeof req.session.data['rleStatementOne'] === 'undefined' || 
-      typeof req.session.data['rleStatementTwo'] === 'undefined' ||
-      typeof req.session.data['rleStatementThree'] === 'undefined')  {
-    errors.push({
-      text: 'Select all three relevant officer statements',
-      href: '#rleStatementOne'
-    })
-
-    // Re-show page with error value as true so errors will show
-    res.render('v6/5-psc/corporate-psc/ro-statements', {
-      errorStatements: true,
-      errorList: errors
-    })
-  } else {
-    res.redirect('/v6/5-psc/psc-check-details')
-  }
+  res.redirect('/v6/5-psc/psc-check-details')
 })
 
 
