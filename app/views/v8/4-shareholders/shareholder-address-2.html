@@ -1,0 +1,73 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  shareholder address
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="{{currentUrl}}" method="post">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="shareholderAddress-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              What is the address for {{ data['shareholderFirstName'] }} {{ data['shareholderLastName'] }}?
+            </h1>
+          </legend>
+
+          <p class="govuk-body">You can use a business or home address and it doesn't have to be in the UK.</p>
+
+          <p class="govuk-body">This address will be publicly available on the Companies House online register.</p>
+
+          <details class="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                I don't want my home address to be publicly available
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              <p class="govuk-body">If you don't want to use your home address, you can use a business address service. You'll 
+                need their permission and they usually charge a fee.</p>
+
+              <p class="govuk-body">Learn more about
+                  <a href="#" class="govuk-link">how your personal information is used</a> on the Companies House online public register and <a href="#" class="govuk-link">how to protect your home address</a>.</p>
+            </div>
+          </details>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="shareholderPostcode">
+              UK postcode
+            </label>
+            <input class="govuk-input govuk-input--width-10" id="shareholderPostcode" name="shareholderPostcode" type="text">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="shareholderPropertyName">
+              Property name or number (optional)
+            </label>
+            <div id="shareholderPropertyName-hint" class="govuk-hint">
+              For example, 'The Mill', '116' or 'Flat 37a'
+            </div>
+            <input class="govuk-input govuk-input--width-5" id="shareholderPropertyName" name="shareholderPropertyName" type="text">
+          </div>
+        </fieldset>
+      </div>
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

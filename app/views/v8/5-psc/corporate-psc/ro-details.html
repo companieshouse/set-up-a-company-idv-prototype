@@ -1,0 +1,222 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  What is the relevant officer's details? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- Check for error -->
+    {% if roDetailsError %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+    <h1 class="govuk-heading-l">Relevant officer's details</h1>
+
+    <p class="govuk-body">The relevant officer must be a director of the relevant legal entity, or someone whose roles and responsibilities correspond to that of a company director.</p>
+
+      <div class="govuk-inset-text">
+        Details of the relevant officer will not appear on the public record. 
+      </div>
+
+    <form action="{{currentUrl}}" method="post">
+      <!-- Check for error -->
+      {% if errorRoFirstName %}
+        <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+        <div class="govuk-form-group">
+      {% endif %} 
+          <label class="govuk-label" for="roFirstName">
+            First name
+          </label>
+          <div id="roFirstName-hint" class="govuk-hint">
+            Enter first name in full, not just initials.
+        </div>
+          <!-- Check for error -->
+        {% if errorRoFirstName %}
+          <p id="roFirstName-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Enter the first name
+          </p>
+        {% endif %} 
+          <input class="govuk-input govuk-!-width-one-half" id="roFirstName" name="roFirstName" type="text" value="{{ data['roFirstName'] }}">
+      </div>
+    
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="roMddleName">
+          Middle names
+        </label>
+        <div id="roMddleName-hint" class="govuk-hint">
+          Enter middle names in full, not just initials.
+        </div>
+        <input class="govuk-input govuk-!-width-one-half" id="roMddleName" name="roMddleName" type="text" value="{{ data['roMddleName'] }}">
+      </div>
+    
+      <!-- Check for error -->
+      {% if errorRoLastName %}
+        <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+        <div class="govuk-form-group">
+      {% endif %} 
+          <label class="govuk-label" for="roLastName">
+            Last name
+          </label>
+          <!-- Check for error -->
+        {% if errorRoLastName %}
+          <p id="roLastName-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Enter the last name
+          </p>
+        {% endif %} 
+          <input class="govuk-input govuk-!-width-one-half" id="roLastName" name="roLastName" type="text" value="{{ data['roLastName'] }}">
+      </div>
+
+
+      <!-- Check for error -->
+      {% if errorRoDobDay or errorRoDobMonth or errorRoDobYear %}
+      <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+      <div class="govuk-form-group">
+      {% endif %} 
+        <fieldset class="govuk-fieldset" role="group" aria-describedby="roDob-hint">
+          <label class="govuk-label" for="roDob">
+            Date of birth
+          </label>
+          <div id="roDob-hint" class="govuk-hint">
+            For example, 27 3 1992.
+          </div>
+          <div id="roDob-hint" class="govuk-hint">
+            This must match the date of birth provided when they verified their identity.
+          </div>
+          {% if rleMatchError %}
+            <p id="roDob-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> Enter the correct date of birth
+            </p>
+          {% elif errorRoDobDay or errorRoDobMonth or errorRoDobYear%} 
+            <p id="roDob-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> The date must include a day, month and year
+            </p>
+          {% endif %}
+          <div class="govuk-date-input" id="roDob">
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="roDob-day">
+                  Day
+                </label>
+                <!-- Check for error -->
+                {% if errorRoDobDay %}
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2 govuk-input--error" id="roDob-day" name="roDob-day" type="text" value="{{ data['roDob-day'] }}">
+                {% else %}
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="roDob-day" name="roDob-day" type="text" value="{{ data['roDob-day'] }}">
+                {% endif %} 
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="roDob-month">
+                  Month
+                </label>
+                <!-- Check for error -->
+                {% if errorRoDobMonth %}
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2 govuk-input--error" id="roDob-month" name="roDob-month" type="text" value="{{ data['roDob-month'] }}">
+                {% else %}
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="roDob-month" name="roDob-month" type="text" value="{{ data['roDob-month'] }}">
+                {% endif %} 
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="roDob-year">
+                  Year
+                </label>
+                <!-- Check for error -->
+                {% if errorRoDobYear %}
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4 govuk-input--error" id="roDob-year" name="roDob-year" type="text" value="{{ data['roDob-year'] }}">
+                {% else %}
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="roDob-year" name="roDob-year" type="text" value="{{ data['roDob-year'] }}">
+                {% endif %} 
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <!-- Check for error -->
+      {% if errorRoPersonalCode or rleMatchError %}
+        <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+        <div class="govuk-form-group">
+      {% endif %} 
+          <label class="govuk-label govuk-date-input__label" for="roPersonalCode">
+            Companies House personal code 
+          </label>
+
+          <!-- Check for error -->
+          {% if errorRoPersonalCode %}
+            <p id="roPersonalCode-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> Enter the personal code for the relevant officer
+            </p>
+            <input class="govuk-input govuk-input--width-10 govuk-input--extra-letter-spacing govuk-input--error" id="roPersonalCode" name="roPersonalCode" type="text" aria-describedby="roPersonalCode-hint" value="{{ data['roPersonalCode'] }}">
+          {% elif rleMatchError%} 
+            <p id="roPersonalCode-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> Enter the correct Companies House personal code
+            </p>
+            <input class="govuk-input govuk-input--width-10 govuk-input--extra-letter-spacing govuk-input--error" id="roPersonalCode" name="roPersonalCode" type="text" aria-describedby="roPersonalCode-hint" value="{{ data['roPersonalCode'] }}">
+          {% else %}
+            <input class="govuk-input govuk-input--width-10 govuk-input--extra-letter-spacing" id="roPersonalCode" name="roPersonalCode" type="text" aria-describedby="roPersonalCode-hint" value="{{ data['roPersonalCode'] }}">
+          {% endif %} 
+      </div> 
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Where to find the Companies House personal code
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          This is an 11 character code that is given to a person after they have verified their identity with Companies House. 
+        </div>
+      </details>
+
+      <!-- Check for error -->
+      {% if errorRoDirector %}
+      <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+      <div class="govuk-form-group">
+      {% endif %} 
+        <fieldset class="govuk-fieldset" aria-describedby="roDirector">
+          <label class="govuk-label govuk-date-input__label" for="roDirector">
+          </label>
+          <!-- Check for error -->
+          {% if errorRoDirector %}
+          <p id="roDirector-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span>Confirm if the relevant officer is a director of the relevant legal entity, or someone whose roles and responsibilities correspond to that of a company director. 
+          </p>
+          {% endif %} 
+          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="roDirector" name="roDirector" type="checkbox">
+              <label class="govuk-label govuk-checkboxes__label" for="roDirector">
+                The relevant officer is a director of the relevant legal entity, or someone whose roles and responsibilities correspond to that of a company director.
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+{% endblock %}

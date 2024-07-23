@@ -12,7 +12,7 @@
 {% block content %}
   {{ govukTag({
     classes: "govuk-tag--blue govuk-!-margin-bottom-4",
-    text: "Version 3"
+    text: "Version 8"
   }) }}
 
 
@@ -27,6 +27,15 @@
       <a href="1-initial-set-up/start" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
         Start now
       </a>
+
+      <h2 class="govuk-heading-m">Application submitted pages</h2>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a class="govuk-link" href="app-submitted-no-codes-generic">Application submitted - PSC personal codes not given - generic</a>
+        </li>
+    
+      </ul>
 
       <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible govuk-!-margin-bottom-6">
 
@@ -76,25 +85,10 @@
           <a class="govuk-link" href="1-initial-set-up/start">Start</a>
         </li>  
         <li>
-          <a class="govuk-link" href="1-initial-set-up/create-or-sign-in">create account or sign in</a>
+          <a class="govuk-link" href="1-initial-set-up/check-before">check before you start</a>
         </li>   
         <li>
-          <a class="govuk-link" href="1-initial-set-up/sign-in-email">Sign in email</a>
-        </li>  
-        <li>
-          <a class="govuk-link" href="1-initial-set-up/sign-in-password">Sign in password</a>
-        </li>  
-        <li>
           <a class="govuk-link" href="1-initial-set-up/have-you-verified">have you verified?</a>
-        </li>  
-        <li>
-          <a class="govuk-link" href="1-initial-set-up/verification-stop">verification-stop</a>
-        </li>  
-        <li>
-          <a class="govuk-link" href="1-initial-set-up/starting-a-new-application">Are you starting a new application?</a>
-        </li>  
-        <li>
-          <a class="govuk-link" href="1-initial-set-up/check-before">Check before you start</a>
         </li>  
         <li>
           <a class="govuk-link" href="1-initial-set-up/card-or-paypal">Are you able to pay for this application using a card or PayPal?</a>
@@ -108,6 +102,12 @@
         <li>
           <a class="govuk-link" href="1-initial-set-up/secure-register-stop">Secure register stop screen</a>
         </li>  
+        <li>
+          <a class="govuk-link" href="1-initial-set-up/verification-stop">verification-stop</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="1-initial-set-up/starting-a-new-application">Are you starting a new application?</a>
+        </li>   
       </ul>
 
       <h2 class="govuk-heading-m">Company details</h2>
@@ -118,21 +118,21 @@
         </li> 
         <li>
           <a class="govuk-link" href="2-company-details/company-name">company-name</a>
-        </li>
-        <li>
-          <a class="govuk-link" href="2-company-details/company-contact">company-contact</a>
-        </li>
-        <li>
-          <a class="govuk-link" href="2-company-details/replacing">replacing</a>
-        </li>        
+        </li>      
       </ul>
 
       <h2 class="govuk-heading-m">Director</h2>
 
       <ul class="govuk-list govuk-list--bullet">
         <li>
+          <a class="govuk-link" href="3-director/set-up-directors">directors intro page</a>
+        </li>  
+        <li>
           <a class="govuk-link" href="3-director/director-details">director-details</a>
         </li>  
+        <li>
+          <a class="govuk-link" href="3-director/director-name-different">are you sure you want this name?</a>
+        </li> 
         <li>
           <a class="govuk-link" href="3-director/director-why-this-name">why-this-name</a>
         </li>    
@@ -142,9 +142,6 @@
         <li>
           <a class="govuk-link" href="3-director/director-confirm-address">confirm-address</a>
         </li>  
-        <li>
-          <a class="govuk-link" href="3-director/director-reminders">Reminders</a>
-        </li> 
         <li>
           <a class="govuk-link" href="3-director/director-add">Add director</a>
         </li> 
@@ -156,94 +153,136 @@
         </li>    
       </ul>
 
+      <h2 class="govuk-heading-m">Shareholders</h2>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a class="govuk-link" href="4-shareholders/set-up-shareholders">set-up-shareholders</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="4-shareholders/is-a-shareholder">is-a-shareholder</a>
+        </li>      
+        <li>
+          <a class="govuk-link" href="4-shareholders/shareholder-add">shareholder-add</a>
+        </li>   
+        <li>
+          <a class="govuk-link" href="4-shareholders/shareholder-type">shareholder-type</a>
+        </li> 
+        <li>
+          <a class="govuk-link" href="4-shareholders/shareholder-name">shareholder-name</a>
+        </li>   
+        <li>
+          <a class="govuk-link" href="4-shareholders/shareholder-address">shareholder-address</a>
+        </li> 
+        <li>
+          <a class="govuk-link" href="4-shareholders/shareholder-confirm-address">shareholder confirm address</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="4-shareholders/shareholder-address-2">shareholder-address-2</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="4-shareholders/corporate-shareholder-name">corporate shareholder name</a>
+        </li>   
+        <li>
+          <a class="govuk-link" href="4-shareholders/corporate-shareholder-name-warning">corporaste shareholder name warning</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="4-shareholders/corporate-shareholder-address">Corporate shareholder address</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="4-shareholders/corporate-shareholder-address-2">Corporate shareholder address 2</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="4-shareholders/corporate-shareholder-confirm-address">Corporate shareholder confirm address</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="4-shareholders/corporate-shareholder-person">Corporate shareholder person</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="4-shareholders/check-shareholder-details">check shareholder details</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="4-shareholders/share-type">share type</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="4-shareholders/share-number">share number</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="4-shareholders/share-value">share value</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="4-shareholders/check-shares">check shares</a>
+        </li>  
+      </ul>
+
       <h2 class="govuk-heading-m">PSC</h2>
 
       <ul class="govuk-list govuk-list--bullet">
         <li>
-          <a class="govuk-link" href="4-psc/set-up-pscs">set up psc</a>
+          <a class="govuk-link" href="5-psc/set-up-pscs">set up psc</a>
         </li>  
         <li>
-          <a class="govuk-link" href="4-psc/psc-previous-answers">previous answers</a>
+          <a class="govuk-link" href="5-psc/director-psc/psc-previous-answers">director psc previous answers</a>
         </li>      
         <li>
-          <a class="govuk-link" href="4-psc/psc-right-to-appoint">Right to appoint or remove</a>
-        </li>   
-        <li>
-          <a class="govuk-link" href="4-psc/psc-check-details">Check details</a>
+          <a class="govuk-link" href="5-psc/director-psc/psc-right-to-appoint">director psc Right to appoint or remove</a>
         </li> 
         <li>
-          <a class="govuk-link" href="4-psc/psc-add">Add PSC</a>
+          <a class="govuk-link" href="5-psc/individual-psc/psc-previous-answers">individual psc previous answers</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="5-psc/individual-psc/psc-details">individual psc details</a>
         </li>   
         <li>
-          <a class="govuk-link" href="4-psc/psc-details">Psc details</a>
-        </li> 
-        <li>
-          <a class="govuk-link" href="4-psc/psc-address">Psc address</a>
+          <a class="govuk-link" href="5-psc/individual-psc/psc-name-different">psc-name-different</a>
         </li>  
         <li>
-          <a class="govuk-link" href="4-psc/psc-confirm-address">Psc confirm address</a>
+          <a class="govuk-link" href="5-psc/individual-psc/psc-why-this-name">individual psc why this name</a>
         </li>   
         <li>
-          <a class="govuk-link" href="4-psc/psc-why-this-name">Psc why this name</a>
-        </li>  
-        <li>
-          <a class="govuk-link" href="4-psc/psc-statement">Psc statement</a>
-        </li>  
-      </ul>
-
-      <h2 class="govuk-heading-m">RLE</h2>
-
-      <ul class="govuk-list govuk-list--bullet">
-        <li>
-          <a class="govuk-link" href="5-rle/rle-name">rle name</a>
-        </li>  
-        <li>
-          <a class="govuk-link" href="5-rle/rle-registered">rle-registered</a>
-        </li>      
-        <li>
-          <a class="govuk-link" href="5-rle/rle-address">rle-address</a>
-        </li>   
-        <li>
-          <a class="govuk-link" href="5-rle/rle-details">rle-details</a>
+          <a class="govuk-link" href="5-psc/individual-psc/psc-right-to-appoint">individual psc right to appoint</a>
         </li> 
         <li>
-          <a class="govuk-link" href="5-rle/rle-right-to-appoint">rle-right-to-appoint</a>
-        </li>  
-        <li>
-          <a class="govuk-link" href="5-rle/ro-have-details">ro-have-details</a>
-        </li>  
-        <li>
-          <a class="govuk-link" href="5-rle/ro-details">ro-details</a>
+          <a class="govuk-link" href="5-psc/individual-psc/psc-statement">individual psc statement</a>
         </li> 
         <li>
-          <a class="govuk-link" href="5-rle/psc-address">ro-why-this-name</a>
-        </li>  
-        <li>
-          <a class="govuk-link" href="5-rle/ro-director">ro-director</a>
-        </li>   
-        <li>
-          <a class="govuk-link" href="5-rle/not-director-stop">not-director-stop</a>
-         </li>  
-        <li>
-          <a class="govuk-link" href="5-rle/ro-statements">ro-statements</a>
+          <a class="govuk-link" href="5-psc/corporate-psc/rle-previous-answers">rle previous answers</a>
         </li> 
-      </ul>
+        <li>
+          <a class="govuk-link" href="5-psc/corporate-psc/rle-registered">rle registered</a>
+        </li> 
+        <li>
+          <a class="govuk-link" href="5-psc/corporate-psc/rle-corporate-body">rle corporate body</a>
+        </li> 
+        <li>
+          <a class="govuk-link" href="5-psc/corporate-psc/rle-details">rle-details</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="5-psc/corporate-psc/rle-right-to-appoint">rle right to appoint</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="5-psc/corporate-psc/ro-details">ro details</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="5-psc/corporate-psc/ro-name-different">ro-name-different</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="5-psc/corporate-psc/ro-why-this-name">ro why this name</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="5-psc/corporate-psc/ro-statements">ro-statements</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="5-psc/psc-check-details">psc-check-details</a>
+        </li>
+      </ul> 
 
       <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible govuk-!-margin-bottom-6">
 
       <h2 class="govuk-heading-m" id="authScreens">Changes this version</h2>
       <ul class="govuk-list govuk-list--bullet">      
         <li>
-          Existing RLE screens added
-        </li>
-        <li>
-          New Relevant officer screens added
-        </li>
-        <li>
-          New content for PSCs and IDV added to start screen
-        </li>
-        <li>
-          New content added to Set up PSC page
+          'Change' links removed from Name, DOB, Personal code on PSC details page
         </li>
       </ul>
 
@@ -252,14 +291,14 @@
       <h2 class="govuk-heading-m">User research</h2>
       <ul class="govuk-list govuk-list--bullet">      
         <li>
-          <a class="govuk-link" target="_blank" href="https://companieshouse.sharepoint.com/:f:/r/sites/IDV-SCRSUserSessionVideos/Shared%20Documents/General?csf=1&web=1&e=R5eac9">User research videos</a>
+          <a class="govuk-link" target="_blank" href="#">tbd</a>
         </li>
       </ul>
 
       <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible govuk-!-margin-bottom-6">
 
       <h2 class="govuk-heading-m">Journey flow</h2>
-      <p class="govuk-body"><a class="govuk-link" target="_blank" href="https://app.mural.co/t/companieshouse8589/m/companieshouse8589/1710407306093/eb092ce13854913c8de09a560ade32aed56e3e03?sender=u9bc72e5725f1871777091172">Prototype version 3 screen flow</a></p>
+      <p class="govuk-body"><a class="govuk-link" target="_blank" href="#">tbd</a></p>
 
       <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible govuk-!-margin-bottom-6">
 

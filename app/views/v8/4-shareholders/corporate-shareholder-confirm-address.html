@@ -1,0 +1,34 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Confirm address
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">Confirm the correspondence address for {{ data['shareholderCorporateName'] }}</h1>
+
+    <p class="govuk-body">5 New Town Road<br>Peverall<br>Plymouth<br>England<br>PL3 6QD</p>
+
+    <p class="govuk-body govuk-!-margin-bottom-9"><a href="#" class="govuk-link">Change</a></p>
+
+    <form action="{{currentUrl}}" method="post">
+
+      {{ govukButton({
+        text: "Confirm and continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

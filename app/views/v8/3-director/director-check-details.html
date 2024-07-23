@@ -1,0 +1,225 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Check and confirm director details
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <!-- Check for error -->
+      {% if errorDirectorCheck %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+      {% endif %}
+
+    <form action="{{currentUrl}}" method="post">
+
+      <h1 class="govuk-heading-xl">Check and confirm director details</h1>
+
+      <div class="govuk-inset-text">
+        All information about these directors will appear on the public record, except for their home address and Companies House personal code. We will only show the month and year of birth. 
+      </div>
+
+      <h2 class="govuk-heading-m">{{ data['directorTitle']}} {{ data['directorFirstName']}} {{ data['directorMiddleName']}} {{ data['directorLastName']}}</h2>
+      <p class="govuk-body">
+        <a href="#" class="govuk-link">Remove director</a>
+      </p>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['directorTitle']}} {{ data['directorFirstName']}} {{ data['directorMiddleName']}} {{ data['directorLastName']}}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['directorDob-day'] }} 
+            {{ data['directorDob-month'] | displayMonth }} 
+            {{ data['directorDob-year'] }} 
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Nationality
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['directorNationality'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Job title
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['directorJobTitle'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Companies House personal code
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['directorPersonalCode'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            What is the correspondence address for {{ data['directorTitle']}} {{ data['directorFirstName']}} {{ data['directorMiddleName']}} {{ data['directorLastName']}}
+          </dt>
+          <dd class="govuk-summary-list__value">
+            10 Old Street<br>Parkland<br>Townville<br>England<br>XX1 ZZ2
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            What is the home address for {{ data['directorTitle']}} {{ data['directorFirstName']}} {{ data['directorMiddleName']}} {{ data['directorLastName']}}
+          </dt>
+          <dd class="govuk-summary-list__value">
+            The home address is the same as the correspondence address
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Country the director lives in
+              </dt>
+          </dt>
+          <dd class="govuk-summary-list__value">
+            England
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Does {{ data['directorTitle']}} {{ data['directorFirstName']}} {{ data['directorMiddleName']}} {{ data['directorLastName']}} want to receive filing reminders by email?
+              </dt>
+          </dt>
+          <dd class="govuk-summary-list__value">
+            No
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+          </dd>
+        </div>
+      </dl>
+
+      <p class="govuk-body govuk-!-margin-bottom-9"><b><a class="govuk-link" href="#" class="govuk-link">Add a director or secretary</a></b></p>
+
+      <!-- Check for error -->
+      {% if errorConfirmDirectorAddress %}
+      <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+      <div class="govuk-form-group">
+      {% endif %} 
+        <fieldset class="govuk-fieldset" aria-describedby="directorConfirmAddress">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h2 class="govuk-fieldset__heading">
+              Confirm where the directors live
+            </h2>
+          </legend>
+              <!-- Check for error -->
+            {% if errorConfirmDirectorAddress %}
+            <p id="directorConfirmAddress-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span>Confirm where the directors live
+            </p>
+            {% endif %} 
+          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="directorConfirmAddress" name="directorConfirmAddress" type="checkbox">
+              <label class="govuk-label govuk-checkboxes__label" for="directorConfirmAddress">
+                I confirm that {{ data['directorTitle']}} {{ data['directorFirstName']}} {{ data['directorMiddleName']}} {{ data['directorLastName']}}
+                lives at 10 Old Street, Parkland, Townville, England, XX1 ZZ2.
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <!-- Check for error -->
+      {% if errorConfirmDirectorsAgree %}
+      <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+      <div class="govuk-form-group">
+      {% endif %} 
+        <fieldset class="govuk-fieldset" aria-describedby="directorsConfirmAgree">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h2 class="govuk-fieldset__heading">
+              Confirm they agree to become directors
+            </h2>
+          </legend>
+          <!-- Check for error -->
+          {% if errorConfirmDirectorsAgree %}
+          <p id="directorsConfirmAgree-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span>Confirm all persons agree to becoming directors of the company
+          </p>
+          {% endif %} 
+          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="directorsConfirmAgree" name="directorsConfirmAgree" type="checkbox">
+              <label class="govuk-label govuk-checkboxes__label" for="directorsConfirmAgree">
+                  I confirm that the person named here
+                  agrees to become a director of the company.
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            What legal statement will appear on this company application?
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          “ The subscribers confirm that the person named has consented to act as a director. ”
+        </div>
+      </details>
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

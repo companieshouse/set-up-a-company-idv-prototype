@@ -1,0 +1,85 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  The name is different?
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- Check for error -->
+    {% if errorRoNameDifferent %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+    <form action="{{currentUrl}}" method="post">
+
+      <h1 class="govuk-heading-l">The name you've provided is 
+        different to this person's verified name
+      </h1>
+
+      <p class="govuk-body">We recommend that you provide the same name 
+        they used when verifying their identity for Companies 
+        House.
+      </p>
+
+      <p class="govuk-body">If you decide to continue with a different name, 
+        you'll need to tell us why the name is different. We may 
+        contact you for more information, and your application may be delayed or rejected. 
+      </p>
+
+      <!-- Check for error -->
+      {% if errorRoNameDifferent %}
+      <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+      <div class="govuk-form-group">
+      {% endif %} 
+        <fieldset class="govuk-fieldset" aria-describedby="roNameDifferent-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h2 class="govuk-heading-m">
+              Do you want to continue with a different name for this person?
+            </h2>
+  
+          </legend>
+          <!-- Check for error -->
+          {% if errorRoNameDifferent %}
+          <p id="roNameDifferent-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Select if you want to continue with a different name
+          </p>
+          {% endif %} 
+
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="roNameDifferent" name="roNameDifferent" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="roNameDifferent">
+                Yes, I want to continue with a different name
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="roNameDifferent-2" name="roNameDifferent" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="roNameDifferent-2">
+                No, I want to change the name I've provided
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

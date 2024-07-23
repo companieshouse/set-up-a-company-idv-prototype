@@ -1,0 +1,32 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  You cannot set up a company with this service
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">You cannot set up a company with this service</h1>
+
+      <p class="govuk-body">To set up a company when one of its 
+        directors or secretaries has successfully applied to be on 
+        the Companies House secure register, you'll need to use 
+        another service.</p>
+
+      {{ govukButton({
+        text: "Use other service"
+      }) }}
+
+  </div>
+</div>
+
+{% endblock %}
