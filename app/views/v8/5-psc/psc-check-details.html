@@ -21,20 +21,20 @@
       errorList: errorList
     }) }}
     {% endif %}
-    <h1 class="govuk-heading-l">Check and confirm details of the persons in control of {{ data['companyName'] | uppercase }} {{ data['companyEnding'] | uppercase }}</h1>
+    <h1 class="govuk-heading-l">Check and confirm details of the people in control of {{ data['companyName'] | uppercase }} {{ data['companyEnding'] | uppercase }}</h1>
 
     <div class="govuk-inset-text">
-      Details about persons in control of a company will appear on the
-        public record, except for their home address and the Companies House personal code (if you provided it). We will only show the month and year of birth. 
+      Details about people in control of a company will appear on the
+        public record, except for their home address and the Companies House personal code. We will only show their month and year of birth. 
     </div>
 
-    <p class="govuk-body">Where the director, shareholder and Person with 
-      Significant Control are the same, we've reused information you entered previously.
+    <p class="govuk-body">Where the director, shareholder and person with 
+      significant control are the same, we've reused information you entered previously.
     </p>
 
     <h2 class="govuk-heading-m">{{ data['directorTitle']}} {{ data['directorFirstName']}} {{ data['directorMiddleName']}} {{ data['directorLastName']}}</h2>
     <p class="govuk-body">
-      <a href="#" class="govuk-link">Remove Person with Significant Control</a>
+      <a href="#" class="govuk-link">Remove person with significant control</a>
     </p>
 
     <dl class="govuk-summary-list">
@@ -154,7 +154,7 @@
     {% if data['shareholderFirstName'] %}
       <h2 class="govuk-heading-m">{{ data['pscTitle']}} {{ data['pscFirstName']}} {{ data['pscMiddleName']}} {{ data['pscLastName']}}</h2>
       <p class="govuk-body">
-        <a href="#" class="govuk-link">Remove Person with Significant Control</a>
+        <a href="#" class="govuk-link">Remove person with significant control</a>
       </p>
   
       <dl class="govuk-summary-list">
