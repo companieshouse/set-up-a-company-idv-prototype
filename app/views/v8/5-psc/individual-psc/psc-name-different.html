@@ -23,8 +23,7 @@
     {% endif %}
     <form action="{{currentUrl}}" method="post">
 
-      <h1 class="govuk-heading-l">The name you've provided is 
-        different to this person's verified name
+      <h1 class="govuk-heading-l">The name you’ve provided is different to the name this person used for identity verification
       </h1>
 
       <p class="govuk-body">We recommend that you provide the same name 
@@ -33,9 +32,9 @@
       </p>
 
       <p class="govuk-body">If you decide to continue with a different name, 
-        you'll need to tell us why the name is different. We may 
-        contact you for more information, and your application may be delayed or rejected. 
+        we'll ask you why the name is different. We may contact you for more information, which could delay your registration. We can reject the filing if we find that any of the information provided is inaccurate. 
       </p>
+
 
       <!-- Check for error -->
       {% if errorPscNameDifferent %}
