@@ -1,3 +1,8 @@
 {
-  "serviceName": "Set up a limited company and register for Corporation Tax"
+  "serviceName": "Set up a limited company and register for Corporation Tax",
+  "plugins": {
+    "govuk-frontend": {
+      "rebrand": true
+    }
+  }
 }
