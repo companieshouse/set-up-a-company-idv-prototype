@@ -1,0 +1,47 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Identity verification complete – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/phase-banner.html" %}
+{% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <div class="govuk-panel govuk-panel--confirmation app-submitted-box">
+      <h1 class="govuk-panel__title">
+        Application submitted
+      </h1>
+      <div class="govuk-panel__body">
+        Your application reference number <strong>000-033742</strong>
+      </div>
+    </div>
+
+    <h2 class="govuk-heading-m">What happens next?</h2>
+
+    <p class="govuk-body">
+      You'll receive:
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>an email with your application reference number</li>
+      <li>another email within 2 working days (or 5 working days for a CIC) letting you know the outcome of your application</li>
+    </ul>
+
+    <p class="govuk-body">
+      If your application is successful, the second email will have the company's registration number and Certificate of Incorporation.
+    </p>
+
+    <a class="govuk-link" href="#">Sign out</a>
+
+  </div>
+</div>
+
+
+{% endblock %}

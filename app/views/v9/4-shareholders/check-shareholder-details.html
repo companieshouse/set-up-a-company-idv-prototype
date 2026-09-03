@@ -1,0 +1,134 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  confirm shareholder details – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">Check and confirm shareholder details</h1>
+
+    <form action="{{currentUrl}}" method="post">
+
+      <div class="govuk-inset-text">
+        Each shareholder's name and address will appear on the public record and be available online.
+      </div>
+
+      <h2 class="govuk-heading-m">{{ data['directorTitle']}} {{ data['directorFirstName']}} {{ data['directorMiddleName']}} {{ data['directorLastName']}}</h2>
+      <p class="govuk-body">
+        <a href="#" class="govuk-link">Remove shareholder</a>
+      </p>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            What is the shareholder's name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['directorTitle']}} {{ data['directorFirstName']}} {{ data['directorMiddleName']}} {{ data['directorLastName']}}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            What is the address for {{ data['directorTitle']}} {{ data['directorFirstName']}} {{ data['directorMiddleName']}} {{ data['directorLastName']}}
+          </dt>
+          <dd class="govuk-summary-list__value">
+            10 Old Street<br>Parkland<br>Townville<br>England<br>XX1 ZZ2
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+          </dd>
+        </div>
+      </dl>
+
+
+      <!-- Check if there is a value in 'shareholderFirstName'. if there is we know the user has filled out the individual psc details so we can show the individual psc -->
+      {% if data['shareholderFirstName'] %}
+        <h2 class="govuk-heading-m">{{ data['shareholderFirstName']}} {{ data['shareholderLastName']}}</h2>
+        <p class="govuk-body">
+          <a href="#" class="govuk-link">Remove shareholder</a>
+        </p>
+  
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the shareholder's name
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['shareholderFirstName']}} {{ data['shareholderLastName']}}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the address for {{ data['shareholderFirstName']}} {{ data['shareholderLastName']}}
+            </dt>
+            <dd class="govuk-summary-list__value">
+              10 Old Street<br>Parkland<br>Townville<br>England<br>XX1 ZZ2
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+            </dd>
+          </div>
+        </dl>
+      {% endif %}
+
+      <!-- Check if there is a value in 'shareholderCorporateName'. if there is we know the user has filled out the corporate details so we can show the corporate psc -->
+      {% if data['shareholderCorporateName'] %}
+        <h2 class="govuk-heading-m">{{ data['shareholderCorporateName']}}</h2>
+        <p class="govuk-body">
+          <a href="#" class="govuk-link">Remove shareholder</a>
+        </p>
+  
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the shareholder's name
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['shareholderCorporateName']}}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the address for {{ data['shareholderFirstName']}} {{ data['shareholderLastName']}}
+            </dt>
+            <dd class="govuk-summary-list__value">
+              10 Old Street<br>Parkland<br>Townville<br>England<br>XX1 ZZ2
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the name of the person acting on behalf of {{ data['shareholderCorporateName']}}
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['corporatePersonFirstName']}} {{ data['corporatePersonLastName']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+            </dd>
+          </div>
+        </dl>
+      {% endif %}
+
+      <p class="govuk-body govuk-!-margin-bottom-9"><b><a class="govuk-link" href="shareholder-type" class="govuk-link">Add another shareholder</a></b></p>
+
+
+      {{ govukButton({
+        text: "Confirm and continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+{% endblock %}

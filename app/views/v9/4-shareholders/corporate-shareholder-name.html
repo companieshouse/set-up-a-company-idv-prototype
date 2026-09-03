@@ -1,0 +1,60 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  corporate shareholder name – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- Check for error -->
+    {% if errorShareholderCorporateName %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+    <h1 class="govuk-heading-l">What is the corporate shareholder's name?</h1>
+
+    <form action="{{currentUrl}}" method="post">
+
+      <div class="govuk-inset-text">
+        The shareholder's name will appear on the public record and be available online.
+      </div>
+
+      <!-- Check for error -->
+      {% if errorShareholderCorporateName %}
+        <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+        <div class="govuk-form-group">
+      {% endif %} 
+          <label class="govuk-label" for="shareholderCorporateName">
+            Enter the corporate shareholder's name
+          </label>
+          <div id="shareholderCorporateName-hint" class="govuk-hint">
+            This can be a company, corporate body or firm
+          </div>
+          <!-- Check for error -->
+        {% if errorShareholderCorporateName %}
+          <p id="shareholderCorporateName-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Enter the corporate shareholder's name
+          </p>
+        {% endif %} 
+          <input class="govuk-input govuk-!-width-two-thirds" id="shareholderCorporateName" name="shareholderCorporateName" type="text">
+      </div>
+
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+{% endblock %}

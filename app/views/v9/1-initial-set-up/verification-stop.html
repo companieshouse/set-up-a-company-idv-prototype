@@ -1,0 +1,36 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  All company directors need to verify their identity
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="{{currentUrl}}" method="post">
+      <h1 class="govuk-heading-l">All company directors and PSCs need to verify their identity</h1>
+
+      <p class="govuk-body">All company directors and people with significant control (PSCs) need to verify their identity with Companies House before you can register a company using this service.</a>
+      </p>
+
+      <p class="govuk-body">They can do this using the <a class="govuk-link" href="https://www.gov.uk/guidance/verify-your-identity-for-companies-house" target="blank">Verify your identity for Companies House</a> service.</p>
+
+
+      <p class="govuk-body">When each person has verified their 
+        identity, we will give them a Companies House personal code. 
+        
+      <p class="govuk-body">They need to share this with you, as you'll be asked to provide the personal codes for all directors and PSCs when registering the company.</p>
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

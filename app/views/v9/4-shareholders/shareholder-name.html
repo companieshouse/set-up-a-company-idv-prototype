@@ -1,0 +1,79 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  shareholder name – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- Check for error -->
+    {% if errorShareholderName %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+    <h1 class="govuk-heading-l">What is the shareholder's name?</h1>
+
+    <form action="{{currentUrl}}" method="post">
+
+      <div class="govuk-inset-text">
+        The shareholder's name will appear on the public record and be available online.
+      </div>
+
+      <!-- Check for error -->
+      {% if errorShareholderFirstName %}
+        <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+        <div class="govuk-form-group">
+      {% endif %} 
+          <label class="govuk-label" for="shareholderFirstName">
+            Enter first name
+          </label>
+          <div id="shareholderFirstName-hint" class="govuk-hint">
+            State first name in full, not just an initial
+          </div>
+          <!-- Check for error -->
+        {% if errorShareholderFirstName %}
+          <p id="shareholderFirstName-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Enter the first name
+          </p>
+        {% endif %} 
+          <input class="govuk-input govuk-!-width-two-thirds" id="shareholderFirstName" name="shareholderFirstName" type="text">
+      </div>
+  
+    
+      <!-- Check for error -->
+      {% if errorShareholderLastName %}
+        <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+        <div class="govuk-form-group">
+      {% endif %} 
+          <label class="govuk-label" for="shareholderLastName">
+            Last name
+          </label>
+          <!-- Check for error -->
+        {% if errorShareholderLastName %}
+          <p id="shareholderLastName-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Enter the last name
+          </p>
+        {% endif %} 
+          <input class="govuk-input govuk-!-width-two-thirds" id="shareholderLastName" name="shareholderLastName" type="text">
+      </div>
+
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+{% endblock %}
