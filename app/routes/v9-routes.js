@@ -240,7 +240,7 @@ router.post('/v9/1-initial-set-up/gov-gateway-name', function (req, res) {
 
 
 
-// ******* gov-gateway-email-password javascript ********************************
+// ******* gov-gateway-password javascript ********************************
 router.get('/v9/1-initial-set-up/gov-gateway-password', function (req, res) {
   // Set URl
   res.render('v9/1-initial-set-up/gov-gateway-password', {
@@ -249,7 +249,33 @@ router.get('/v9/1-initial-set-up/gov-gateway-password', function (req, res) {
 })
 
 router.post('/v9/1-initial-set-up/gov-gateway-password', function (req, res) {
-  res.redirect('/v9/1-initial-set-up/gov-gateway-success')
+  res.redirect('/v9/1-initial-set-up/gov-gateway-id')
+})
+
+
+// ******* gov-gateway-id javascript ********************************
+router.get('/v9/1-initial-set-up/gov-gateway-id', function (req, res) {
+  // Set URl
+  res.render('v9/1-initial-set-up/gov-gateway-id', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v9/1-initial-set-up/gov-gateway-id', function (req, res) {
+  res.redirect('/v9/1-initial-set-up/gov-gateway-additional')
+})
+
+
+// ******* gov-gateway-additional javascript ********************************
+router.get('/v9/1-initial-set-up/gov-gateway-additional', function (req, res) {
+  // Set URl
+  res.render('v9/1-initial-set-up/gov-gateway-additional', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v9/1-initial-set-up/gov-gateway-additional', function (req, res) {
+  res.redirect('/v9/1-initial-set-up/relationship')
 })
 
 

@@ -1,0 +1,72 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Are you able to pay for this application using a card or PayPal? 
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="{{currentUrl}}" method="post">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="relationship-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+            What is your relationship to the company?
+            </h1>
+          </legend>
+
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="relationship" name="relationship" type="radio">
+              <label class="govuk-label govuk-radios__label" for="relationship">
+                Company director
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="relationship-2" name="relationship" type="radio">
+              <label class="govuk-label govuk-radios__label" for="relationship-2">
+                Company secretary
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="relationship-3" name="relationship" type="radio">
+              <label class="govuk-label govuk-radios__label" for="relationship-3">
+                Agent - for example, an accountant
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="relationship-4" name="relationship" type="radio" data-aria-controls="conditional-relationship">
+              <label class="govuk-label govuk-radios__label" for="relationship-4">
+                Other - for example, a friend of the director
+              </label>
+            </div>
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-relationship">
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="cconditionalRelationship">
+                  Enter your relationship to the company
+                </label>
+                <input class="govuk-input" id="cconditionalRelationship" name="cconditionalRelationship" type="email" spellcheck="false">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

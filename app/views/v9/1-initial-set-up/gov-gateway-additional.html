@@ -1,0 +1,33 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Create a Government Gateway 
+{% endblock %}
+
+{% set serviceName %}
+  Government Gateway
+{% endset %}
+
+{% block beforeContent %}
+  {% include "includes/welsh-banner.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="{{currentUrl}}" method="post">
+
+      <h1 class="govuk-heading-xl">You need to set up additional security</h1>
+
+      <p class="govuk-body">This is to make sure you can sign in.</p>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}
