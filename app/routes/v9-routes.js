@@ -168,10 +168,92 @@ router.post('/v9/1-initial-set-up/secure-register', function (req, res) {
       res.redirect('/v9/1-initial-set-up/secure-register-stop')
     } else {
       // User inputted value so move to next page
-      res.redirect('/v9/2-company-details/company-relationship')
+      res.redirect('/v9/1-initial-set-up/gov-gateway')
     }
   }
 })
+
+
+// ******* gov-gateway javascript ********************************
+router.get('/v9/1-initial-set-up/gov-gateway', function (req, res) {
+  // Set URl
+  res.render('v9/1-initial-set-up/gov-gateway', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v9/1-initial-set-up/gov-gateway', function (req, res) {
+  res.redirect('/v9/1-initial-set-up/gov-gateway-email')
+})
+
+
+// ******* gov-gateway-email javascript ********************************
+router.get('/v9/1-initial-set-up/gov-gateway-email', function (req, res) {
+  // Set URl
+  res.render('v9/1-initial-set-up/gov-gateway-email', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v9/1-initial-set-up/gov-gateway-email', function (req, res) {
+  res.redirect('/v9/1-initial-set-up/gov-gateway-code')
+})
+
+
+// ******* gov-gateway-code javascript ********************************
+router.get('/v9/1-initial-set-up/gov-gateway-code', function (req, res) {
+  // Set URl
+  res.render('v9/1-initial-set-up/gov-gateway-code', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v9/1-initial-set-up/gov-gateway-code', function (req, res) {
+  res.redirect('/v9/1-initial-set-up/gov-gateway-email-confirm')
+})
+
+
+// ******* gov-gateway-email-confirm javascript ********************************
+router.get('/v9/1-initial-set-up/gov-gateway-email-confirm', function (req, res) {
+  // Set URl
+  res.render('v9/1-initial-set-up/gov-gateway-email-confirm', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v9/1-initial-set-up/gov-gateway-email-confirm', function (req, res) {
+  res.redirect('/v9/1-initial-set-up/gov-gateway-name')
+})
+
+
+// ******* gov-gateway-email-name javascript ********************************
+router.get('/v9/1-initial-set-up/gov-gateway-name', function (req, res) {
+  // Set URl
+  res.render('v9/1-initial-set-up/gov-gateway-name', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v9/1-initial-set-up/gov-gateway-name', function (req, res) {
+  res.redirect('/v9/1-initial-set-up/gov-gateway-password')
+})
+
+
+
+// ******* gov-gateway-email-password javascript ********************************
+router.get('/v9/1-initial-set-up/gov-gateway-password', function (req, res) {
+  // Set URl
+  res.render('v9/1-initial-set-up/gov-gateway-password', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v9/1-initial-set-up/gov-gateway-password', function (req, res) {
+  res.redirect('/v9/1-initial-set-up/gov-gateway-success')
+})
+
+
+
 
 
 // ******* company-relationship javascript ********************************

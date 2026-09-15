@@ -1,0 +1,46 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Create a Government Gateway 
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/welsh-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="{{currentUrl}}" method="post">
+
+      <div class="govuk-form-group">
+        <h1 class="govuk-heading-xl">You will now create a Government Gateway user ID for this company</h1>
+
+        <p class="govuk-body">Use this user ID whenever you need sign in to manage the company’s taxes online.</p>
+
+        <details class="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              What if I need to set up multiple companies?
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            You must create a new Government Gateway user ID for each company. After you have 
+            set up one company, return to GOV.UK and repeat the registration process.
+          </div>
+        </details>
+
+      </div>
+
+      {{ govukButton({
+        text: "Create Government Gateway user ID"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}
