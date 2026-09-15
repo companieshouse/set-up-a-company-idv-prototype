@@ -1,0 +1,44 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Create a Government Gateway 
+{% endblock %}
+
+{% set serviceName %}
+  Government Gateway
+{% endset %}
+
+{% block beforeContent %}
+  {% include "includes/welsh-banner.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="{{currentUrl}}" method="post">
+
+      <h1 class="govuk-heading-xl">Enter your email address</h1>
+
+      <p class="govuk-body">This will only be used to send you security updates or if you need to recover your sign in details.</p>
+
+      <p class="govuk-body">To confirm it is your email address we will send you a code.</p>
+
+      <div class="govuk-form-group">
+        <h2 class="govuk-label-wrapper">
+          <label class="govuk-label govuk-label--m" for="gatewayEmail">
+            Email address
+          </label>
+        </h2>
+        <input class="govuk-input" id="gatewayEmail" name="gatewayEmail" type="text">
+      </div>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

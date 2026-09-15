@@ -1,0 +1,67 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Create a Government Gateway 
+{% endblock %}
+
+{% set serviceName %}
+  Government Gateway
+{% endset %}
+
+{% block beforeContent %}
+  {% include "includes/welsh-banner.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="{{currentUrl}}" method="post">
+
+      <h1 class="govuk-heading-xl">Enter code to confirm your email address</h1>
+
+      <p class="govuk-body">We have sent a code to: {{ data['gatewayEmail'] }}</p>
+
+      <p class="govuk-body">The code will expire in 30 minutes.</p>
+
+      <div class="govuk-warning-text">
+        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text">
+          <span class="govuk-visually-hidden">Warning</span>
+            If you use a browser to access your email, you may need to open a new window or tab to see the code.
+        </strong>
+      </div>
+
+      <div class="govuk-form-group">
+
+          <label class="govuk-label" for="gatewayCode">
+            Confirmation code
+          </label>
+          <div id="gatewayCode-hint" class="govuk-hint">
+            For example, DNCLRK
+          </div>
+        <input class="govuk-input govuk-input--width-20" id="gatewayCode" name="gatewayCode" type="text">
+      </div>
+
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            I have not received the email
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p class="govuk-body">The email may take a few minutes to arrive. Its subject line is: ‘Confirm your email address - Government Gateway’.</p>
+
+          <p class="govuk-body">Check your spam or junk folder – if it still has not arrived, you can request a new code or provide another email address.</p>
+        </div>
+      </details>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}
